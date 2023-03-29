@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sgmusic';
+  menuOpen = false;
+ title = 'SGMUSIC';
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
