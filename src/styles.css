@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.custom-toolbar {
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Adjust the home component's positioning */
+.home-component {
+  position: relative;
+  z-index: 1;
+  margin-top: -64px; /* Adjust this value according to the height of your toolbar */
+}
+
+/* Make the buttons vertical */
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the home slide background */
+.home-slide {
+  position: relative;
+  z-index: -1;
+  margin-top: 64px; /* Adjust this value according to the height of your toolbar */
+  /* Add any other desired styles for the home slide background */
+}

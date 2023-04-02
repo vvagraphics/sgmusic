@@ -1,1 +1,21 @@
-<p>about works!</p>
+<!-- Custom Card -->
+<div class="card-content-wrapper custom-card" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="custom-card" *ngIf="selectedCardIndex !== null">
+        <mat-card-content fxLayout="column" style="height: 100vh">
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+                <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
+                    [alt]="section1Cards[selectedCardIndex].altText" />
+                <h2 class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
+                <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
+            </div>
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 16px;">
+                <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
+                    (click)="selectCard(0)">About</button>
+                <button *ngIf="selectedCardIndex !== 1" mat-raised-button color="primary" [style.fontSize.px]="16"
+                    (click)="selectCard(1)">Biography</button>
+                <button *ngIf="selectedCardIndex !== 2" mat-raised-button color="primary" [style.fontSize.px]="16"
+                    (click)="selectCard(2)">Contacts</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

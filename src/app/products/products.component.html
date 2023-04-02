@@ -1,1 +1,40 @@
-<p>products works!</p>
+<div class="product-container custom-card" fxLayout="column" fxLayoutAlign="center center">
+    <div class="player">
+        <img class="album-art" [src]="currentSong.albumArt" [alt]="currentSong.album + ' Album Art'" />
+        <h2>{{ currentSong.artist }}</h2>
+        <h3>{{ currentSong.title }}</h3>
+        <audio #audioElement controls [src]="currentSong.audioSrc"></audio>
+        <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 16px;">
+            <button mat-icon-button (click)="playPreviousSong()">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+            <button mat-icon-button (click)="shuffleSongs()">
+                <mat-icon>shuffle</mat-icon>
+            </button>
+            <button mat-icon-button (click)="playNextSong()">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="music-selection">
+        <mat-form-field>
+            <mat-label>Select Genre</mat-label>
+            <mat-select [(value)]="selectedGenre" (selectionChange)="updateSongList()">
+                <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <!-- ... existing code ... -->
+        
+        <mat-form-field>
+            <mat-label>Select Song</mat-label>
+            <mat-select [(value)]="currentSong" (selectionChange)="playSelectedSong()">
+                <mat-option *ngFor="let song of filteredSongs" [value]="song">{{ song.title }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <!-- ... existing code ... -->
+
+    </div>
+    <button mat-raised-button color="primary" (click)="addToCart()">Add to Cart</button>
+</div>

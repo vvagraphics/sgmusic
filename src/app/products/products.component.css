@@ -1,0 +1,29 @@
+.custom-card {
+  padding: 5rem;
+  background-color: transparent;
+  box-shadow: none;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* .product-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+.album-art {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+.music-selection {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
