@@ -143,41 +143,44 @@ togglePlayPause(): void {
 }
 
   playNextSong(): void {
-    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    if (currentIndex < this.filteredSongs.length - 1) {
-      this.currentSong = this.filteredSongs[currentIndex + 1];
-    } else {
-      this.currentSong = this.filteredSongs[0];
-    }
-    this.musicService.setCurrentSongIndex(currentIndex + 1);
-    this.playSelectedSong();
-    this.musicService.play();
-    this.musicService.setPaused(false);
+    this.musicService.playNextSong();
+    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    // if (currentIndex < this.filteredSongs.length - 1) {
+    //   this.currentSong = this.filteredSongs[currentIndex + 1];
+    // } else {
+    //   this.currentSong = this.filteredSongs[0];
+    // }
+    // this.musicService.setCurrentSongIndex(currentIndex + 1);
+    // this.playSelectedSong();
+    // this.musicService.play();
+    // this.musicService.setPaused(false);
   }
 
   playPreviousSong(): void {
-    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    if (currentIndex > 0) {
-      this.currentSong = this.filteredSongs[currentIndex - 1];
-    } else {
-      this.currentSong = this.filteredSongs[this.filteredSongs.length - 1];
-    }
-    this.musicService.setCurrentSongIndex(currentIndex - 1);
-    this.playSelectedSong();
-    this.musicService.play();
-    this.musicService.setPaused(false);
+    this.musicService.playPreviousSong();
+    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    // if (currentIndex > 0) {
+    //   this.currentSong = this.filteredSongs[currentIndex - 1];
+    // } else {
+    //   this.currentSong = this.filteredSongs[this.filteredSongs.length - 1];
+    // }
+    // this.musicService.setCurrentSongIndex(currentIndex - 1);
+    // this.playSelectedSong();
+    // this.musicService.play();
+    // this.musicService.setPaused(false);
   }
 
   shuffleSongs(): void {
-    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    let randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
-    while (randomIndex === currentIndex) {
-      randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
-    }
-    this.currentSong = this.filteredSongs[randomIndex];
-    this.musicService.setCurrentSongIndex(randomIndex);
-    this.playSelectedSong();
-    this.musicService.play();
+    this.musicService.shuffleSongs();
+    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    // let randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
+    // while (randomIndex === currentIndex) {
+    //   randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
+    // }
+    // this.currentSong = this.filteredSongs[randomIndex];
+    // this.musicService.setCurrentSongIndex(randomIndex);
+    // this.playSelectedSong();
+    // this.musicService.play();
   }
 
 playSelectedSong(): void {

@@ -79,18 +79,15 @@ getAudioSourceObservable(): BehaviorSubject<string> {
     return this.audioSource$;
   }
 
-// In music.service.ts
-// getAudioSourceObservable(): Observable<string> {
-//   return this.audioSource$.asObservable();
-// }
-
-
-
 setCurrentSongIndex(index: number): void {
     this.currentSongIndex.next(index);
   }
+// getCurrentSong(): Song {
+//   return this.songs[this.currentSongIndex.value];
+// }
+
 getCurrentSong(): Song {
-  return this.songs[this.currentSongIndex.value];
+  return this.songs[this.currentSongIndex.getValue()];
 }
 
   setPaused(value: boolean): void {
@@ -104,10 +101,6 @@ getCurrentSong(): Song {
     this.pause();
   }
 }
-  
-  // onPlayButtonClick(): void {
-  //   this.isPaused.next(!this.isPaused.value);
-  // }
 
   play(): void {
   this._audio.play();
@@ -126,4 +119,24 @@ removeTimeUpdateListener(listener: () => void): void {
 }
 
 
+playNextSong(): void {
+  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
+  const nextIndex = (currentIndex + 1) % this.songs.length;
+  this.currentSongIndex.next(nextIndex);
+}
+
+playPreviousSong(): void {
+  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
+  const previousIndex = (currentIndex - 1 + this.songs.length) % this.songs.length;
+  this.currentSongIndex.next(previousIndex);
+}
+
+shuffleSongs(): void {
+  let randomIndex = Math.floor(Math.random() * this.songs.length);
+  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
+  while (randomIndex === currentIndex) {
+    randomIndex = Math.floor(Math.random() * this.songs.length);
+  }
+  this.setCurrentSongIndex(randomIndex);
+}
 }
