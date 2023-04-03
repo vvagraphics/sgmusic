@@ -1,0 +1,44 @@
+.mini-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  height: 60px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+}
+
+.album-art {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.song-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+.music-selection {
+  height: 40px;
+  padding-left: 5rem;
+}
+.ffgenre,
+.ffsong {
+  height: 4.5rem;
+  width: 9rem;
+}
+.mat-progress-bar .mat-progress-bar-fill::after {
+  background-color: red;
+}

@@ -7,13 +7,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './mini-player.component.html',
   styleUrls: ['./mini-player.component.css']
 })
-export class MiniPlayerComponent implements OnInit, OnDestroy, AfterViewInit  {
+export class MiniPlayerComponent implements OnInit, OnDestroy {
 
-  // @ViewChild('audioPlayer') audioPlayer!: ElementRef;
+    @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
 
-  private subscriptions: Subscription = new Subscription();
+
+  private subscriptions = new Subscription();
   
-  paused: boolean = false;
+  paused: boolean = true;
+  
   progress: number = 0;
 
   songs = [
@@ -69,27 +71,48 @@ export class MiniPlayerComponent implements OnInit, OnDestroy, AfterViewInit  {
 
   constructor(private musicService: MusicService) {}
 
+
+
+
+  //ngOnInit
+// In products.component.ts
 ngOnInit(): void {
-  const pauseSub = this.musicService.isPaused$.subscribe((paused) => {
-    this.paused = !paused;
+  const pauseSub = this.subscriptions.add(
+      this.musicService.isPaused$.subscribe((paused) => {
+        this.paused = !paused;
+        this.updatePlayPauseState();
+      })
+    );
+  
+  const songSub = this.musicService.getAudioSourceObservable().subscribe(src => {
+      this.audioPlayer.nativeElement.src = src;
+    });
+    
+  const audioSrcSub = this.musicService.getAudioSourceObservable().subscribe((src) => {
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.src = src;
+      this.audioPlayer.nativeElement.load();
+    }
   });
-  const songSub = this.musicService.currentSongIndex$.subscribe((index) => {
-    this.currentSong = this.songs[index];
-  });
-  this.subscriptions.add(songSub);
+
   this.subscriptions.add(pauseSub);
   this.subscriptions.add(songSub);
+  this.subscriptions.add(audioSrcSub);
 }
 
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-    this.audioPlayer.nativeElement.removeEventListener('timeupdate', this.updateProgressBar);
+
+
+//ngOnDestroy
+ngOnDestroy(): void {
+  this.subscriptions.unsubscribe();
+  this.musicService.removeTimeUpdateListener(this.updateProgressBar.bind(this));
+}
+
+ updateProgressBar(): void {
+    const audio = this.musicService.getAudioElement();
+    this.progress = (audio.currentTime / audio.duration) * 100;
   }
-updateProgressBar(): void {
-  const audio = this.audioPlayer.nativeElement;
-  this.progress = (audio.currentTime / audio.duration) * 100;
-}
 
   updateSongList(): void {
     this.filteredSongs = this.songs.filter((song) => song.genre === this.selectedGenre);
@@ -98,13 +121,24 @@ ngAfterViewInit(): void {
   // this.playSelectedSong();
   }
 
-togglePlayPause(): void {
+  // products.component.ts
+playAudio(): void {
   if (this.paused) {
     this.audioPlayer.nativeElement.play();
   } else {
     this.audioPlayer.nativeElement.pause();
   }
-  this.musicService.togglePlayPause();
+}
+
+togglePlayPause(): void {
+  if (this.currentSong === this.musicService.getCurrentSong()) {
+    this.musicService.togglePlayPause();
+  } else {
+    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    this.musicService.setCurrentSongIndex(currentIndex);
+    this.musicService.setAudioSource(this.currentSong.audioSrc);
+    this.musicService.togglePlayPause();
+  }
 }
 
   playNextSong(): void {
@@ -146,12 +180,11 @@ togglePlayPause(): void {
   }
 
 playSelectedSong(): void {
-  if (this.audioPlayer) {
-    this.audioPlayer.nativeElement.load();
-    this.audioPlayer.nativeElement.play();
-    this.musicService.setPaused(false);
+    this.musicService.setAudioSource(this.currentSong.audioSrc);
+    this.musicService.play();
+    
+    
   }
-}
 hasPreviousSong(): boolean {
   const currentIndex = this.filteredSongs.indexOf(this.currentSong);
   return currentIndex > 0;
@@ -162,11 +195,17 @@ hasNextSong(): boolean {
   return currentIndex < this.filteredSongs.length - 1;
 }
 
- 
-  addToCart(): void {
-    console.log('Added to cart');
-    // Implement your add to cart logic here
+private updatePlayPauseState(): void {
+    if (this.paused) {
+      this.audioPlayer.nativeElement.pause();
+    } else {
+      this.audioPlayer.nativeElement.play();
+    }
   }
-
+ 
+addToCart(): void {
+    console.log('Added to cart');
+    
+  }
 
 }

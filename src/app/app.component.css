@@ -151,3 +151,18 @@ button[mat-raised-button]:hover {
   outline: none;
   box-shadow: none;
 } */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+app-mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* Adjust height and other styles for the mini-player */
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}

@@ -1,1 +1,8 @@
-<p>news works!</p>
+<div class="news-item">
+    <img [src]="news.urlToImage" alt="News Image">
+    <div class="content">
+        <h3>{{ news.title }}</h3>
+        <p>{{ news.description }}</p>
+        <a href="{{ news.url }}">Read more</a>
+    </div>
+</div>

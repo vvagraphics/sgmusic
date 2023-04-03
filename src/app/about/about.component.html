@@ -1,5 +1,8 @@
+<div class="overlay">
+    <h1 class="title">ABOUT</h1>
+</div>
 <!-- Custom Card -->
-<div class="card-content-wrapper custom-card" fxLayout="row" fxLayoutAlign="center center">
+<div class="card-content-wrapper " fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="custom-card" *ngIf="selectedCardIndex !== null">
         <mat-card-content fxLayout="column" style="height: 100vh">
             <div fxFlex fxLayout="column" fxLayoutAlign="start start">
@@ -8,7 +11,7 @@
                 <h2 class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
                 <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
             </div>
-            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 16px;">
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
                 <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
                     (click)="selectCard(0)">About</button>
                 <button *ngIf="selectedCardIndex !== 1" mat-raised-button color="primary" [style.fontSize.px]="16"

@@ -1,19 +1,38 @@
-<div class="product-container custom-card" fxLayout="column" fxLayoutAlign="center center">
-    <div class="player">
-        <img class="album-art" [src]="currentSong.albumArt" [alt]="currentSong.album + ' Album Art'" />
-        <h2>{{ currentSong.artist }}</h2>
-        <h3>{{ currentSong.title }}</h3>
-        <audio #audioElement controls [src]="currentSong.audioSrc"></audio>
-        <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 16px;">
-            <button mat-icon-button (click)="playPreviousSong()">
+<div class="overlay">
+    <h1 class="title">MUSIC</h1>
+</div>
+<div class="product-container custom-card" fxLayout="column" fxLayoutAlign="">
+    <div class="mini-player">
+        <div class="player-info">
+            <img class="album-art" [src]="currentSong.albumArt" [alt]="currentSong.album + ' Album Art'" />
+            <div class="song-details">
+                <h4>{{ currentSong.artist }}</h4>
+                <h5>{{ currentSong.title }}</h5>
+            </div>
+        </div>
+        <!-- <audio #audioPlayer [src]="currentSong.audioSrc" (ended)="playSelectedSong()"></audio> -->
+        <audio #audioPlayer controls hidden></audio>
+
+
+        <div class="player-controls">
+
+            <button mat-icon-button [disabled]="!hasPreviousSong()" (click)="playPreviousSong()">
                 <mat-icon>skip_previous</mat-icon>
             </button>
+
             <button mat-icon-button (click)="shuffleSongs()">
                 <mat-icon>shuffle</mat-icon>
             </button>
-            <button mat-icon-button (click)="playNextSong()">
+
+        <button mat-icon-button (click)="togglePlayPause()">
+            <mat-icon *ngIf="paused">play_arrow</mat-icon>
+            <mat-icon *ngIf="!paused">pause</mat-icon>
+        </button>
+
+            <button mat-icon-button [disabled]="!hasNextSong()" (click)="playNextSong()">
                 <mat-icon>skip_next</mat-icon>
             </button>
+            
         </div>
     </div>
     <div class="music-selection">
@@ -23,18 +42,15 @@
                 <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
             </mat-select>
         </mat-form-field>
-        
-        <!-- ... existing code ... -->
-        
+
         <mat-form-field>
             <mat-label>Select Song</mat-label>
             <mat-select [(value)]="currentSong" (selectionChange)="playSelectedSong()">
                 <mat-option *ngFor="let song of filteredSongs" [value]="song">{{ song.title }}</mat-option>
             </mat-select>
         </mat-form-field>
-        
-        <!-- ... existing code ... -->
-
     </div>
-    <button mat-raised-button color="primary" (click)="addToCart()">Add to Cart</button>
+    <div class="addToCart-container" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button class="addToCart" color="primary" (click)="addToCart()">Add to Cart</button>
+    </div>
 </div>

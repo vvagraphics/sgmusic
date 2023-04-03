@@ -1,13 +1,23 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { MusicService } from '../shared/music.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit, AfterViewInit {
-  @ViewChild('audioPlayer') audioPlayer!: ElementRef;
+export class ProductsComponent implements OnInit, OnDestroy {
 
+    @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
+
+
+  private subscriptions = new Subscription();
+  
+  paused: boolean = true;
+  
+  progress: number = 0;
 
   songs = [
     // Add your song data here. Replace with real data.
@@ -60,58 +70,143 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   currentSong = this.songs[0];
   selectedGenre = '';
 
-  constructor() {}
+  constructor(private musicService: MusicService) {}
 
-  ngOnInit(): void {}
+
+
+
+  //ngOnInit
+// In products.component.ts
+ngOnInit(): void {
+  const pauseSub = this.subscriptions.add(
+      this.musicService.isPaused$.subscribe((paused) => {
+        this.paused = !paused;
+        this.updatePlayPauseState();
+      })
+    );
+  
+  const songSub = this.musicService.getAudioSourceObservable().subscribe(src => {
+      this.audioPlayer.nativeElement.src = src;
+    });
+    
+  const audioSrcSub = this.musicService.getAudioSourceObservable().subscribe((src) => {
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.src = src;
+      this.audioPlayer.nativeElement.load();
+    }
+  });
+
+  this.subscriptions.add(pauseSub);
+  this.subscriptions.add(songSub);
+  this.subscriptions.add(audioSrcSub);
+}
+
+
+
+
+//ngOnDestroy
+ngOnDestroy(): void {
+  this.subscriptions.unsubscribe();
+  this.musicService.removeTimeUpdateListener(this.updateProgressBar.bind(this));
+}
+
+ updateProgressBar(): void {
+    const audio = this.musicService.getAudioElement();
+    this.progress = (audio.currentTime / audio.duration) * 100;
+  }
 
   updateSongList(): void {
     this.filteredSongs = this.songs.filter((song) => song.genre === this.selectedGenre);
   }
 ngAfterViewInit(): void {
+  // this.playSelectedSong();
+  }
+
+  // products.component.ts
+playAudio(): void {
+  if (this.paused) {
+    this.audioPlayer.nativeElement.play();
+  } else {
+    this.audioPlayer.nativeElement.pause();
+  }
+}
+
+togglePlayPause(): void {
+  if (this.currentSong === this.musicService.getCurrentSong()) {
+    this.musicService.togglePlayPause();
+  } else {
+    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    this.musicService.setCurrentSongIndex(currentIndex);
+    this.musicService.setAudioSource(this.currentSong.audioSrc);
+    this.musicService.togglePlayPause();
+  }
+}
+
+  playNextSong(): void {
+    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    if (currentIndex < this.filteredSongs.length - 1) {
+      this.currentSong = this.filteredSongs[currentIndex + 1];
+    } else {
+      this.currentSong = this.filteredSongs[0];
+    }
+    this.musicService.setCurrentSongIndex(currentIndex + 1);
     this.playSelectedSong();
+    this.musicService.play();
+    this.musicService.setPaused(false);
+  }
+
+  playPreviousSong(): void {
+    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    if (currentIndex > 0) {
+      this.currentSong = this.filteredSongs[currentIndex - 1];
+    } else {
+      this.currentSong = this.filteredSongs[this.filteredSongs.length - 1];
+    }
+    this.musicService.setCurrentSongIndex(currentIndex - 1);
+    this.playSelectedSong();
+    this.musicService.play();
+    this.musicService.setPaused(false);
+  }
+
+  shuffleSongs(): void {
+    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
+    let randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
+    while (randomIndex === currentIndex) {
+      randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
+    }
+    this.currentSong = this.filteredSongs[randomIndex];
+    this.musicService.setCurrentSongIndex(randomIndex);
+    this.playSelectedSong();
+    this.musicService.play();
   }
 
 playSelectedSong(): void {
-  if (this.audioPlayer) {
-    this.audioPlayer.nativeElement.load();
-    this.audioPlayer.nativeElement.play();
+    this.musicService.setAudioSource(this.currentSong.audioSrc);
+    this.musicService.play();
+    
+    
   }
-}
-
-playNextSong(): void {
+hasPreviousSong(): boolean {
   const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-  if (currentIndex < this.filteredSongs.length - 1) {
-    this.currentSong = this.filteredSongs[currentIndex + 1];
-  } else {
-    this.currentSong = this.filteredSongs[0];
-  }
-  this.playSelectedSong();
+  return currentIndex > 0;
 }
 
-playPreviousSong(): void {
+hasNextSong(): boolean {
   const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-  if (currentIndex > 0) {
-    this.currentSong = this.filteredSongs[currentIndex - 1];
-  } else {
-    this.currentSong = this.filteredSongs[this.filteredSongs.length - 1];
-  }
-  this.playSelectedSong();
+  return currentIndex < this.filteredSongs.length - 1;
 }
 
-shuffleSongs(): void {
-  const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-  let randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
-  while (randomIndex === currentIndex) {
-    randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
+private updatePlayPauseState(): void {
+    if (this.paused) {
+      this.audioPlayer.nativeElement.pause();
+    } else {
+      this.audioPlayer.nativeElement.play();
+    }
   }
-  this.currentSong = this.filteredSongs[randomIndex];
-  this.playSelectedSong();
-}
-
-  
-  addToCart(): void {
+ 
+addToCart(): void {
     console.log('Added to cart');
-    // Implement your add to cart logic here
+    
   }
 
 

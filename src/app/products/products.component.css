@@ -1,19 +1,29 @@
 .custom-card {
-  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   background-color: transparent;
   box-shadow: none;
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   min-height: 100vh;
+  padding-top: clamp(2rem, 3vw, 70vw);
 }
 
-/* .product-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
+.title {
+  color: #e9e9e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: clamp(2rem, 150px, 70vw);
   text-align: center;
-} */
+  padding-top: clamp(2rem, 3vw, 70vw);
+  font-size: clamp(2rem, 10vw, 70vw);
+}
 
 .album-art {
   width: 100%;
@@ -26,4 +36,13 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.addToCart {
+  width: 150px;
+}
+
+.addToCart-container {
+  display: flex;
+  justify-content: center;
 }

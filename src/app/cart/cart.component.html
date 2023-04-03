@@ -1,1 +1,21 @@
-<p>cart works!</p>
+<div *ngIf="cartItems.length === 0">
+    <p>Your cart is empty.</p>
+</div>
+<div *ngIf="cartItems.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartItems">
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Total: {{ getTotalPrice() | currency }}</p>
+    <a routerLink="/checkout">Proceed to Checkout</a>
+</div>

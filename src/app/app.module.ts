@@ -27,6 +27,14 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProductListComponent } from './product-list/product-list.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MiniPlayerComponent } from './mini-player/mini-player.component';
+
 
 
 
@@ -42,7 +50,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     LoginComponent,
     CartComponent,
     ProfileComponent,
-    FooterComponent
+    FooterComponent,
+    ProductListComponent,
+    RegistrationComponent,
+    MiniPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -59,12 +70,17 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MomentModule,
+    HttpClientModule,
     TimeagoModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

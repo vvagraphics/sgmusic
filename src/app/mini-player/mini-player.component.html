@@ -1,0 +1,30 @@
+<div class="mini-player">
+    <div class="player-info">
+        <img class="album-art" [src]="currentSong.albumArt" [alt]="currentSong.album + ' Album Art'" />
+        <div class="song-details">
+            <h4>{{ currentSong.artist }}</h4>
+            <h5>{{ currentSong.title }}</h5>
+        </div>
+    </div>
+    <audio #audioPlayer [src]="currentSong.audioSrc"></audio>
+    <div class="player-controls">
+
+        <button mat-icon-button [disabled]="!hasPreviousSong()" (click)="playPreviousSong()">
+            <mat-icon>skip_previous</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="shuffleSongs()">
+            <mat-icon>shuffle</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="togglePlayPause()">
+            <mat-icon *ngIf="paused">play_arrow</mat-icon>
+            <mat-icon *ngIf="!paused">pause</mat-icon>
+        </button>
+
+        <button mat-icon-button [disabled]="!hasNextSong()" (click)="playNextSong()">
+            <mat-icon>skip_next</mat-icon>
+        </button>
+
+    </div>
+</div>

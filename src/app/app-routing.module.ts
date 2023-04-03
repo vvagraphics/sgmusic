@@ -8,6 +8,12 @@ import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AuthGuard } from './auth.guard';
+
+
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,8 +22,11 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'news', component: NewsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
