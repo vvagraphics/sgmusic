@@ -9,7 +9,7 @@
     </div>
     </div>
     <!-- Section 1 -->
-    <div class="card-content-wrapper section1" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
+    <div class="card-content-wrapper section1" id="merch" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
         <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.3"
             gutterSize="16px" [style.margin.px]="16">
             <h1 class="shopShop">SHOP</h1>
@@ -28,7 +28,7 @@
     <mat-divider></mat-divider>
 
     <!-- Section 2 -->
-    <div class="card-content-wrapper section2" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
+    <div class="card-content-wrapper section2" id="promote" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
         <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1.3"
             gutterSize="16px" [style.margin.px]="16">
             <h1 class="shopPromote">PROMOTE MUSIC</h1>
@@ -47,7 +47,7 @@
     <mat-divider></mat-divider>
 
     <!-- Section 3 -->
-    <div class="card-content-wrapper section3" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
+    <div class="card-content-wrapper section3" id="subscriptions" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
         <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.3" gutterSize="16px"
             [style.margin.px]="16">
             <h1 class="shopSub">SUBSCRIPTIONS</h1>

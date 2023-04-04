@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface Card {
   title: string;
@@ -28,9 +28,25 @@ export class ShopComponent implements OnInit   {
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private route: ActivatedRoute,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
 ngOnInit() {
+
+  this.route.fragment.subscribe((fragment: string | null) => {
+    if (fragment) {
+      setTimeout(() => {
+        const element = document.getElementById(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  });
+
+
   this.breakpointObserver.observe([
     Breakpoints.XSmall,
     Breakpoints.Small,
@@ -121,20 +137,23 @@ section1Cards = [
 
 section2Cards = [
   {
-    title: 'Shop',
+    title: 'Merch',
+    destination: 'merch',
     imageSrc: 'assets/image/merch.png',
     altText: 'Section 2 Image 1',
     description: 'Description for Image 1 card in section 2'
   },
   {
-    title: 'Shop',
+    title: 'Promote',
+    destination: 'promote',
     imageSrc: 'assets/image/promote.png',
     altText: 'Section 2 Image 2',
     description: 'Description for Image 2 card in section 2'
   },
   {
-    title: 'Shop',
-    imageSrc: 'assets/image/lootbox.png',
+    title: 'Subscriptions',
+    destination: 'Subscriptions',
+    imageSrc: 'assets/image/Subscriptions.png',
     altText: 'Section 2 Image 3',
     description: 'Description for Image 3 card in section 2'
   },

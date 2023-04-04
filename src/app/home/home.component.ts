@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 
 interface Card {
   title: string;
@@ -29,7 +32,9 @@ export class HomeComponent implements OnInit   {
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute) { }
+
+
 
 ngOnInit() {
   this.breakpointObserver.observe([
@@ -68,6 +73,32 @@ ngOnInit() {
     }
   
 }
+
+
+navigateToComponent(card: Card) {
+  switch (card.title) {
+    case 'About':
+      this.router.navigate(['/about']);
+      break;
+    case 'Product':
+      this.router.navigate(['/product']);
+      break;
+    case 'Shop':
+      this.router.navigate(['/shop']);
+      break;
+    case 'News':
+      this.router.navigate(['/news']);
+      break;
+    default:
+      console.error('No route found for', card.title);
+  }
+}
+
+navigateTo(destination: string): void {
+  this.router.navigate([destination], { relativeTo: this.route });
+}
+
+
 //functions
 getRowHeight(): string {
   if (this.isXsScreen || this.isSmScreen) {
@@ -95,24 +126,28 @@ getImageName(imageSrc: string): string {
 section1Cards = [
   {
     title: 'About',
+    destination: 'about',
     imageSrc: 'assets/image/about.png',
     altText: 'About Image',
     description: 'Description for About card in section 1'
   },
   {
     title: 'Product',
+    destination: 'products',
     imageSrc: 'assets/image/product.png',
     altText: 'Product Image',
     description: 'Description for Product card in section 1'
   },
   {
     title: 'Shop',
+    destination: 'shop',
     imageSrc: 'assets/image/shop.png',
     altText: 'Shop Image',
     description: 'Description for Shop card in section 1'
   },
   {
     title: 'News',
+    destination: 'news',
     imageSrc: 'assets/image/news.png',
     altText: 'News Image',
     description: 'Description for News card in section 1'
@@ -122,24 +157,28 @@ section1Cards = [
 
 section2Cards = [
   {
-    title: 'Shop',
+    title: 'Merch',
+    destination: 'merch',
     imageSrc: 'assets/image/merch.png',
     altText: 'Section 2 Image 1',
     description: 'Description for Image 1 card in section 2'
   },
   {
-    title: 'Shop',
+    title: 'Promote',
+    destination: 'promote',
     imageSrc: 'assets/image/promote.png',
     altText: 'Section 2 Image 2',
     description: 'Description for Image 2 card in section 2'
   },
   {
-    title: 'Shop',
-    imageSrc: 'assets/image/lootbox.png',
+    title: 'Subscriptions',
+    destination: 'subscriptions',
+    imageSrc: 'assets/image/Subscriptions.png',
     altText: 'Section 2 Image 3',
     description: 'Description for Image 3 card in section 2'
   },
 ];
+
 
 
   section3Cards: Card[] = [
