@@ -34,6 +34,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MiniPlayerComponent } from './mini-player/mini-player.component';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 
 
@@ -53,7 +54,8 @@ import { MiniPlayerComponent } from './mini-player/mini-player.component';
     FooterComponent,
     ProductListComponent,
     RegistrationComponent,
-    MiniPlayerComponent
+    MiniPlayerComponent,
+    NewsfeedComponent
   ],
   imports: [
     BrowserModule,

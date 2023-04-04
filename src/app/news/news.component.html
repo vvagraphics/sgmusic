@@ -1,8 +1,9 @@
-<div class="news-item">
-    <img [src]="news.urlToImage" alt="News Image">
-    <div class="content">
-        <h3>{{ news.title }}</h3>
-        <p>{{ news.description }}</p>
-        <a href="{{ news.url }}">Read more</a>
+<div class="news-title">News</div>
+<div class="news-container">
+    <div class="newsfeed" *ngFor="let item of news">
+        <img [src]="item.urlToImage" alt="News Image">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <a href="{{ item.url }}">Read more</a>
     </div>
 </div>

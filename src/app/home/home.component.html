@@ -29,10 +29,7 @@
         <mat-grid-tile *ngFor="let card of section2Cards">
             <mat-card class="custom-card" >
                 <mat-card-content>
-                    <!-- <a [routerLink]="['/shop']" fragment="[card.title]" skipLocationChange> -->
-                        <!-- <a [routerLink]="['/shop']" [fragment]="card.title.toLowerCase()" skipLocationChange> -->
                             <a [routerLink]="['/shop']" [fragment]="card.destination">
-
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                     <h2 class="card-title">{{ card.title }}</h2>
                     <p class="card-description">{{ card.description }}</p></a>
@@ -44,24 +41,21 @@
 
 <mat-divider></mat-divider>
 
+<mat-divider></mat-divider>
+
 <!-- Section 3 -->
 <div class="card-content-wrapper section3" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
-    <mat-grid-list [cols]="isXsScreen || isSmScreen ? 1 : isDesktopScreen ? 3 : 2" [rowHeight]="getRowHeight()"
-        gutterSize="16px" [style.margin.px]="16">
-        <mat-grid-tile *ngFor="let card of section3Cards; let i = index" class="section3-tile">
-            <mat-card class="custom-card section3-card" (click)="navigateToComponent(card)">
-                <mat-card-content>
-                    <h2 class="card-title">{{ card.title }}</h2>
-                    <mat-card-subtitle class="black-text">{{ card.date | amTimeAgo }}</mat-card-subtitle>
-                    <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
-                    {{ card.showMore ? card.description : (card.description | slice:0:descriptionLength) }}
-                    <!-- <a mat-raised-button color="primary" href="https://www.google.com" target="_blank"> -->
-                    <!-- <a mat-raised-button color="primary" [routerLink]="['/news', card.title]" routerLinkActive="router-link-active"> -->
-                        <!-- Read More</a> -->
-                </mat-card-content>
-            </mat-card>
+    <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1.3" gutterSize="16px"
+        [style.margin.px]="16">
+        <mat-grid-tile *ngFor="let news of news.slice(0,3)">
+            <div class="newsfeed">
+                <a href="{{ news.url }}"><img [src]="news.urlToImage" alt="News Image">
+                
+                    <h3>{{ news.title }}</h3>
+                    <p>{{ news.description }}</p>
+                    Read more</a>
+                
+            </div>
         </mat-grid-tile>
     </mat-grid-list>
-</div>
-
 </div>

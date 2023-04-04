@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NewsService } from '../news.service';
 
 
 
@@ -17,7 +18,8 @@ interface Card {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [NewsService]
 })
 export class HomeComponent implements OnInit   {
   menuOpen = false;
@@ -25,18 +27,28 @@ export class HomeComponent implements OnInit   {
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
+
   
+   news: any[] = [];
+
   isXsScreen: boolean = false;
   isSmScreen: boolean = false;
   isMdScreen: boolean = false;
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute, private newsService: NewsService) { }
 
 
 
 ngOnInit() {
+
+  this.newsService.getNews().subscribe((data: any) => {
+      this.news = data.articles;
+    }, (error) => {
+      console.error(error);
+    });
+
   this.breakpointObserver.observe([
     Breakpoints.XSmall,
     Breakpoints.Small,

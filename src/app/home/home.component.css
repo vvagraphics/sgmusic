@@ -1,26 +1,8 @@
-/* .hero {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-} */
-
-/* .hero video {
-  position: relative;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-} */
-
 .hero {
   position: relative;
   overflow: hidden;
   width: 100%;
   padding: 0;
-  /* height: 100vh; */
 }
 
 .responsive-video {
@@ -61,7 +43,6 @@ body {
   position: fixed;
   top: 1rem;
   left: 0;
-  /* outline: #242424; */
   color: #ff0000;
 }
 
@@ -92,7 +73,7 @@ body {
   width: auto;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 998;
-  padding-top: 64px; /* Adjust this value based on the height of your toolbar */
+  padding-top: 64px;
 }
 
 /* For larger screens, display menu items horizontally */
@@ -156,16 +137,6 @@ button[mat-raised-button]:hover {
   justify-content: space-between;
 }
 
-/* .more-button {
-  color: blue;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-} */
-
 .more-button:hover {
   background-color: rgba(0, 0, 255, 0.1);
 }
@@ -178,11 +149,84 @@ button[mat-raised-button]:hover {
 .section3 {
   background-color: #fbfbfb;
 }
-/* .custom-card .mat-card-content {
-  flex-grow: 1;
-} */
-/* .section3-tile {
-  border: none;
-  outline: none;
-  box-shadow: none;
-} */
+
+/* ////news feed */
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.news-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  font-size: 12rem;
+  padding: 5rem;
+}
+.newsfeed {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 40px auto;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  padding: 1rem;
+}
+
+.newsfeed img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.newsfeed h3 {
+  font-size: 24px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.newsfeed p {
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.newsfeed a {
+  font-size: 16px;
+  color: blue;
+  text-decoration: none;
+}
+
+.newsfeed a:hover {
+  color: #00bfff;
+}
+
+@media (min-width: 1280px) {
+  .newsfeed {
+    width: 400px;
+    height: 500px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .newsfeed {
+    width: 500px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 1900px) {
+  .newsfeed {
+    width: 50%;
+    height: auto;
+  }
+}
