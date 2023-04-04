@@ -2,12 +2,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
-  height: 60px;
+  /* padding: 0 16px; */
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 255, 255);
+  height: 75px;
 }
 
+.mini-player.minimized {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 5px 0 0 0;
+}
+
+.mini-player.minimized .player-info,
+.mini-player.minimized .player-controls button:not(:last-child) {
+  display: none;
+  background-color: transparent;
+}
+.mini-player.minimized .player-controls button:last-child {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px 0 0 0;
+}
 .player-info {
   display: flex;
   align-items: center;
@@ -42,3 +62,22 @@
 .mat-progress-bar .mat-progress-bar-fill::after {
   background-color: red;
 }
+
+/* :host ::ng-deep .mat-menu-panel.menu-panel {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+:host ::ng-deep .mat-menu-item.menu-item {
+  color: white;
+  transition: background-color 0.2s;
+}
+
+:host ::ng-deep .mat-menu-item.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+} */
+/* .mat-mdc-menu-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: blue;
+} */

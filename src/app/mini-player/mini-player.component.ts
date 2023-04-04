@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MusicService } from '../shared/music.service';
+import { MatMenu } from '@angular/material/menu';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class MiniPlayerComponent implements OnInit, OnDestroy {
 
     @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
+      @ViewChild('songTemplate', { read: MatMenu }) songTemplate!: MatMenu;
 
 
   private subscriptions = new Subscription();
@@ -17,7 +19,13 @@ export class MiniPlayerComponent implements OnInit, OnDestroy {
   paused: boolean = true;
   
   progress: number = 0;
+  
+  minimized: boolean = false;
 
+
+
+
+  
   songs = [
     // Add your song data here. Replace with real data.
     {
@@ -130,6 +138,10 @@ playAudio(): void {
   }
 }
 
+toggleMinimize(): void {
+        this.minimized = !this.minimized;
+    }
+
 togglePlayPause(): void {
   if (this.currentSong === this.musicService.getCurrentSong()) {
     this.musicService.togglePlayPause();
@@ -206,6 +218,21 @@ private updatePlayPauseState(): void {
 addToCart(): void {
     console.log('Added to cart');
     
+  }
+songsByGenre(genre: string): any[] {
+    return this.songs.filter((song) => song.genre === genre);
+  }
+
+  songMenu(genre: string): MatMenu {
+    return this.songTemplate;
+  }
+
+  playSelectedSongFromMenu(song: any): void {
+    this.currentSong = song;
+    this.playSelectedSong();
+  }
+  setSelectedGenre(genre: string): void {
+    this.selectedGenre = genre;
   }
 
 }

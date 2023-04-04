@@ -162,7 +162,7 @@ app-mini-player {
   left: 0;
   right: 0;
   /* Adjust height and other styles for the mini-player */
-  height: 60px;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* height: 60px; */
+  /* background-color: rgba(0, 0, 0, 0.8); */
   z-index: 1000;
 }

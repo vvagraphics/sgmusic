@@ -104,19 +104,32 @@ section1Cards = [
     title: 'About',
     imageSrc: 'assets/image/about/About.png',
     altText: 'About Image',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.'
+    description: `I am Sean Gordon, a music producer and DJ with a passion for creating and producing music that speaks to the human experience. Born and raised in Spanish Town, Jamaica, I bring a unique blend of Jamaican roots and American influences to my work. With a focus on quality and authenticity, I have made a name for myself in the music industry. As a music producer, I have worked with some of the most talented artists in the industry, helping them to bring their visions to life. As a DJ, I am known for my electrifying live performances and ability to get audiences moving. With Sean Gordon Entertainment Music, I am dedicated to promoting and supporting the best in new and emerging talent. Join me on this journey, and let's celebrate the power of music together.
+`
   },
   {
     title: 'Biography',
-    imageSrc: 'assets/image/about/product.png',
+    imageSrc: 'assets/image/about/bio.png',
     altText: 'Product Image',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.'
+    description: `Sean Gordon was born and raised in Spanish Town, Jamaica, where he was surrounded by the sounds of reggae, ska, and roots music. This early exposure to music sparked a passion in Sean for creating and producing music of his own. Despite facing many challenges and obstacles, Sean never lost sight of his dreams and, determined to make a name for himself in the music industry, he moved to America.
+
+With a focus on quality and authenticity, Sean honed his skills as a music producer, working tirelessly to create and produce music that spoke to the human experience. His unique blend of Jamaican roots and American influences quickly gained recognition, and Sean became known for his ability to bring artists' visions to life.
+
+In addition to his work as a music producer, Sean is also a talented DJ, known for his electrifying live performances and ability to get audiences moving. With Sean Gordon Entertainment Music, Sean is dedicated to promoting and supporting the best in new and emerging talent. Join Sean on this journey, and be a part of the next chapter in the celebration of the power of music.`
   },
   {
     title: 'Contact',
-    imageSrc: 'assets/image/about/shop.png',
+    imageSrc: 'assets/image/about/contact.png',
     altText: 'Contact Information',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.'
+    description: `Do you have any questions or comments for me? I would love to hear from you! Please fill out the form below and I will get back to you as soon as possible.
+
+[Name]
+[Email]
+[Subject]
+[Message]
+
+[Submit]
+`
   },
 ];
 

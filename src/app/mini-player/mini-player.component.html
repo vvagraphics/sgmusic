@@ -1,4 +1,4 @@
-<div class="mini-player">
+<div class="mini-player" [class.minimized]="minimized">
     <div class="player-info">
         <img class="album-art" [src]="currentSong.albumArt" [alt]="currentSong.album + ' Album Art'" />
         <div class="song-details">
@@ -6,8 +6,26 @@
             <h5>{{ currentSong.title }}</h5>
         </div>
     </div>
+    
     <audio #audioPlayer [src]="currentSong.audioSrc"></audio>
     <div class="player-controls">
+        
+        <!-- /////GENRE MENU -->
+    <button mat-button [matMenuTriggerFor]="genreMenu">Genres<mat-icon>keyboard_arrow_up</mat-icon></button>
+    <mat-menu #genreMenu="matMenu" class="menu-panel custom-menu">
+        <button mat-menu-item *ngFor="let genre of genres" [matMenuTriggerFor]="songMenu"
+            (menuOpened)="setSelectedGenre(genre)" class="menu-item">
+            {{ genre }}
+        </button>
+    </mat-menu>
+    
+    <mat-menu #songMenu="matMenu" class="menu-panel custom-menu">
+        <button mat-menu-item *ngFor="let song of songsByGenre(selectedGenre)" (click)="playSelectedSongFromMenu(song)" class="menu-item">
+            {{ song.title }} - {{ song.artist }}
+        </button>
+    </mat-menu>
+
+
 
         <button mat-icon-button [disabled]="!hasPreviousSong()" (click)="playPreviousSong()">
             <mat-icon>skip_previous</mat-icon>
@@ -24,6 +42,11 @@
 
         <button mat-icon-button [disabled]="!hasNextSong()" (click)="playNextSong()">
             <mat-icon>skip_next</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="toggleMinimize()">
+            <mat-icon *ngIf="!minimized">minimize</mat-icon>
+            <mat-icon *ngIf="minimized">fullscreen_exit</mat-icon>
         </button>
 
     </div>
