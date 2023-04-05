@@ -18,27 +18,31 @@
 
         <div class="player-controls">
 
-            <button mat-icon-button [disabled]="!hasPreviousSong()" (click)="playPreviousSong()">
+            <button mat-icon-button class="red-button" [disabled]="!hasPreviousSong()" (click)="playPreviousSong()">
                 <mat-icon>skip_previous</mat-icon>
             </button>
 
-            <button mat-icon-button (click)="shuffleSongs()">
+            <button mat-icon-button class="red-button" (click)="shuffleSongs()">
                 <mat-icon>shuffle</mat-icon>
             </button>
 
-        <button mat-icon-button (click)="togglePlayPause()">
+        <button mat-icon-button class="red-button" (click)="togglePlayPause()">
             <mat-icon *ngIf="paused">play_arrow</mat-icon>
             <mat-icon *ngIf="!paused">pause</mat-icon>
         </button>
 
-            <button mat-icon-button [disabled]="!hasNextSong()" (click)="playNextSong()">
+            <button mat-icon-button class="red-button" [disabled]="!hasNextSong()" (click)="playNextSong()" >
                 <mat-icon>skip_next</mat-icon>
             </button>
+
             
         </div>
     </div>
+
+<!-- //music genre and song selection -->
     <div class="music-selection">
         
+        <!-- GENRE SELECTION -->
         <mat-form-field>
             <mat-label>Select Genre</mat-label>
             <mat-select [(value)]="selectedGenre" (selectionChange)="updateSongList()">
@@ -46,6 +50,7 @@
             </mat-select>
         </mat-form-field>
 
+        <!-- SONG SELECTION -->
         <mat-form-field>
             <mat-label>Select Song</mat-label>
             <mat-select [(value)]="currentSong" (selectionChange)="playSelectedSong()">
@@ -54,6 +59,6 @@
         </mat-form-field>
     </div>
     <div class="addToCart-container" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button class="addToCart" color="primary" (click)="addToCart()">Add to Cart</button>
+        <button mat-raised-button class="addToCart"  (click)="addToCart()">Add to Cart</button>
     </div>
 </div>

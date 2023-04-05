@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  selector: 'app-music',
+  templateUrl: './music.component.html',
+  styleUrls: ['./music.component.css'],
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class MusicComponent implements OnInit, OnDestroy {
 
    @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
       @ViewChild('songTemplate', { read: MatMenu }) songTemplate!: MatMenu;

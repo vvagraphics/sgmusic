@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { ProductsComponent } from './products/products.component';
-import { ShopComponent } from './shop/shop.component';
+import { MusicComponent } from './music/music.component';
+import { StoreComponent } from './store/store.component';
 import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
@@ -46,8 +46,8 @@ import { MatMenuModule } from '@angular/material/menu';
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ProductsComponent,
-    ShopComponent,
+    MusicComponent,
+    StoreComponent,
     NewsComponent,
     LoginComponent,
     CartComponent,

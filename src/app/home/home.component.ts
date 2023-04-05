@@ -146,7 +146,7 @@ section1Cards = [
   {
     title: 'Product',
     destination: 'products',
-    imageSrc: 'assets/image/product.png',
+    imageSrc: 'assets/image/music.png',
     altText: 'Product Image',
     description: 'Description for Product card in section 1'
   },

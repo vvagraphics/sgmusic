@@ -11,11 +11,11 @@ interface Card {
   showMore?: boolean;
 }
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  selector: 'app-store',
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
-export class ShopComponent implements OnInit   {
+export class StoreComponent implements OnInit   {
   menuOpen = false;
   title = 'SGMUSIC';
   toggleMenu() {
@@ -115,15 +115,15 @@ section1Cards = [
     description: 'Description for About card in section 1'
   },
   {
-    title: 'Product',
-    imageSrc: 'assets/image/product.png',
-    altText: 'Product Image',
+    title: 'Music',
+    imageSrc: 'assets/image/music.png',
+    altText: 'Music Image',
     description: 'Description for Product card in section 1'
   },
   {
-    title: 'Shop',
-    imageSrc: 'assets/image/shop.png',
-    altText: 'Shop Image',
+    title: 'Store',
+    imageSrc: 'assets/image/store.png',
+    altText: 'Store Image',
     description: 'Description for Shop card in section 1'
   },
   {

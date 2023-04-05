@@ -55,7 +55,7 @@ body {
   top: 1rem;
   left: 0;
   width: auto;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 998;
   padding-top: 64px; /* Adjust this value based on the height of your toolbar */
 }
@@ -69,7 +69,7 @@ body {
 }
 
 button[mat-raised-button] {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   color: #fbfbfb;
   border-radius: 5px;
   font-size: 16px;
@@ -81,7 +81,7 @@ button[mat-raised-button] {
 }
 
 button[mat-raised-button]:hover {
-  background-color: #ff0000;
+  background-color: rgba(255, 17, 0, 0.6);
 }
 .logo-img {
   padding-top: 2rem;
