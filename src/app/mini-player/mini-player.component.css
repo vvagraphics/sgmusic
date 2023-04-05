@@ -77,7 +77,3 @@
 :host ::ng-deep .mat-menu-item.menu-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
 } */
-/* .mat-mdc-menu-item {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: blue;
-} */

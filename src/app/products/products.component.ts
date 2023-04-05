@@ -26,10 +26,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   songs: any[] = [];
   filteredSongs: any[] = [];
+  genres: string[] = [];
 
   currentSong = this.musicService.getCurrentSong();
 
-  genres = Array.from(new Set(this.songs.map((song) => song.genre)));
+  // genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
 
 constructor(private musicService: MusicService) {}
@@ -44,6 +45,7 @@ ngOnInit(): void {
 
   this.songs = this.musicService.getSongs();
   this.filteredSongs = this.songs;
+  this.genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
   this.subscriptions.add(
     this.musicService.currentSong$.subscribe((currentSong) => {
@@ -108,8 +110,14 @@ ngOnDestroy(): void {
     this.progress = (audio.currentTime / audio.duration) * 100;
   }
 
-  updateSongList(): void {
-      }
+updateSongList(): void {
+  if (this.selectedGenre) {
+    this.filteredSongs = this.songs.filter(song => song.genre === this.selectedGenre);
+  } else {
+    this.filteredSongs = this.songs;
+  }
+}
+
 
 ngAfterViewInit(): void {
   // this.playSelectedSong();
@@ -152,10 +160,10 @@ togglePlayPause(): void {
 
 playSelectedSong(): void {
     this.musicService.setAudioSource(this.currentSong.audioSrc);
-    this.musicService.play();
-    
-    
+  this.musicService.play();
+  this.musicService.setCurrentSong(this.currentSong);    
   }
+  
 hasPreviousSong(): boolean {
   const currentIndex = this.filteredSongs.indexOf(this.currentSong);
   return currentIndex > 0;

@@ -25,10 +25,11 @@ export class MiniPlayerComponent implements OnInit, OnDestroy {
 
   songs: any[] = [];
   filteredSongs: any[] = [];
+  genres: string[] = [];
 
   currentSong = this.musicService.getCurrentSong();
 
-  genres = Array.from(new Set(this.songs.map((song) => song.genre)));
+  // genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
 
 constructor(private musicService: MusicService) {}
@@ -43,6 +44,7 @@ ngOnInit(): void {
 
   this.songs = this.musicService.getSongs();
   this.filteredSongs = this.songs;
+  this.genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
   this.subscriptions.add(
     this.musicService.currentSong$.subscribe((currentSong) => {
@@ -62,7 +64,6 @@ ngOnInit(): void {
   this.currentSongIndexSubscription = this.musicService.currentSongIndex$.subscribe((index) => {
   this.currentSong = this.filteredSongs[index];
 });
-
 
 
   const currentSongSub = this.subscriptions.add(
@@ -92,9 +93,6 @@ ngOnInit(): void {
   this.subscriptions.add(currentSongSub);
 }
 
-
-
-
 //ngOnDestroy
 ngOnDestroy(): void {
   this.subscriptions.unsubscribe();
@@ -108,7 +106,13 @@ ngOnDestroy(): void {
   }
 
   updateSongList(): void {
-      }
+  if (this.selectedGenre) {
+    this.filteredSongs = this.songs.filter(song => song.genre === this.selectedGenre);
+  } else {
+    this.filteredSongs = this.songs;
+  }
+}
+
 
 ngAfterViewInit(): void {
   // this.playSelectedSong();
@@ -181,9 +185,6 @@ songsByGenre(genre: string): any[] {
     return this.musicService.songs.filter((song) => song.genre === genre);
   }
 
-  songMenu(genre: string): MatMenu {
-    return this.songTemplate;
-  }
 
   playSelectedSongFromMenu(song: any): void {
      this.currentSong = song;
@@ -191,6 +192,7 @@ songsByGenre(genre: string): any[] {
         this.musicService.setAudioSource(song.audioSrc);
         this.musicService.play();
   }
+
   setSelectedGenre(genre: string): void {
     this.selectedGenre = genre;
   }
