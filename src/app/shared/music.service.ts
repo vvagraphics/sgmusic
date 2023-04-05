@@ -7,19 +7,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MusicService {
-   private _paused: boolean = true;
 
-  private currentSongIndex = new BehaviorSubject<number>(0);
-  currentSongIndex$ = this.currentSongIndex.asObservable();
-
-  private isPaused = new BehaviorSubject<boolean>(false);
-  isPaused$ = this.isPaused.asObservable();
-  
+  private _paused: boolean = true;
+  private currentSongIndexSubject = new BehaviorSubject<number>(0);
+  public currentSongIndex$ = this.currentSongIndexSubject.asObservable();
+  private currentSongIndex = 0;
+  private isPaused = new BehaviorSubject<boolean>(true);
+          isPaused$ = this.isPaused.asObservable();
   private audioSource$ = new BehaviorSubject<string>('');
+  private currentAlbumCoverSubject = new BehaviorSubject<string>('');
+currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
 
+  private _audio = new Audio();
+  
 
-  songs = [
-    // Add your song data here. Replace with real data.
+  
+  public songs = [
+    
     {
       title: 'Sunset Groove',
       artist: 'Jazzy Lion',
@@ -63,9 +67,20 @@ export class MusicService {
     
   ];
 
-  private _audio = new Audio();
+      private currentSongSubject = new BehaviorSubject<any>(this.songs[0]);
+currentSong$ = this.currentSongSubject.asObservable();
+
+setCurrentSong(song: any): void {
+  this.currentSongSubject.next(song);
+}
+
+    
+   getSongs(): any[] {
+    return this.songs;
+  }
 
   constructor() {}
+
   
  setAudioSource(src: string): void {
   this.audioSource$.next(src);
@@ -79,28 +94,19 @@ getAudioSourceObservable(): BehaviorSubject<string> {
     return this.audioSource$;
   }
 
-setCurrentSongIndex(index: number): void {
-    this.currentSongIndex.next(index);
+getCurrentSong(): any {
+    return this.songs[this.currentSongIndex];
   }
-// getCurrentSong(): Song {
-//   return this.songs[this.currentSongIndex.value];
-// }
 
-getCurrentSong(): Song {
-  return this.songs[this.currentSongIndex.getValue()];
+
+ setCurrentSongIndex(index: number): void {
+  this.currentSongIndexSubject.next(index);
+  this.currentAlbumCoverSubject.next(this.songs[index].albumArt);
 }
-
+  
   setPaused(value: boolean): void {
     this.isPaused.next(value);
   }
-
- togglePlayPause(): void {
-  if (this.isPaused.value) {
-    this.play();
-  } else {
-    this.pause();
-  }
-}
 
   play(): void {
   this._audio.play();
@@ -117,26 +123,46 @@ isPausedValue(): boolean {
 removeTimeUpdateListener(listener: () => void): void {
   this._audio.removeEventListener('timeupdate', listener);
 }
-
-
-playNextSong(): void {
-  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
-  const nextIndex = (currentIndex + 1) % this.songs.length;
-  this.currentSongIndex.next(nextIndex);
-}
-
-playPreviousSong(): void {
-  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
-  const previousIndex = (currentIndex - 1 + this.songs.length) % this.songs.length;
-  this.currentSongIndex.next(previousIndex);
-}
-
-shuffleSongs(): void {
-  let randomIndex = Math.floor(Math.random() * this.songs.length);
-  const currentIndex = this.songs.findIndex(song => song === this.getCurrentSong());
-  while (randomIndex === currentIndex) {
-    randomIndex = Math.floor(Math.random() * this.songs.length);
+ 
+togglePlayPause(): void {
+    this.isPaused.next(!this.isPaused.getValue());
   }
-  this.setCurrentSongIndex(randomIndex);
-}
+
+ playNextSong(): void {
+    if (this.hasNextSong()) {
+      this.currentSongIndex++;
+    } else {
+      this.currentSongIndex = 0;
+    }
+    this.setAudioSource(this.getCurrentSong().audioSrc);
+    this.play();
+  }
+
+  playPreviousSong(): void {
+    if (this.hasPreviousSong()) {
+      this.currentSongIndex--;
+    } else {
+      this.currentSongIndex = this.songs.length - 1;
+    }
+    this.setAudioSource(this.getCurrentSong().audioSrc);
+    this.play();
+  }
+
+  shuffleSongs(): void {
+    let randomIndex = Math.floor(Math.random() * this.songs.length);
+    while (randomIndex === this.currentSongIndex) {
+      randomIndex = Math.floor(Math.random() * this.songs.length);
+    }
+    this.currentSongIndex = randomIndex;
+    this.setAudioSource(this.getCurrentSong().audioSrc);
+    this.play();
+  }
+
+  hasPreviousSong(): boolean {
+    return this.currentSongIndex > 0;
+  }
+
+  hasNextSong(): boolean {
+    return this.currentSongIndex < this.songs.length - 1;
+  }
 }

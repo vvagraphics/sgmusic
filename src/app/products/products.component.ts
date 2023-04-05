@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MusicService } from '../shared/music.service';
+import { MatMenu } from '@angular/material/menu';
 import { Subscription } from 'rxjs';
 
 
@@ -10,95 +11,86 @@ import { Subscription } from 'rxjs';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
-    @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
+   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
+      @ViewChild('songTemplate', { read: MatMenu }) songTemplate!: MatMenu;
 
 
   private subscriptions = new Subscription();
   
   paused: boolean = true;
-  
   progress: number = 0;
+  minimized: boolean = false;
+  selectedGenre = '';
+  currentAlbumArt = '';
 
-  songs = [
-    // Add your song data here. Replace with real data.
-    {
-      title: 'Sunset Groove',
-      artist: 'Jazzy Lion',
-      album: ' Island Breeze',
-      albumArt: 'assets/image/products/dancehall.png',
-      audioSrc: 'assets/music/dancehall/Crown on the Dance floor.mp3',
-      genre: 'Dancehall',
-    },
-        {
-      title: 'Intergalactic Ride',
-      artist: "Lil' Zephyr",
-      album: ' Beyond the City Lights',
-      albumArt: 'assets/image/products/hiphop.jpg',
-      audioSrc: 'assets/music/hiphop/Intergalactic Ride.mp3',
-      genre: 'HipHop',
-    },
-        {
-      title: 'Throne of Words',
-      artist: 'DJ Spinzone',
-      album: 'Party Frenzy',
-      albumArt: 'assets/image/products/mixtape.jpg',
-      audioSrc: 'assets/music/mixtape/Throne of Words.mp3',
-      genre: 'Mixtape',
-    },
-        {
-      title: 'Tears of Salvation - Instrumental',
-      artist: 'Crimson Thunder',
-      album: 'Electric Rebellion',
-      albumArt: 'assets/image/products/rock.png',
-      audioSrc: 'assets/music/rock/Tears of Salvation - Instrumental.mp3',
-      genre: 'Rock',
-    },
-        {
-      title: 'Rock On Fire',
-      artist: 'Phoenix Revival',
-      album: ' Rising from the Ashes',
-      albumArt: 'assets/image/products/rock3.jpg',
-      audioSrc: 'assets/music/rock/Rock On Fire.mp3',
-      genre: 'Rock',
-    },
-    
-  ];
+
+  songs: any[] = [];
+  filteredSongs: any[] = [];
+
+  currentSong = this.musicService.getCurrentSong();
 
   genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
-  filteredSongs = this.songs;
-  currentSong = this.songs[0];
-  selectedGenre = '';
 
-  constructor(private musicService: MusicService) {}
+constructor(private musicService: MusicService) {}
 
 
 
+private currentSongIndexSubscription!: Subscription;
 
-  //ngOnInit
-// In products.component.ts
+
+
 ngOnInit(): void {
+
+  this.songs = this.musicService.getSongs();
+  this.filteredSongs = this.songs;
+
+  this.subscriptions.add(
+    this.musicService.currentSong$.subscribe((currentSong) => {
+      this.currentSong = currentSong;
+      this.currentAlbumArt = currentSong.albumArt;
+    })
+  );
+
+
   const pauseSub = this.subscriptions.add(
-      this.musicService.isPaused$.subscribe((paused) => {
-        this.paused = !paused;
-        this.updatePlayPauseState();
-      })
-    );
-  
-  const songSub = this.musicService.getAudioSourceObservable().subscribe(src => {
+    this.musicService.isPaused$.subscribe((paused) => {
+      this.paused = !paused;
+      this.updatePlayPauseState();
+    })
+  );
+
+  this.currentSongIndexSubscription = this.musicService.currentSongIndex$.subscribe((index) => {
+  this.currentSong = this.filteredSongs[index];
+});
+
+
+
+  const currentSongSub = this.subscriptions.add(
+    this.musicService.currentSong$.subscribe((currentSong) => {
+      this.currentSong = currentSong;
+    })
+  );
+
+  const songSub = this.subscriptions.add(
+    this.musicService.getAudioSourceObservable().subscribe((src) => {
       this.audioPlayer.nativeElement.src = src;
-    });
-    
-  const audioSrcSub = this.musicService.getAudioSourceObservable().subscribe((src) => {
-    if (this.audioPlayer) {
-      this.audioPlayer.nativeElement.src = src;
-      this.audioPlayer.nativeElement.load();
-    }
-  });
+    })
+  );
+
+  const audioSrcSub = this.subscriptions.add(
+    this.musicService.getAudioSourceObservable().subscribe((src) => {
+      if (this.audioPlayer) {
+        this.audioPlayer.nativeElement.src = src;
+        this.audioPlayer.nativeElement.load();
+      }
+    })
+  );
 
   this.subscriptions.add(pauseSub);
   this.subscriptions.add(songSub);
   this.subscriptions.add(audioSrcSub);
+  this.subscriptions.add(currentSongSub);
 }
 
 
@@ -108,6 +100,7 @@ ngOnInit(): void {
 ngOnDestroy(): void {
   this.subscriptions.unsubscribe();
   this.musicService.removeTimeUpdateListener(this.updateProgressBar.bind(this));
+  this.currentSongIndexSubscription.unsubscribe();
 }
 
  updateProgressBar(): void {
@@ -116,8 +109,8 @@ ngOnDestroy(): void {
   }
 
   updateSongList(): void {
-    this.filteredSongs = this.songs.filter((song) => song.genre === this.selectedGenre);
-  }
+      }
+
 ngAfterViewInit(): void {
   // this.playSelectedSong();
   }
@@ -131,57 +124,31 @@ playAudio(): void {
   }
 }
 
+toggleMinimize(): void {
+        this.minimized = !this.minimized;
+    }
+
 togglePlayPause(): void {
-  if (this.currentSong === this.musicService.getCurrentSong()) {
-    this.musicService.togglePlayPause();
-  } else {
-    const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    this.musicService.setCurrentSongIndex(currentIndex);
-    this.musicService.setAudioSource(this.currentSong.audioSrc);
-    this.musicService.togglePlayPause();
-  }
-}
+        this.musicService.togglePlayPause();
+    }
 
-  playNextSong(): void {
-    this.musicService.playNextSong();
-    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    // if (currentIndex < this.filteredSongs.length - 1) {
-    //   this.currentSong = this.filteredSongs[currentIndex + 1];
-    // } else {
-    //   this.currentSong = this.filteredSongs[0];
-    // }
-    // this.musicService.setCurrentSongIndex(currentIndex + 1);
-    // this.playSelectedSong();
-    // this.musicService.play();
-    // this.musicService.setPaused(false);
-  }
+    playNextSong(): void {
+        this.musicService.playNextSong();
+        this.currentSong = this.musicService.getCurrentSong();
+        this.musicService.setCurrentSong(this.currentSong);
+    }
 
-  playPreviousSong(): void {
-    this.musicService.playPreviousSong();
-    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    // if (currentIndex > 0) {
-    //   this.currentSong = this.filteredSongs[currentIndex - 1];
-    // } else {
-    //   this.currentSong = this.filteredSongs[this.filteredSongs.length - 1];
-    // }
-    // this.musicService.setCurrentSongIndex(currentIndex - 1);
-    // this.playSelectedSong();
-    // this.musicService.play();
-    // this.musicService.setPaused(false);
-  }
+    playPreviousSong(): void {
+        this.musicService.playPreviousSong();
+        this.currentSong = this.musicService.getCurrentSong();
+        this.musicService.setCurrentSong(this.currentSong);
+    }
 
-  shuffleSongs(): void {
-    this.musicService.shuffleSongs();
-    // const currentIndex = this.filteredSongs.indexOf(this.currentSong);
-    // let randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
-    // while (randomIndex === currentIndex) {
-    //   randomIndex = Math.floor(Math.random() * this.filteredSongs.length);
-    // }
-    // this.currentSong = this.filteredSongs[randomIndex];
-    // this.musicService.setCurrentSongIndex(randomIndex);
-    // this.playSelectedSong();
-    // this.musicService.play();
-  }
+    shuffleSongs(): void {
+        this.musicService.shuffleSongs();
+        this.currentSong = this.musicService.getCurrentSong();
+        this.musicService.setCurrentSong(this.currentSong);
+    }
 
 playSelectedSong(): void {
     this.musicService.setAudioSource(this.currentSong.audioSrc);
@@ -211,6 +178,22 @@ addToCart(): void {
     console.log('Added to cart');
     
   }
+songsByGenre(genre: string): any[] {
+    return this.musicService.songs.filter((song) => song.genre === genre);
+  }
 
+  songMenu(genre: string): MatMenu {
+    return this.songTemplate;
+  }
+
+  playSelectedSongFromMenu(song: any): void {
+     this.currentSong = song;
+        this.musicService.setCurrentSongIndex(this.musicService.songs.indexOf(song));
+        this.musicService.setAudioSource(song.audioSrc);
+        this.musicService.play();
+  }
+  setSelectedGenre(genre: string): void {
+    this.selectedGenre = genre;
+  }
 
 }
