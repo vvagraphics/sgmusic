@@ -186,12 +186,12 @@ button[mat-raised-button]:hover {
   outline: none;
   box-shadow: none;
 } */
-.shopShop,
-.shopPromote,
-.shopSub {
+.shopSecTitle {
   text-align: center;
   align-content: center;
   width: 100%;
+  padding: clamp(2rem, 1vw, 70vw);
+  font-size: clamp(2rem, 10vw, 70vw);
 }
 /* .overlay {
   position: absolute;
@@ -235,3 +235,7 @@ button[mat-raised-button]:hover {
   width: 100%;
   min-height: 100vh;
 } */
+
+.section1 {
+  padding-top: 50px;
+}

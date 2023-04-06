@@ -71,10 +71,11 @@
 .red-button {
   background: linear-gradient(
     to bottom,
-    rgba(255, 17, 0, 0.2),
+    rgba(255, 17, 0, 0.3),
     rgba(255, 17, 0, 1)
   );
-  border: 1px solid #bb0000;
+  /* //Check on why border is moving buttons down */
+  /* border: solid #bb0000; */
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
   color: white;
   border-radius: 50%;

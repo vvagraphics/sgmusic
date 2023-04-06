@@ -144,17 +144,17 @@ section1Cards = [
     description: 'Description for About card in section 1'
   },
   {
-    title: 'Product',
-    destination: 'products',
+    title: 'Music',
+    destination: 'music',
     imageSrc: 'assets/image/music.png',
-    altText: 'Product Image',
+    altText: 'Music Image',
     description: 'Description for Product card in section 1'
   },
   {
-    title: 'Shop',
-    destination: 'shop',
-    imageSrc: 'assets/image/shop.png',
-    altText: 'Shop Image',
+    title: 'Store',
+    destination: 'store',
+    imageSrc: 'assets/image/store.png',
+    altText: 'Store Image',
     description: 'Description for Shop card in section 1'
   },
   {

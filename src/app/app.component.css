@@ -16,17 +16,23 @@ body {
 }
 
 .logo {
-  margin-left: 8px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  width: clamp(2rem, 15vw, 70vw);
+}
+.logo-img {
+  position: relative;
+  /* height: ; */
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  width: clamp(2rem, 15vw, 70vw);
 }
 
 .hamburger {
   position: fixed;
   top: 1rem;
   left: 0;
-  /* outline: #242424; */
   color: #ff0000;
 }
 
@@ -83,12 +89,6 @@ button[mat-raised-button] {
 button[mat-raised-button]:hover {
   background-color: rgba(255, 17, 0, 0.6);
 }
-.logo-img {
-  padding-top: 2rem;
-  padding-left: 2rem;
-  max-width: 100%;
-  height: auto;
-}
 
 @media (min-width: 960px) {
   button[mat-icon-button] {
@@ -121,16 +121,6 @@ button[mat-raised-button]:hover {
   justify-content: space-between;
 }
 
-/* .more-button {
-  color: blue;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-} */
-
 .more-button:hover {
   background-color: rgba(0, 0, 255, 0.1);
 }
@@ -143,14 +133,6 @@ button[mat-raised-button]:hover {
 .section3 {
   background-color: #fbfbfb;
 }
-/* .custom-card .mat-card-content {
-  flex-grow: 1;
-} */
-/* .section3-tile {
-  border: none;
-  outline: none;
-  box-shadow: none;
-} */
 .page-container {
   position: relative;
   min-height: 100vh;
@@ -163,6 +145,3 @@ app-mini-player {
   right: 0;
   z-index: 1000;
 }
-/* Adjust height and other styles for the mini-player */
-/* height: 60px; */
-/* background-color: rgba(0, 0, 0, 0.8); */

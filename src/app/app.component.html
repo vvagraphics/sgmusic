@@ -1,11 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <div>
   <mat-toolbar class="custom-toolbar">
@@ -15,7 +7,9 @@
         <mat-icon>menu</mat-icon>
       </ng-template>
     </button>
-    <a class="logo" href="/"><img src="assets/image/vvamusic.png" alt="Logo" class="logo-img" /></a>
+    <div class="logo">
+    <a  href="/"><img src="assets/image/sgentmusic.png" alt="Logo" class="logo-img" /></a></div>
+
     <span class="menu-container" fxFlex fxLayoutAlign="end center" fxHide.lt-md>
       <ng-container *ngTemplateOutlet="menuItems"></ng-container>
     </span>
@@ -38,18 +32,6 @@
   <button mat-raised-button color="primary" routerLink="/profile" >Profile</button>
 </ng-template>
 
-
-
-
-
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <div class="page-container">
   <router-outlet></router-outlet>
   <app-mini-player></app-mini-player>

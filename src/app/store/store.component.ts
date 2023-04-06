@@ -109,86 +109,107 @@ getImageName(imageSrc: string): string {
 //images for each section
 section1Cards = [
   {
-    title: 'About',
-    imageSrc: 'assets/image/about.png',
-    altText: 'About Image',
-    description: 'Description for About card in section 1'
+    title: 'Limited Items',
+    imageSrc: 'assets/image/store/Limited Items.png',
+    altText: 'Limited Items',
+    description: `This section features exclusive merchandise, limited edition vinyl records, and time-sensitive offers that are only available for a limited time. Act quickly to take advantage of these opportunities and don't miss out!`
   },
   {
-    title: 'Music',
-    imageSrc: 'assets/image/music.png',
-    altText: 'Music Image',
-    description: 'Description for Product card in section 1'
+    title: 'Merchandise',
+    imageSrc: 'assets/image/store/Merchandise.jpg',
+    altText: 'Merchandise',
+    description: 'Merchandise specific to a particular tour, such as t-shirts, posters, and other items featuring tour dates and the tour logo.home decor items with music-themed designs, such as wall art and throw pillows.'
   },
   {
-    title: 'Store',
-    imageSrc: 'assets/image/store.png',
-    altText: 'Store Image',
-    description: 'Description for Shop card in section 1'
+    title: 'Instruments and Equipment',
+    imageSrc: 'assets/image/store/Instruments and Equipment.png',
+    altText: 'Instruments and Equipment',
+    description: 'Musical instruments and equipment, such as guitars, drum sets, and DJ equipment.'
   },
   {
-    title: 'News',
-    imageSrc: 'assets/image/news.png',
-    altText: 'News Image',
-    description: 'Description for News card in section 1'
+    title: 'Books and Tutorials',
+    imageSrc: 'assets/image/store/Books and Tutorials.jpg',
+    altText: 'Books and Tutorials',
+    description: 'Books and tutorials on how to play various musical instruments, as well as music theory and composition.'
   },
 ];
 
 
 section2Cards = [
   {
-    title: 'Merch',
+    title: 'Up-and-coming Artists',
     destination: 'merch',
-    imageSrc: 'assets/image/merch.png',
-    altText: 'Section 2 Image 1',
-    description: 'Description for Image 1 card in section 2'
+    imageSrc: 'assets/image/store/Up-and-coming Artists.png',
+    altText: 'Up-and-coming Artists',
+    description: 'This section features upcoming and independent artists who are making a name for themselves in the music industry. Learn about their background, music style, and latest releases, and be the first to discover the next big thing in music.'
   },
   {
-    title: 'Promote',
+    title: 'Blog and Podcast',
     destination: 'promote',
-    imageSrc: 'assets/image/promote.png',
-    altText: 'Section 2 Image 2',
-    description: 'Description for Image 2 card in section 2'
+    imageSrc: 'assets/image/store/Blog and Podcast.png',
+    altText: 'Blog and Podcast',
+    description: 'This section includes a blog and podcast that cover the latest developments in the music industry, including album releases, concerts, and artist interviews. Stay informed and entertained with in-depth discussions and expert analysis of the world of music.'
   },
   {
-    title: 'Subscriptions',
+    title: 'Music Event/Concert Promotion',
     destination: 'Subscriptions',
-    imageSrc: 'assets/image/Subscriptions.png',
-    altText: 'Section 2 Image 3',
-    description: 'Description for Image 3 card in section 2'
+    imageSrc: 'assets/image/store/Music EventConcert Promotion.png',
+    altText: 'Music Event/Concert Promotion',
+    description: `This section provides information about upcoming music events and concerts, including lineup announcements, schedules, and ticket information. Get ready to experience the thrill of live music and connect with other fans.`
+  },
+    {
+    title: 'Promote Your Lessons',
+    destination: 'merch',
+    imageSrc: 'assets/image/store/Promote Your Lessons.png',
+    altText: 'Promote Your Lessons',
+    description: `This section is for music teachers and educators to promote their lessons and resources. Share your expertise with the world and help others learn about music.`
+  },
+  {
+    title: 'Promote Your Products',
+    destination: 'promote',
+    imageSrc: 'assets/image/store/Promote Your Products.png',
+    altText: 'Promote Your Products',
+    description: 'This section is for musicians and artists to promote their music-inspired products, such as albums, merchandise, and collectibles. Share your creativity with the world and connect with fans who appreciate your work.'
+  },
+  {
+    title: 'Other',
+    destination: 'Other',
+    imageSrc: 'assets/image/store/Other.png',
+    altText: 'Other',
+    description: 'This section includes other resources related to music, such as music theory and composition, music history, and community forums. Explore the world of music and connect with other fans and musicians.'
   },
 ];
 
 
   section3Cards: Card[] = [
     {
-      title: 'Blog Post 1',
+      title: 'Loot Boxes',
       date: new Date('2023-01-01'),
-      imageSrc: 'assets/image/fujii.kaze.png',
+      imageSrc: 'assets/image/store/Loot Boxes.png',
       altText: 'Section 3 Image 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna.',
       showMore: false,
     },
       {
-      title: 'Blog Post 2',
+      title: 'Music Magazine',
       date: new Date('2023-01-02'),
-      imageSrc: 'assets/image/edc.png',
+      imageSrc: 'assets/image/store/Music Magazine.png',
       altText: 'Section 3 Image 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna.',
       showMore: false,
     },
       {
-      title: 'Blog Post 3',
+      title: 'Music Lesson',
       date: new Date('2023-01-03'),
-      imageSrc: 'assets/image/keznami.png',
+      imageSrc: 'assets/image/store/Music Lesson.png',
       altText: 'Section 3 Image 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna.',
       showMore: false,
     },
       {
-      title: 'Blog Post 4',
+      title: 'Music Event Subscriber Savings',
       date: new Date('2023-02-01'),
-      imageSrc: 'assets/image/concert.png',
+      imageSrc: 'assets/image/store/Music Event Subscriber Savings.png',
       altText: 'Section 3 Image 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna.',
       showMore: false,
