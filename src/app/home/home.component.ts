@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NewsService } from '../news.service';
-
 
 
 interface Card {
@@ -28,7 +26,14 @@ export class HomeComponent implements OnInit   {
     this.menuOpen = !this.menuOpen;
   }
 
-  
+//LIMITED DEAL COUNTDOWN TIMER
+countdown: number = 2 * 60 * 1000;
+countdownDisplay: string = '';
+resetTimer: number = 0;
+
+  timer: any;
+
+
    news: any[] = [];
 
   isXsScreen: boolean = false;
@@ -37,17 +42,36 @@ export class HomeComponent implements OnInit   {
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute, private newsService: NewsService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute, private newsService: NewsService, private ref: ChangeDetectorRef) { }
 
 
 
 ngOnInit() {
+  const storedEndTime = parseInt(localStorage.getItem('limitedDealEndTime') ?? '0', 10);
+    const now = new Date().getTime();
 
-  this.newsService.getNews().subscribe((data: any) => {
+    if (storedEndTime && (now < storedEndTime)) {
+      this.countdown = storedEndTime - now;
+      this.limitedDealIndex = parseInt(localStorage.getItem('limitedDealIndex') ?? '0', 10);
+      this.section2Cards[0].imageSrc = this.limitedDeals[this.limitedDealIndex].imageSrc;
+    } else {
+      this.limitedDealIndex = 0;
+      this.countdown = 5 * 60 * 1000;
+      this.storeEndTime();
+    }
+
+    this.section2Cards[0].description = this.formatCountdown(this.countdown);
+    this.timer = setInterval(() => {
+      this.updateCountdown();
+      this.ref.markForCheck();
+    }, 1000);
+
+    this.newsService.getNews().subscribe((data: any) => {
       this.news = data.articles;
     }, (error) => {
       console.error(error);
     });
+    
 
   this.breakpointObserver.observe([
     Breakpoints.XSmall,
@@ -58,7 +82,7 @@ ngOnInit() {
   ]).subscribe(result => {
     this.isXsScreen = result.breakpoints[Breakpoints.XSmall];
     this.isSmScreen = result.breakpoints[Breakpoints.Small];
-    this.isMdScreen = result.breakpoints[Breakpoints.Medium]; // Add this line to set isMdScreen
+    this.isMdScreen = result.breakpoints[Breakpoints.Medium];
     this.isDesktopScreen = result.breakpoints[Breakpoints.Large] || result.breakpoints[Breakpoints.XLarge];
     this.section1Cards = this.section1Cards.map((card) => ({
       ...card,
@@ -84,8 +108,9 @@ ngOnInit() {
       this.descriptionLength = 790;
     }
   
-}
 
+    
+}
 
 navigateToComponent(card: Card) {
   switch (card.title) {
@@ -93,10 +118,10 @@ navigateToComponent(card: Card) {
       this.router.navigate(['/about']);
       break;
     case 'Product':
-      this.router.navigate(['/product']);
+      this.router.navigate(['/music']);
       break;
     case 'Shop':
-      this.router.navigate(['/shop']);
+      this.router.navigate(['/store']);
       break;
     case 'News':
       this.router.navigate(['/news']);
@@ -127,12 +152,12 @@ getImageName(imageSrc: string): string {
   const fileName = imageSrc.split('/').pop();
   return (fileName?.split('.')[0] || '').toUpperCase();
 }
-
-
-// toggleShowMore(index: number): void {
-//   this.section3Cards[index].showMore = !this.section3Cards[index].showMore;
-// }
-
+storeEndTime() {
+  const now = new Date().getTime();
+  const endTime = now + this.countdown;
+  localStorage.setItem('limitedDealEndTime', endTime.toString());
+  localStorage.setItem('limitedDealIndex', this.limitedDealIndex.toString());
+}
 
 //images for each section
 section1Cards = [
@@ -166,32 +191,33 @@ section1Cards = [
   },
 ];
 
-
 section2Cards = [
   {
-    title: 'Merch',
+    title: 'Limited Deal',
     destination: 'merch',
-    imageSrc: 'assets/image/merch.png',
+    imageSrc: 'assets/image/Limited Deal.png',
     altText: 'Section 2 Image 1',
-    description: 'Description for Image 1 card in section 2'
+    description: '',
+    isLimitedDeal: true
+
   },
   {
-    title: 'Promote',
-    destination: 'promote',
-    imageSrc: 'assets/image/promote.png',
+    title: 'Trending',
+    destination: 'Trending',
+    imageSrc: 'assets/image/Trending.jpg',
     altText: 'Section 2 Image 2',
-    description: 'Description for Image 2 card in section 2'
+    description: 'This is what is selling the most Today or this Week',
+    isLimitedDeal: false
   },
   {
-    title: 'Subscriptions',
+    title: 'Sub and Save',
     destination: 'subscriptions',
-    imageSrc: 'assets/image/Subscriptions.png',
+    imageSrc: 'assets/image/Save on Lesson Subscription.png',
     altText: 'Section 2 Image 3',
-    description: 'Description for Image 3 card in section 2'
+    description: '50% OFF MUSIC LESSONS MONTHLY SUBSCIBTIONS',
+    isLimitedDeal: false
   },
 ];
-
-
 
   section3Cards: Card[] = [
     {
@@ -228,6 +254,61 @@ section2Cards = [
     },
     
   ];
+
+
+  limitedDeals = [
+  {
+    title: 'Limited Deal',
+    destination: 'merch',
+    imageSrc: 'assets/image/limiteddeals/Limited Deal 1.png',
+    altText: 'Section 2 Image 1',
+    description: 'TIME LEFT 20:19:23s'
+  },
+  {
+    title: 'Limited Deal',
+    destination: 'merch',
+    imageSrc: 'assets/image/limiteddeals/Limited Deal 2.png',
+    altText: 'Section 2 Image 1',
+    description: 'TIME LEFT 20:19:23s'
+  }
+];
+
+
+limitedDealIndex = 0;
+
+
+updateCountdown() {
+ if (this.resetTimer > 0) {
+    this.resetTimer -= 1000;
+    if (this.resetTimer === 0) {
+      this.limitedDealIndex = (this.limitedDealIndex + 1) % this.limitedDeals.length;
+      this.section2Cards[0].imageSrc = this.limitedDeals[this.limitedDealIndex].imageSrc;
+      this.countdown = 4 * 60 * 1000;
+      this.storeEndTime();
+      this.section2Cards[0].description = this.formatCountdown(this.countdown);
+    }
+    return;
+  }
+
+  this.countdown -= 1000;
+
+  if (this.countdown <= 0) {
+    this.resetTimer = 1 * 60 * 1000;
+    this.section2Cards[0].description = 'Limited deal ended';
+  } else if (this.countdown <= 1 * 60 * 1000) {
+    this.section2Cards[0].description = `LIMITED DEAL ENDS SOON!! - ${this.formatCountdown(this.countdown)}`;
+  } else {
+    this.section2Cards[0].description = this.formatCountdown(this.countdown);
+  }
+}
+
+
+formatCountdown(milliseconds: number): string {
+  const minutes = Math.floor(milliseconds / (60 * 1000));
+  const seconds = Math.floor((milliseconds % (60 * 1000)) / 1000);
+
+  return `TIME LEFT ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}s`;
+}
 
 
 }

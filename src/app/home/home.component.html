@@ -17,14 +17,14 @@
         <div class="parallax-container">
         <h1 class="homeSecTitle" id="parallaxTitle">QUICK NAVIGATION</h1>
         </div>
-        <mat-grid-tile *ngFor="let card of section1Cards">
+        <mat-grid-tile class="custom-card2" *ngFor="let card of section1Cards">
             <mat-card class="custom-card" (click)="navigateToComponent(card)">
-                <mat-card-content>
+                
                     <a (click)="navigateTo(card.destination)">
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                     <h2 class="card-title">{{ card.title }}</h2>
                     <p class="card-description">{{ card.description }}</p></a>
-                </mat-card-content>
+                
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
@@ -38,19 +38,23 @@
         [style.margin.px]="16">
 
         <div class="parallax-container">
-        <h1 class="homeSecTitle" id="parallaxTitle">STORE</h1></div>
-        <mat-grid-tile *ngFor="let card of section2Cards">
+        <h1 class="homeSecTitle" id="parallaxTitle">QUICK DEALS</h1></div>
+        <mat-grid-tile class="custom-card2" *ngFor="let card of section2Cards">
             <mat-card class="custom-card" >
-                <mat-card-content>
-                            <a [routerLink]="['/shop']" [fragment]="card.destination">
+                
+                            <a [routerLink]="['/store']" [fragment]="card.destination">
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                     <h2 class="card-title">{{ card.title }}</h2>
-                    <p class="card-description">{{ card.description }}</p></a>
-                </mat-card-content>
+                    <!-- <p class="card-description">{{ card.description }}</p> -->
+                    
+                    <p class="card-description" [ngClass]="{'limited-deal-description': card.isLimitedDeal}">{{ card.description }}</p>
+                </a>
+                
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
 
 <mat-divider></mat-divider>
 
@@ -63,13 +67,13 @@
 
         <div class="parallax-container">
         <h1 class="homeSecTitle" id="parallaxTitle">QUICK NEWS</h1></div>
-        <mat-grid-tile *ngFor="let news of news.slice(0,6)">
+        <mat-grid-tile class="news-container" *ngFor="let news of news.slice(0,6)">
             <div class="newsfeed">
                 <a href="{{ news.url }}"><img [src]="news.urlToImage" alt="News Image">
                 
                     <h3>{{ news.title }}</h3>
                     <p>{{ news.description }}</p>
-                    Read more</a>
+                    <span>Read more</span></a>
             </div>
         </mat-grid-tile>
     </mat-grid-list>

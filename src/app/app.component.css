@@ -25,7 +25,7 @@ body {
 .logo-img {
   position: relative;
   /* height: ; */
-  border: 1px solid rgba(255, 0, 0, 0.2);
+  /* border: 1px solid rgba(255, 0, 0, 0.2); */
   width: clamp(2rem, 15vw, 70vw);
 }
 
@@ -106,7 +106,7 @@ button[mat-raised-button]:hover {
   overflow-wrap: break-word;
 }
 
-.custom-card {
+/* .custom-card {
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
@@ -114,12 +114,12 @@ button[mat-raised-button]:hover {
   border: none;
   outline: none;
   box-shadow: none;
-}
-.card-content {
+} */
+/* .card-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+} */
 
 .more-button:hover {
   background-color: rgba(0, 0, 255, 0.1);
