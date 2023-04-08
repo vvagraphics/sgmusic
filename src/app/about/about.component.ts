@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Card {
   title: string;
@@ -16,9 +16,10 @@ interface Card {
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit   {
+export class AboutComponent implements OnInit {
   menuOpen = false;
   title = 'SGMUSIC';
+  contactForm!: FormGroup;
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
@@ -30,7 +31,45 @@ export class AboutComponent implements OnInit   {
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
 
-    selectCard(index: number): void {
+  constructor(private breakpointObserver: BreakpointObserver, private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.contactForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).subscribe(result => {
+      this.isXsScreen = result.breakpoints[Breakpoints.XSmall];
+      this.isSmScreen = result.breakpoints[Breakpoints.Small];
+      this.isMdScreen = result.breakpoints[Breakpoints.Medium];
+      this.isDesktopScreen = result.breakpoints[Breakpoints.Large] || result.breakpoints[Breakpoints.XLarge];
+      this.section1Cards = this.section1Cards.map((card) => ({
+        ...card,
+        title: this.getImageName(card.imageSrc),
+      }));
+    });
+
+    if (this.isXsScreen) {
+      this.descriptionLength = 300;
+    } else if (this.isSmScreen) {
+      this.descriptionLength = 410;
+    } else if (this.isMdScreen) {
+      this.descriptionLength = 510;
+    } else {
+      this.descriptionLength = 790;
+    }
+  }
+
+  selectCard(index: number): void {
     this.selectedCardIndex = index;
     this.updateButtonText(index);
   }
@@ -41,57 +80,29 @@ export class AboutComponent implements OnInit   {
     this.buttonText[0] = temp;
   }
 
-
-  
-  constructor(private breakpointObserver: BreakpointObserver) { }
-
-ngOnInit() {
-  this.breakpointObserver.observe([
-    Breakpoints.XSmall,
-    Breakpoints.Small,
-    Breakpoints.Medium,
-    Breakpoints.Large,
-    Breakpoints.XLarge
-  ]).subscribe(result => {
-    this.isXsScreen = result.breakpoints[Breakpoints.XSmall];
-    this.isSmScreen = result.breakpoints[Breakpoints.Small];
-    this.isMdScreen = result.breakpoints[Breakpoints.Medium]; // Add this line to set isMdScreen
-    this.isDesktopScreen = result.breakpoints[Breakpoints.Large] || result.breakpoints[Breakpoints.XLarge];
-    this.section1Cards = this.section1Cards.map((card) => ({
-      ...card,
-      title: this.getImageName(card.imageSrc),
-    }));
-
-
-  });
-     if (this.isXsScreen) {
-      this.descriptionLength = 300;
-    } else if (this.isSmScreen) {
-      this.descriptionLength = 410;
+  getRowHeight(): string {
+    if (this.isXsScreen || this.isSmScreen) {
+      return '1:1.35';
     } else if (this.isMdScreen) {
-      this.descriptionLength = 510;
+      return '1:1.35';
+    } else if (this.isDesktopScreen) {
+      return '1:1.6';
     } else {
-      this.descriptionLength = 790;
+      return '1:2';
     }
-  
-}
-//functions
-getRowHeight(): string {
-  if (this.isXsScreen || this.isSmScreen) {
-    return '1:1.35';
-  } else if (this.isMdScreen) {
-    return '1:1.35';
-  } else if (this.isDesktopScreen) {
-    return '1:1.6';
-  } else {    
-    return '1:2';
   }
-}
-getImageName(imageSrc: string): string {
-  const fileName = imageSrc.split('/').pop();
-  return (fileName?.split('.')[0] || '').toUpperCase();
-}
 
+  getImageName(imageSrc: string): string {
+    const fileName = imageSrc.split('/').pop();
+    return (fileName?.split('.')[0] || '').toUpperCase();
+  }
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      // Handle form submission logic here
+      console.log(this.contactForm.value);
+    }
+  }
 
 // toggleShowMore(index: number): void {
 //   this.section3Cards[index].showMore = !this.section3Cards[index].showMore;
@@ -121,15 +132,7 @@ In addition to his work as a music producer, Sean is also a talented DJ, known f
     title: 'Contact',
     imageSrc: 'assets/image/about/contact.png',
     altText: 'Contact Information',
-    description: `Do you have any questions or comments for me? I would love to hear from you! Please fill out the form below and I will get back to you as soon as possible.
-
-[Name]
-[Email]
-[Subject]
-[Message]
-
-[Submit]
-`
+    description: `Do you have any questions or comments for me? I would love to hear from you! Please fill out the form below and I will get back to you as soon as possible.`
   },
 ];
 

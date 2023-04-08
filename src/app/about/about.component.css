@@ -3,48 +3,168 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  /* width: 100%; */
-  height: clamp(2rem, 150px, 70vw);
   text-align: center;
-  padding-top: clamp(2rem, 3vw, 70vw);
+  height: clamp(2rem, 150px, 70vw);
+  /* padding-top: clamp(2rem, 3vw, 70vw); */
   font-size: clamp(2rem, 10vw, 70vw);
 }
 
 .custom-card {
-  padding: 0 5rem 5rem 5rem;
+  /* padding: 0 5rem 5rem 5rem; */
   background-color: transparent;
   box-shadow: none;
   min-height: 100vh;
-  /* width: 100%; */
+  /* margin: 50px 0; */
 }
 
 .custom-card button[mat-raised-button] {
-  /* background-color: #3f51b5; */
+  background-color: #3f51b5;
   color: white;
-  width: 10rem;
-  height: 5rem;
+  /* width: clamp(2rem, 10vh, 70vw);
+  height: clamp(2rem, 10vw, 70vw); */
+  width: clamp(2rem, 10vw, 70vw);
+  height: clamp(2rem, 10vh, 70vw);
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+@media (orientation: portrait) {
+  .custom-card button[mat-raised-button] {
+    background-color: #3f51b5;
+    color: white;
+    width: clamp(2rem, 10vh, 70vw);
+    height: clamp(2rem, 10vw, 70vw);
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+}
+@media (orientation: landscape) {
+  .custom-card button[mat-raised-button] {
+    background-color: #3f51b5;
+    color: white;
+    width: clamp(2rem, 10vw, 70vw);
+    height: clamp(2rem, 10vh, 70vw);
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+}
+
+.custom-card button[mat-raised-button]:hover {
+  background-color: #5c6bc0;
+  transform: translateY(-2px);
 }
 
 .responsive-image {
-  width: clamp(250px, 30%, 100%);
+  /* width: clamp(2rem, 10vw, 70vw); */
+  height: clamp(2rem, 15vw, 70vw);
   max-width: 100%;
 }
-/* 
-@media screen and (min-width: 576px) {
-  .responsive-image {
-    width: 70%;
-  }
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+  width: clamp(2rem, 80vw, 70vw);
 }
 
-@media screen and (min-width: 768px) {
-  .responsive-image {
-    width: 30%;
-  }
+.card-content-wrapper {
+  width: 100%;
+  /* height: 100vh; */
 }
 
-@media screen and (min-width: 992px) {
-  .responsive-image {
-    width: 20%;
+.form-field {
+  width: 100%;
+  /* margin-bottom: 15px; */
+}
+
+.form-field input,
+.form-field textarea {
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  background-color: #e0e0e0;
+  outline: none;
+}
+
+.form-field textarea {
+  resize: none;
+  height: 150px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-form button[type="submit"] {
+  width: clamp(2rem, 10vw, 70vw);
+  height: clamp(1rem, 5vh, 70vw);
+  align-content: center;
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+@media (orientation: portrait) {
+  .contact-form button[type="submit"] {
+    width: clamp(2rem, 10vh, 70vw);
+    height: clamp(2rem, 10vw, 70vw);
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+
+    transition: 0.3s;
   }
-} */
+}
+@media (orientation: landscape) {
+  .contact-form button[type="submit"] {
+    width: clamp(2rem, 10vw, 70vw);
+    height: clamp(2rem, 10vh, 70vw);
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+
+    transition: 0.3s;
+  }
+}
+.contact-form button[type="submit"]:hover {
+  background-color: #5c6bc0;
+  transform: translateY(-2px);
+}
+
+.contact-form button[type="submit"]:disabled {
+  background-color: #9fa8da;
+  color: white;
+  cursor: not-allowed;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #3f51b5;
+}

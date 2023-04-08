@@ -73,14 +73,14 @@ body {
 }
 
 .homeSecTitle {
-  text-align: center;
+  text-align: left;
   align-content: center;
   width: 100%;
-  padding: clamp(2rem, 2vw, 70vw);
-  /* padding-top: 0; */
+  /* padding: clamp(0.3rem, 2vw, 70vw); */
   font-size: clamp(2rem, 10vw, 70vw);
   position: relative;
   z-index: 2;
+  color: #143642;
 }
 
 .card-content-wrapper {
@@ -107,6 +107,17 @@ body {
   .menu {
     flex-direction: row;
     justify-content: flex-end;
+  }
+}
+@media (max-width: 960px) {
+  .homeSecTitle {
+    text-align: center;
+  }
+}
+
+@media (min-width: 960px) {
+  .homeSecTitle {
+    text-align: center;
   }
 }
 
@@ -148,17 +159,22 @@ button[mat-raised-button]:hover {
 .section1 {
   background-color: #fbfbfb;
   min-height: 100vh;
-
-  /* padding-bottom: 5rem; */
+  display: flex;
+  justify-content: center;
 }
+
 .section2 {
   background-color: #e9e9e9;
   min-height: 100vh;
-  /* padding-bottom: 5rem; */
+  display: flex;
+  justify-content: center;
 }
+
 .section3 {
   background-color: #fbfbfb;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 .card-title,
@@ -166,7 +182,8 @@ button[mat-raised-button]:hover {
 .card-dealTitle {
   word-wrap: break-word;
   overflow-wrap: break-word;
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  color: #143642;
 }
 
 /* //QUICK NAVIGATION section */
@@ -231,6 +248,7 @@ button[mat-raised-button]:hover {
   overflow-wrap: break-word;
   padding: 0.5rem;
   font-family: monospace;
+  color: #143642;
 }
 
 .newsfeed {
@@ -266,10 +284,9 @@ button[mat-raised-button]:hover {
   transition: all 0.1s ease-in-out;
   transform: translateY(0.5rem);
 }
-.newsfeed:hover h3 {
-  font-weight: 500;
-  /* font-style: oblique; */
-}
+/* .newsfeed:hover h3 {
+
+} */
 .newsfeed:hover p {
   color: rgb(14, 14, 14);
   /* font-size: larger; */
@@ -285,13 +302,13 @@ button[mat-raised-button]:hover {
   padding: 1rem;
   font-size: 24px;
   margin: 0 auto;
-  color: #333;
+  color: #143642;
 }
 
 .newsfeed p {
   padding: 1rem;
   font-size: 16px;
-  color: gray;
+  color: #333;
   margin-bottom: 20px;
 }
 .newsfeed span {
@@ -313,20 +330,6 @@ button[mat-raised-button]:hover {
   margin: 0;
   overflow: hidden;
 }
-/* .section1Container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: #ff0000;
-  width: 100%;
-  height: fit-content;
-} */
-
-/* .section2 .custom-card2 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-} */
 
 .section2 .limited-deal-title {
   color: #8000ff;
@@ -337,7 +340,19 @@ button[mat-raised-button]:hover {
   letter-spacing: 2px;
   word-wrap: break-word;
 }
-
+.section2 .card-title,
+.card-description,
+.card-dealTitle,
+.limited-deal-dealTitle,
+.limited-deal-title {
+  /* padding: 0; */
+  margin: 0 auto;
+  /* text-align: center; */
+}
+/* .section2 .card-wrapper {
+  background-color: #8000ff;
+  height: fit-content;
+} */
 @media (min-width: 1280px) {
   .newsfeed {
     width: 400px;
@@ -352,27 +367,40 @@ button[mat-raised-button]:hover {
   }
 }
 
-@media (max-width: 1900px) {
+@media (max-width: 960px) {
   .newsfeed {
     padding: 0rem;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
     width: 95%;
     height: 95%;
+    font-size: clamp(0.1rem, 0.8rem, 70vw);
+    margin-bottom: 0 auto;
+  }
+  .newsfeed:hover {
+    border-radius: 2.5%;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    overflow: hidden;
+    text-decoration: none;
+    border: #fff;
+    border-bottom: 0.5rem solid transparent;
+    transition: all 0.2s ease-in-out;
   }
   .newsfeed h3 {
-    font-size: 24px;
-    padding: 1rem;
-    margin: 0 auto;
-
-    color: #333;
+    margin-top: 0;
+    color: #143642;
+    border-top: 0;
   }
 
   .newsfeed p {
-    font-size: 16px;
-    color: gray;
-    padding: 1rem;
+    color: #143642;
     margin: 0 auto;
   }
+  /* .newsfeed span {
+    
+  } */
 }
 a:link,
 a:visited {
@@ -403,8 +431,6 @@ a:active {
   justify-content: center;
   height: fit-content;
   padding: clamp(2rem, 10vw, 70vw);
-  /* gap: 16px; */
-  /* padding: 16px; */
 }
 
 .card-wrapper {

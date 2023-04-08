@@ -100,7 +100,7 @@ body {
 /* Rest of the code remains the same */
 
 button[mat-raised-button] {
-  background-color: #143642;
+  background-color: rgba(20, 54, 66, 0.8);
   color: #dad2d8;
   border-radius: 5px;
   font-size: clamp(12px, 1.2vw, 16px); /* Adjust the values as needed */

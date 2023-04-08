@@ -16,16 +16,16 @@ body {
 
 body::-webkit-scrollbar {
   width: 0.5rem;
-  background-color: #f5f5f5;
+  background-color: #dad2d8;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #143642;
   border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #555555;
+  background-color: #0f8b8d;
 }
 body {
   overflow-x: hidden;

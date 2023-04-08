@@ -2,14 +2,36 @@
     <h1 class="title">ABOUT</h1>
 </div>
 <!-- Custom Card -->
-<div class="card-content-wrapper " fxLayout="row" fxLayoutAlign="center center">
+<div class="card-content-wrapper aboutSection" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="custom-card" *ngIf="selectedCardIndex !== null">
-        <mat-card-content fxLayout="column" style="height: 100vh">
+        <mat-card-content class="card-content" fxLayout="column" style="height: 100vh">
             <div fxFlex fxLayout="column" fxLayoutAlign="start start">
                 <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
                     [alt]="section1Cards[selectedCardIndex].altText" />
                 <h2 class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
                 <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
+
+                <form *ngIf="selectedCardIndex === 2" [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+                    class="contact-form">
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required email />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Subject</mat-label>
+                        <input matInput formControlName="subject" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Message</mat-label>
+                        <textarea matInput formControlName="message" required></textarea>
+                    </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary" [style.fontSize.px]="16"
+                        [disabled]="contactForm.invalid">Submit</button>
+                </form>
             </div>
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
                 <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
