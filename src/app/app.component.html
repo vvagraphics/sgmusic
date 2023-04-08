@@ -1,18 +1,23 @@
 
 <div>
   <mat-toolbar class="custom-toolbar">
-    <button mat-icon-button class="hamburger" (click)="toggleMenu()" fxShow.lt-md>
-      <img src="assets/image/vinylgif.gif" *ngIf="menuOpen; else menuClosed" />
-      <ng-template #menuClosed>
-        <mat-icon>menu</mat-icon>
-      </ng-template>
-    </button>
-    <div class="logo">
-    <a  href="/"><img src="assets/image/sgentmusic2.png" alt="Logo" class="logo-img" /></a></div>
+    <div class="toolbar-content">
+      <div class="logo">
+        <!-- <a href="/"><img src="assets/image/sgentmusic4.png" alt="Logo" class="logo-img" /></a> -->
+        <a [routerLink]="['/']" fragment="home"><img src="assets/image/sgentmusic4.png" alt="Logo" class="logo-img" /></a>
+      </div>
 
-    <span class="menu-container" fxFlex fxLayoutAlign="end center" fxHide.lt-md>
-      <ng-container *ngTemplateOutlet="menuItems"></ng-container>
-    </span>
+      <span class="menu-container" fxFlex fxLayoutAlign="end center" fxHide.lt-md>
+        <ng-container *ngTemplateOutlet="menuItems"></ng-container>
+      </span>
+
+      <button mat-icon-button class="hamburger" (click)="toggleMenu()" fxShow.lt-md>
+        <mat-icon *ngIf="!menuOpen; else menuOpened">menu</mat-icon>
+        <ng-template #menuOpened>
+          <mat-icon>menu</mat-icon>
+        </ng-template>
+      </button>
+    </div>
   </mat-toolbar>
 
   <!-- Vertical menu for small screens -->
@@ -20,6 +25,9 @@
     <ng-container *ngTemplateOutlet="menuItems"></ng-container>
   </div>
 </div>
+
+<!-- Rest of the code remains the same -->
+
 
 <ng-template #menuItems>
   <button mat-raised-button color="primary" routerLink="/" >Home</button>

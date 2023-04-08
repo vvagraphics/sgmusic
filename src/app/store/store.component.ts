@@ -153,7 +153,7 @@ section2Cards = [
   {
     title: 'Music Event/Concert Promotion',
     destination: 'Subscriptions',
-    imageSrc: 'assets/image/store/Music EventConcert Promotion.png',
+    imageSrc: 'assets/image/store/Music Event Concert Promotion.png',
     altText: 'Music Event/Concert Promotion',
     description: `This section provides information about upcoming music events and concerts, including lineup announcements, schedules, and ticket information. Get ready to experience the thrill of live music and connect with other fans.`
   },

@@ -68,13 +68,21 @@ body {
 
 /* ///FOR TITLE */
 
+.title-wrapper {
+  position: relative;
+}
+
 .homeSecTitle {
   text-align: center;
   align-content: center;
   width: 100%;
-  padding: clamp(2rem, 1vw, 70vw);
+  padding: clamp(2rem, 2vw, 70vw);
+  /* padding-top: 0; */
   font-size: clamp(2rem, 10vw, 70vw);
+  position: relative;
+  z-index: 2;
 }
+
 .card-content-wrapper {
   position: relative;
   min-height: 100vh;
@@ -91,6 +99,8 @@ body {
 .video-container {
   position: relative;
   width: 100%;
+
+  background-color: black;
 }
 
 @media (min-width: 960px) {
@@ -137,28 +147,41 @@ button[mat-raised-button]:hover {
 }
 .section1 {
   background-color: #fbfbfb;
+  min-height: 100vh;
+
+  /* padding-bottom: 5rem; */
 }
 .section2 {
   background-color: #e9e9e9;
+  min-height: 100vh;
+  /* padding-bottom: 5rem; */
 }
 .section3 {
   background-color: #fbfbfb;
+  min-height: 100vh;
 }
 
 .card-title,
-.card-description {
+.card-description,
+.card-dealTitle {
   word-wrap: break-word;
   overflow-wrap: break-word;
-  padding: 0.5rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 /* //QUICK NAVIGATION section */
-.custom-card2 {
+/* .custom-card2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   background-color: transparent;
-}
-
+  height: 100%;
+} */
+/* //for all not section specific */
 .custom-card {
   width: 95%;
+  /* min-height: clamp(20vh, 50vh, 100vw); */
   border-radius: 2.5%;
   padding: 0;
   background-color: transparent;
@@ -169,7 +192,7 @@ button[mat-raised-button]:hover {
   width: 95%;
   border-radius: 2.5%;
   padding: 0;
-  background-color: rgb(138, 138, 138);
+  background-color: #e9e9e9;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   margin: 0;
   overflow: hidden;
@@ -279,6 +302,42 @@ button[mat-raised-button]:hover {
   color: rgb(61, 0, 204);
 }
 
+/* //remember to add @media */
+.section1 .custom-card {
+  display: flex;
+  background-color: #fbfbfb;
+  width: 95%;
+  height: fit-content;
+  border-radius: 2.5%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+/* .section1Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #ff0000;
+  width: 100%;
+  height: fit-content;
+} */
+
+/* .section2 .custom-card2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+
+.section2 .limited-deal-title {
+  color: #8000ff;
+  font-size: clamp(1rem, 1.5rem, 70vw);
+  font-weight: bold;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
+
 @media (min-width: 1280px) {
   .newsfeed {
     width: 400px;
@@ -329,4 +388,37 @@ a:active {
 .limited-deal-description {
   color: red;
   font-weight: bold;
+  text-align: right;
+}
+
+.section-gap {
+  padding-top: clamp(2rem, 4vw, 70vw);
+  padding-bottom: clamp(2rem, 4vw, 70vw);
+}
+
+.section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: fit-content;
+  padding: clamp(2rem, 10vw, 70vw);
+  /* gap: 16px; */
+  /* padding: 16px; */
+}
+
+.card-wrapper {
+  flex: 1;
+  max-width: calc(33.333% - 32px);
+}
+@media (max-width: 991px) {
+  .card-wrapper {
+    max-width: calc(50% - 32px);
+  }
+}
+
+@media (max-width: 575px) {
+  .card-wrapper {
+    max-width: 100%;
+  }
 }

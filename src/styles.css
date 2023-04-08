@@ -8,6 +8,28 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+body {
+  overflow: scroll;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
+}
+body {
+  overflow-x: hidden;
+}
 .custom-toolbar {
   background-color: transparent;
   position: fixed;
@@ -23,11 +45,11 @@ body {
 }
 
 /* Make the buttons vertical */
-.menu {
+/* .menu {
   position: absolute;
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* Style the home slide background */
 .home-slide {

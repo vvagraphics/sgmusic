@@ -5,6 +5,7 @@ import { NewsService } from '../news.service';
 
 
 interface Card {
+  dealTitle?: string;
   title: string;
   date?: Date;
   imageSrc: string;
@@ -56,7 +57,7 @@ ngOnInit() {
       this.section2Cards[0].imageSrc = this.limitedDeals[this.limitedDealIndex].imageSrc;
     } else {
       this.limitedDealIndex = 0;
-      this.countdown = 5 * 60 * 1000;
+      this.countdown = 2 * 60 * 1000;
       this.storeEndTime();
     }
 
@@ -166,111 +167,107 @@ section1Cards = [
     destination: 'about',
     imageSrc: 'assets/image/about.png',
     altText: 'About Image',
-    description: 'Description for About card in section 1'
+    description: 'Learn more about SGENTMUSIC LLC'
   },
   {
     title: 'Music',
     destination: 'music',
     imageSrc: 'assets/image/music.png',
     altText: 'Music Image',
-    description: 'Description for Product card in section 1'
+    description: 'Discover new music and upcoming artists.'
   },
   {
     title: 'Store',
     destination: 'store',
     imageSrc: 'assets/image/store.png',
     altText: 'Store Image',
-    description: 'Description for Shop card in section 1'
+    description: 'Merchandise, Promote and Subscriptions.'
   },
   {
     title: 'News',
     destination: 'news',
     imageSrc: 'assets/image/news.png',
     altText: 'News Image',
-    description: 'Description for News card in section 1'
+    description: 'Stay up to date with the latest news.'
   },
 ];
 
+// <!-- //REROUTING TO SHOP WITH FRAGMENT SCROLL TO ID BREAKS WHEN ONE LINK IS OFF/MISPELLED -->
+// KEEP TITLES TO MINIMUM CHARACTERS FOR MOBILE
 section2Cards = [
   {
+    dealTitle:`Limited Deals!!`,
     title: 'Limited Deal',
     destination: 'merch',
-    imageSrc: 'assets/image/Limited Deal.png',
-    altText: 'Section 2 Image 1',
+    imageSrc: 'assets/image/Concert Tickets.png',
+    altText: 'Concert Tickets',
     description: '',
     isLimitedDeal: true
 
   },
   {
+    dealTitle:`Trending`,
     title: 'Trending',
-    destination: 'Trending',
+    destination: 'promote',
     imageSrc: 'assets/image/Trending.jpg',
-    altText: 'Section 2 Image 2',
-    description: 'This is what is selling the most Today or this Week',
+    altText: 'Trending',
+    description: `See what's popular and trending in the world of music.`,
     isLimitedDeal: false
   },
   {
+    dealTitle:`Subscribe and Save`,
     title: 'Sub and Save',
     destination: 'subscriptions',
-    imageSrc: 'assets/image/Save on Lesson Subscription.png',
-    altText: 'Section 2 Image 3',
-    description: '50% OFF MUSIC LESSONS MONTHLY SUBSCIBTIONS',
+    imageSrc: 'assets/image/Music Lessons.png',
+    altText: 'Music Lessons',
+    description: 'Subscribe to get exclusive access to lootboxes, lessons, and more.',
     isLimitedDeal: false
   },
 ];
 
   section3Cards: Card[] = [
-    {
-      title: 'Blog Post 1',
-      date: new Date('2023-01-01'),
-      imageSrc: 'assets/image/fujii.kaze.png',
-      altText: 'Section 3 Image 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.',
-      showMore: false,
-    },
-      {
-      title: 'Blog Post 2',
-      date: new Date('2023-01-02'),
-      imageSrc: 'assets/image/edc.png',
-      altText: 'Section 3 Image 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.',
-      showMore: false,
-    },
-      {
-      title: 'Blog Post 3',
-      date: new Date('2023-01-03'),
-      imageSrc: 'assets/image/keznami.png',
-      altText: 'Section 3 Image 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.',
-      showMore: false,
-    },
-      {
-      title: 'Blog Post 4',
-      date: new Date('2023-02-01'),
-      imageSrc: 'assets/image/concert.png',
-      altText: 'Section 3 Image 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet, est sodales fringilla pretium, purus sem faucibus mauris, ut interdum erat dolor ac diam. Fusce eu lectus felis. Curabitur blandit, sapien sit amet gravida mattis, orci nisi gravida mi, et consequat velit magna sed enim. In hac habitasse platea dictumst. Ut eget mattis felis. Vestibulum ac faucibus nisi. In nec dictum urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus convallis a justo eget luctus. Cras vitae purus ex. In eget pharetra mi, ac blandit lectus. Ut at lectus imperdiet, ultrices tortor vitae, sodales ex. Quisque quam nisl, faucibus a nunc ut, fringilla fermentum metus. Morbi pellentesque, odio ac laoreet condimentum, nisl lorem faucibus lectus, in lacinia magna libero sit amet lorem. Suspendisse aliquet laoreet lectus, non volutpat dui cursus ac. Duis nulla sem, viverra vitae risus vel, rutrum finibus dui.',
-      showMore: false,
-    },
     
   ];
 
-
+// <!-- //REROUTING TO SHOP WITH FRAGMENT SCROLL TO ID BREAKS WHEN ONE LINK IS OFF/MISPELLED -->
   limitedDeals = [
   {
+    dealTitle:`Limited Deals!!`,
     title: 'Limited Deal',
-    destination: 'merch',
-    imageSrc: 'assets/image/limiteddeals/Limited Deal 1.png',
+    destination: 'promote',
+    imageSrc: `assets/image/limiteddeals/Music Lessons.png`,
     altText: 'Section 2 Image 1',
     description: 'TIME LEFT 20:19:23s'
   },
   {
+    dealTitle:`Limited Deals!!`,
     title: 'Limited Deal',
-    destination: 'merch',
-    imageSrc: 'assets/image/limiteddeals/Limited Deal 2.png',
+    destination: 'subscriptions',
+    imageSrc: 'assets/image/limiteddeals/Lootbox Subscriptions.png',
     altText: 'Section 2 Image 1',
     description: 'TIME LEFT 20:19:23s'
-  }
+  },
+  { dealTitle:`Limited Deals!!`,
+    title: 'Limited Deal',
+    destination: 'promote',
+    imageSrc: 'assets/image/limiteddeals/Promote Yourself.png',
+    altText: 'Section 2 Image 1',
+    description: 'TIME LEFT 20:19:23s'
+  },
+  { dealTitle:`Limited Deals!!`,
+    title: 'Limited Deal',
+    destination: 'subscriptions',
+    imageSrc: 'assets/image/limiteddeals/Limited Amount Concert Tickets.png',
+    altText: 'Section 2 Image 1',
+    description: 'TIME LEFT 20:19:23s'
+  },
+  { dealTitle:`Limited Deals!!`,
+    title: 'Limited Deal',
+    destination: 'merch',
+    imageSrc: 'assets/image/limiteddeals/Home Decor.jpg',
+    altText: 'Section 2 Image 1',
+    description: 'TIME LEFT 20:19:23s'
+  },
 ];
 
 
@@ -283,7 +280,7 @@ updateCountdown() {
     if (this.resetTimer === 0) {
       this.limitedDealIndex = (this.limitedDealIndex + 1) % this.limitedDeals.length;
       this.section2Cards[0].imageSrc = this.limitedDeals[this.limitedDealIndex].imageSrc;
-      this.countdown = 4 * 60 * 1000;
+      this.countdown = 2 * 60 * 1000;
       this.storeEndTime();
       this.section2Cards[0].description = this.formatCountdown(this.countdown);
     }
