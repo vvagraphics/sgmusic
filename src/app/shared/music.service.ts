@@ -300,7 +300,7 @@ shuffleSongs(): void {
   const payload = { file: song.file };
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'X-RapidAPI-Key': 'c1286b4f8dmsh5769ead1fbbff45p1735f6jsnaa21412447f5',
+    'X-RapidAPI-Key': '',
     'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
   });
 
