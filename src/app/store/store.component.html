@@ -2,46 +2,60 @@
     <h1 class="title">STORE</h1>
 </div>
 <div class="hero">
-    <div class="video-container">
-    <!-- <video width="100%" autoplay loop muted playsinline>
+    <!-- <div class="video-container">
+    <video width="100%" autoplay loop muted playsinline>
         <source src="assets/video/pexels-tima-miroshnichenko-6828015-3840x2160-25fps.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-    </video> -->
+    </video>
     
-    </div>
+    </div> -->
+    <!-- <mat-divider></mat-divider> -->
+    
+    
+    <app-limited-deal-card></app-limited-deal-card>
     <!-- Section 1 -->
-    <div class="card-content-wrapper section1" id="merch" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
-        <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.3"
-            gutterSize="16px" [style.margin.px]="16">
+    <div class="card-content-wrapper section3" id="subscriptions" fxLayout="row" fxLayout.lt-xl="column"
+        fxLayout.gt-lg="column">
+        <div class="title-wrapper" style="position: relative;">
             <h1 class="shopSecTitle">MERCH</h1>
-            <mat-grid-tile *ngFor="let card of section1Cards">
-                <mat-card class="custom-card">
-                    <mat-card-content>
-                        <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
-                        <h2 class="card-title">{{ card.title }}</h2>
-                        <p class="card-description">{{ card.description }}</p>
-                    </mat-card-content>
-                </mat-card>
-            </mat-grid-tile>
-        </mat-grid-list>
-    </div>
+            <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.6"
+                gutterSize="16px" [style.margin.px]="16">
+    
+                <div class="section-container">
+    
+                    <mat-grid-tile class="card-wrapper" *ngFor="let card of section1Cards">
+                        <mat-card class="custom-card">
+    
+                            <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
+                            <h2 class="card-title">{{ card.title }}</h2>
+                            <p class="card-description">{{ card.description }}</p>
+    
+                        </mat-card>
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list>
+        </div>
 
     <mat-divider></mat-divider>
 
     <!-- Section 2 -->
     <div class="card-content-wrapper section2" id="promote" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
+        <div class="title-wrapper" style="position: relative;">
+            <h1 class="shopSecTitle">PROMOTE MUSIC</h1>
         <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1.3"
             gutterSize="16px" [style.margin.px]="16">
-            <h1 class="shopSecTitle">PROMOTE MUSIC</h1>
-            <mat-grid-tile *ngFor="let card of section2Cards">
+
+<div class="section-container">
+            
+            <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
                 <mat-card class="custom-card">
-                    <mat-card-content>
+                    
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                         <h2 class="card-title">{{ card.title }}</h2>
                         <p class="card-description">{{ card.description }}</p>
-                    </mat-card-content>
+                    
                 </mat-card>
-            </mat-grid-tile>
+            </mat-grid-tile></div>
         </mat-grid-list>
     </div>
 
@@ -49,18 +63,22 @@
 
     <!-- Section 3 -->
     <div class="card-content-wrapper section3" id="subscriptions" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
-        <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.3" gutterSize="16px"
-            [style.margin.px]="16">
+        <div class="title-wrapper" style="position: relative;">
             <h1 class="shopSecTitle">SUBSCRIPTIONS</h1>
-            <mat-grid-tile *ngFor="let card of section3Cards">
+        <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 4 : 3" rowHeight="1:1.6" gutterSize="16px"
+            [style.margin.px]="16">
+
+            <div class="section-container">
+            
+            <mat-grid-tile class="card-wrapper" *ngFor="let card of section3Cards">
                 <mat-card class="custom-card">
-                    <mat-card-content>
+                    
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                         <h2 class="card-title">{{ card.title }}</h2>
                         <p class="card-description">{{ card.description }}</p>
-                    </mat-card-content>
+                    
                 </mat-card>
-            </mat-grid-tile>
+            </mat-grid-tile></div>
         </mat-grid-list>
     </div>
 

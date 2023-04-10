@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Song } from '../song.interface';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: 'assets/image/music/dancehall.png',
       audioSrc: 'assets/music/dancehall/Crown on the Dance floor.mp3',
       genre: 'Dancehall',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
         {
       title: 'Intergalactic Ride',
@@ -39,6 +41,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: 'assets/image/music/hiphop.jpg',
       audioSrc: 'assets/music/hiphop/Intergalactic Ride.mp3',
       genre: 'HipHop',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
         {
       title: 'Throne of Words',
@@ -47,6 +50,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: 'assets/image/music/mixtape.jpg',
       audioSrc: 'assets/music/mixtape/Throne of Words.mp3',
       genre: 'Mixtape',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
         {
       title: 'Tears of Salvation - Instrumental',
@@ -55,6 +59,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: 'assets/image/music/rock.png',
       audioSrc: 'assets/music/rock/Tears of Salvation - Instrumental.mp3',
       genre: 'Rock',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
         {
       title: 'ES_Might as Well RocknRoll - TAGE',
@@ -63,6 +68,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: 'assets/music/rock/300x300.jpg',
       audioSrc: 'assets/music/rock/ES_Might as Well RocknRoll - TAGE.mp3',
       genre: 'Rock',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Bo's Lullaby - John B. Lund`,
@@ -71,6 +77,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/asmr/300x300.jpg`,
       audioSrc: `assets/music/asmr/ES_Bo's Lullaby - John B. Lund.mp3`,
       genre: 'ASMR',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
         {
       title: `ES_Right Now (Call On Me) - Thyra`,
@@ -79,6 +86,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/country/300x300.jpg`,
       audioSrc: `assets/music/country/ES_Right Now (Call On Me) - Thyra.mp3`,
       genre: 'Country',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Don't Play Me - Filthy The Kid`,
@@ -87,6 +95,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/korean/300x300.jpg`,
       audioSrc: `assets/music/korean/ES_Don't Play Me - Filthy The Kid.mp3`,
       genre: 'Korean',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Ana - Feras Charestan`,
@@ -95,6 +104,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/middle east/300x300.jpg`,
       audioSrc: `assets/music/middle east/ES_Ana - Feras Charestan.mp3`,
       genre: 'MiddleEast',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Hokkaido - Saira Ridley`,
@@ -103,6 +113,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/east/300x300.jpg`,
       audioSrc: `assets/music/east/ES_Hokkaido - Saira Ridley.mp3`,
       genre: 'East',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Sunday Morning Sermon - Duke Herrington`,
@@ -111,6 +122,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/gospel/300x300.jpg`,
       audioSrc: `assets/music/gospel/ES_Sunday Morning Sermon - Duke Herrington.mp3`,
       genre: 'Gospel',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
     {
       title: `ES_Modest - Katori Walker`,
@@ -119,22 +131,39 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/rnb/300x300.jpg`,
       audioSrc: `assets/music/rnb/ES_Modest - Katori Walker.mp3`,
       genre: 'RnB',
+      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
     },
   ];
 
       private currentSongSubject = new BehaviorSubject<any>(this.songs[0]);
+      private lyricsAnalysisSubject = new BehaviorSubject<any>(null);
+      private musicInfoSubject = new BehaviorSubject<any>(null);
+  public musicInfo$ = this.musicInfoSubject.asObservable();
+  
+
+lyricsAnalysis$ = this.lyricsAnalysisSubject.asObservable();
+
+private musicAnalysisSubject = new BehaviorSubject<any>(null);
+musicAnalysis$ = this.musicAnalysisSubject.asObservable();
 currentSong$ = this.currentSongSubject.asObservable();
+
+
+setLyricsAnalysis(analysis: any): void {
+  this.lyricsAnalysisSubject.next(analysis);
+}
 
 setCurrentSong(song: any): void {
   this.currentSongSubject.next(song);
 }
-
+  setMusicInfo(data: any): void {
+    this.musicInfoSubject.next(data);
+  }
     
    getSongs(): any[] {
     return this.songs;
   }
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   
  setAudioSource(src: string): void {
@@ -166,6 +195,15 @@ getCurrentSong(): any {
   play(): void {
   this._audio.play();
   this.isPaused.next(false);
+  this.analyzeSong(this.getCurrentSong(), 'lyrics').subscribe(
+    (response) => {
+      console.log('Lyrics Analysis:', response);
+      // Save the response to a shared or local service variable
+    },
+    (error) => {
+      console.error('Error fetching lyrics analysis:', error);
+    }
+  );
 }
 
 pause(): void {
@@ -183,35 +221,67 @@ togglePlayPause(): void {
     this.isPaused.next(!this.isPaused.getValue());
   }
 
- playNextSong(): void {
-    if (this.hasNextSong()) {
-      this.currentSongIndex++;
-    } else {
-      this.currentSongIndex = 0;
-    }
-    this.setAudioSource(this.getCurrentSong().audioSrc);
-    this.play();
-  }
 
-  playPreviousSong(): void {
-    if (this.hasPreviousSong()) {
-      this.currentSongIndex--;
-    } else {
-      this.currentSongIndex = this.songs.length - 1;
-    }
-    this.setAudioSource(this.getCurrentSong().audioSrc);
-    this.play();
+playNextSong(): void {
+  if (this.hasNextSong()) {
+    this.currentSongIndex++;
+  } else {
+    this.currentSongIndex = 0;
   }
+  this.setAudioSource(this.getCurrentSong().audioSrc);
+  this.analyzeSong(this.getCurrentSong(), 'lyrics').subscribe(
+    (response) => {
+      console.log('Lyrics Analysis:', response);
+      // Save the response to a shared or local service variable
+    },
+    (error) => {
+      console.error('Error fetching lyrics analysis:', error);
+    }
+  );
+  
+  
+}
 
-  shuffleSongs(): void {
-    let randomIndex = Math.floor(Math.random() * this.songs.length);
-    while (randomIndex === this.currentSongIndex) {
-      randomIndex = Math.floor(Math.random() * this.songs.length);
-    }
-    this.currentSongIndex = randomIndex;
-    this.setAudioSource(this.getCurrentSong().audioSrc);
-    this.play();
+playPreviousSong(): void {
+  if (this.hasPreviousSong()) {
+    this.currentSongIndex--;
+  } else {
+    this.currentSongIndex = this.songs.length - 1;
   }
+  this.setAudioSource(this.getCurrentSong().audioSrc);
+  this.analyzeSong(this.getCurrentSong(), 'lyrics').subscribe(
+    (response) => {
+      console.log('Lyrics Analysis:', response);
+      // Save the response to a shared or local service variable
+    },
+    (error) => {
+      console.error('Error fetching lyrics analysis:', error);
+    }
+  );
+  
+
+}
+
+shuffleSongs(): void {
+  let randomIndex = Math.floor(Math.random() * this.songs.length);
+  while (randomIndex === this.currentSongIndex) {
+    randomIndex = Math.floor(Math.random() * this.songs.length);
+  }
+  this.currentSongIndex = randomIndex;
+  this.setAudioSource(this.getCurrentSong().audioSrc);
+  this.analyzeSong(this.getCurrentSong(), 'lyrics').subscribe(
+    (response) => {
+      console.log('Lyrics Analysis:', response);
+      // Save the response to a shared or local service variable
+    },
+    (error) => {
+      console.error('Error fetching lyrics analysis:', error);
+    }
+  );
+  
+  
+}
+
 
   hasPreviousSong(): boolean {
     return this.currentSongIndex > 0;
@@ -220,4 +290,31 @@ togglePlayPause(): void {
   hasNextSong(): boolean {
     return this.currentSongIndex < this.songs.length - 1;
   }
+
+
+  // SONOTELLER AI API
+  ///removed |'music' 
+  analyzeSong(song: Song, analysisType: 'lyrics'): Observable<any> {
+  const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
+
+  const payload = { file: song.file };
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-RapidAPI-Key': 'c1286b4f8dmsh5769ead1fbbff45p1735f6jsnaa21412447f5',
+    'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
+  });
+
+  return this.http.post(url, payload, { headers });
+}
+
+//   this.http.post(url, payload, { headers }).subscribe(
+//     (response) => {
+//       console.log(response);
+//     },
+//     (error) => {
+//       console.error('Error fetching data:', error);
+//     }
+//   );
+// }
+
 }

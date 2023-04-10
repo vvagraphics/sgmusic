@@ -1,8 +1,8 @@
-<div *ngIf="cartItems.length === 0">
+<div class="container"><div *ngIf="cartItems.length === 0" class="text-center">
     <p>Your cart is empty.</p>
 </div>
 <div *ngIf="cartItems.length > 0">
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Product</th>
@@ -16,6 +16,8 @@
             </tr>
         </tbody>
     </table>
-    <p>Total: {{ getTotalPrice() | currency }}</p>
-    <a routerLink="/checkout">Proceed to Checkout</a>
-</div>
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="mb-0">Total: {{ getTotalPrice() | currency }}</p>
+        <a routerLink="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+    </div>
+</div></div>

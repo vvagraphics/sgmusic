@@ -4,35 +4,47 @@
 <!-- Custom Card -->
 <div class="card-content-wrapper aboutSection" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="custom-card" *ngIf="selectedCardIndex !== null">
-        <mat-card-content class="card-content" fxLayout="column" style="height: 100vh">
+        <mat-card-content class="card-content" style="height: 100vh">
             <div fxFlex fxLayout="column" fxLayoutAlign="start start">
-                <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
-                    [alt]="section1Cards[selectedCardIndex].altText" />
-                <h2 class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
-                <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
+                <ng-container *ngIf="selectedCardIndex !== 2">
+                    <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
+                        [alt]="section1Cards[selectedCardIndex].altText" />
+                    <h2 class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
+                    <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
+                </ng-container>
 
-                <form *ngIf="selectedCardIndex === 2" [formGroup]="contactForm" (ngSubmit)="onSubmit()"
-                    class="contact-form">
-                    <mat-form-field appearance="fill" class="form-field">
-                        <mat-label>Name</mat-label>
-                        <input matInput formControlName="name" required />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="form-field">
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" required email />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="form-field">
-                        <mat-label>Subject</mat-label>
-                        <input matInput formControlName="subject" required />
-                    </mat-form-field>
-                    <mat-form-field appearance="fill" class="form-field">
-                        <mat-label>Message</mat-label>
-                        <textarea matInput formControlName="message" required></textarea>
-                    </mat-form-field>
-                    <button type="submit" mat-raised-button color="primary" [style.fontSize.px]="16"
-                        [disabled]="contactForm.invalid">Submit</button>
-                </form>
+                <ng-container *ngIf="selectedCardIndex === 2">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <div class="card-image">
+                            <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
+                                [alt]="section1Cards[selectedCardIndex].altText" />
+                        </div>
+                        <div class="card-content-right">
+                            <h2>Contact Information</h2>
+                            <p>
+                                <strong>Address:</strong><br>
+                                123 Main Street<br>
+                                Anytown, USA 12345
+                            </p>
+                            <p>
+                                <strong>Phone:</strong><br>
+                                (123) 456-7890
+                            </p>
+                            <p>
+                                <strong>Email:</strong><br>
+                                info@example.com
+                            </p>
+                            <button (click)="openNewForm()" mat-raised-button color="primary"
+                                [style.fontSize.px]="16">Send a Message</button>
+                        </div>
+                    </div>
+                    <h2 *ngIf="selectedCardIndex !== 2" class="card-title">{{ section1Cards[selectedCardIndex].title }}</h2>
+
+                    <p class="card-description">{{ section1Cards[selectedCardIndex].description }}</p>
+                </ng-container>
             </div>
+
+            
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
                 <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
                     (click)="selectCard(0)">About</button>
@@ -41,6 +53,7 @@
                 <button *ngIf="selectedCardIndex !== 2" mat-raised-button color="primary" [style.fontSize.px]="16"
                     (click)="selectCard(2)">Contacts</button>
             </div>
-        </mat-card-content>
-    </mat-card>
+    </mat-card-content>
+</mat-card>
+
 </div>

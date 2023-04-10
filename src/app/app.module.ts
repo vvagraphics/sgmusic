@@ -36,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MiniPlayerComponent } from './mini-player/mini-player.component';
 // import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { LimitedDealCardComponent } from './shared/limited-deal-card/limited-deal-card.component';
 
 
 
@@ -56,6 +57,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ProductListComponent,
     RegistrationComponent,
     MiniPlayerComponent,
+    LimitedDealCardComponent,
     // NewsfeedComponent
   ],
   imports: [

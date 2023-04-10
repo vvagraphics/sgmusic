@@ -10,6 +10,7 @@ import { NewsService } from '../news.service';
 export class NewsComponent implements OnInit {
 
   news: any[] = [];
+  
 
   constructor(private newsService: NewsService) { }
 

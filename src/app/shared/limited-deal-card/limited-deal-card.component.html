@@ -1,0 +1,22 @@
+<div class="card-content-wrapper section5" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
+    <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1" gutterSize="16px"
+        [style.margin.px]="16">
+        <div class="section-container5">
+            <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
+                <mat-card class="custom-card">
+                    <a [routerLink]="['/store']" [fragment]="card.destination">
+                        <img [src]="card.imageSrc" [alt]="card.altText" class="card-image" />
+                        <div class="card-text-content">
+                            <h2 class="card-dealTitle" [ngClass]="{'limited-deal-dealTitle': card.isLimitedDeal}">{{
+                                card.dealTitle }}</h2>
+                            <h2 class="card-title" [ngClass]="{'limited-deal-title': card.isLimitedDeal}">{{ card.title
+                                }}</h2>
+                            <p class="card-description" [ngClass]="{'limited-deal-description': card.isLimitedDeal}">{{
+                                card.description }}</p>
+                        </div>
+                    </a>
+                </mat-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

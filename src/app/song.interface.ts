@@ -5,4 +5,5 @@ export interface Song {
   albumArt: string;
   audioSrc: string;
   genre: string;
+  file: string;
 }

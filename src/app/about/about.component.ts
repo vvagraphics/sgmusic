@@ -97,12 +97,10 @@ export class AboutComponent implements OnInit {
     return (fileName?.split('.')[0] || '').toUpperCase();
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      // Handle form submission logic here
-      console.log(this.contactForm.value);
-    }
-  }
+openNewForm() {
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDIEr-Ws4fnNLBAbVxCCe810iNnF-mRw3UJwmutnDA_ccqsA/viewform', '_blank');
+}
+
 
 // toggleShowMore(index: number): void {
 //   this.section3Cards[index].showMore = !this.section3Cards[index].showMore;
@@ -129,10 +127,10 @@ With a focus on quality and authenticity, Sean honed his skills as a music produ
 In addition to his work as a music producer, Sean is also a talented DJ, known for his electrifying live performances and ability to get audiences moving. With Sean Gordon Entertainment Music, Sean is dedicated to promoting and supporting the best in new and emerging talent. Join Sean on this journey, and be a part of the next chapter in the celebration of the power of music.`
   },
   {
-    title: 'Contact',
+    title: 'Contact Information',
     imageSrc: 'assets/image/about/contact.png',
     altText: 'Contact Information',
-    description: `Do you have any questions or comments for me? I would love to hear from you! Please fill out the form below and I will get back to you as soon as possible.`
+    description: ``
   },
 ];
 

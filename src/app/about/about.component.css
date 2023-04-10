@@ -5,7 +5,7 @@
   align-items: center;
   text-align: center;
   height: clamp(2rem, 150px, 70vw);
-  /* padding-top: clamp(2rem, 3vw, 70vw); */
+  padding-top: clamp(2rem, 3vw, 70vw);
   font-size: clamp(2rem, 10vw, 70vw);
 }
 
@@ -18,7 +18,7 @@
 }
 
 .custom-card button[mat-raised-button] {
-  background-color: #3f51b5;
+  background-color: rgba(20, 54, 66, 0.8);
   color: white;
   /* width: clamp(2rem, 10vh, 70vw);
   height: clamp(2rem, 10vw, 70vw); */
@@ -30,7 +30,7 @@
 }
 @media (orientation: portrait) {
   .custom-card button[mat-raised-button] {
-    background-color: #3f51b5;
+    background-color: rgba(20, 54, 66, 0.8);
     color: white;
     width: clamp(2rem, 10vh, 70vw);
     height: clamp(2rem, 10vw, 70vw);
@@ -41,8 +41,9 @@
 }
 @media (orientation: landscape) {
   .custom-card button[mat-raised-button] {
-    background-color: #3f51b5;
+    background-color: rgba(20, 54, 66, 0.8);
     color: white;
+    margin: 0 5vw;
     width: clamp(2rem, 10vw, 70vw);
     height: clamp(2rem, 10vh, 70vw);
     border-radius: 8px;
@@ -52,7 +53,7 @@
 }
 
 .custom-card button[mat-raised-button]:hover {
-  background-color: #5c6bc0;
+  background-color: rgba(39, 91, 110, 0.8);
   transform: translateY(-2px);
 }
 
@@ -167,4 +168,25 @@
 
 .mat-form-field.mat-focused .mat-form-field-label {
   color: #3f51b5;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* .image-description {
+  display: flex;
+  flex-direction: column;
+} */
+
+.card-content-right {
+  /* + */
+  padding: 2rem;
+  padding-top: 0;
+}
+.card-content-right button[mat-raised-button] {
+  width: clamp(2rem, 10vw, 70vw);
+  height: clamp(1rem, 5vh, 70vw);
 }
