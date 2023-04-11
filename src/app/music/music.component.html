@@ -13,7 +13,9 @@
             </div>
         </div>
         <!-- <audio #audioPlayer [src]="currentSong.audioSrc" (ended)="playSelectedSong()"></audio> -->
-        <audio #audioPlayer controls hidden></audio>
+        <!-- <audio #audioPlayer controls hidden></audio> -->
+        <!-- <app-lyric-analysis-card [analysis]="analysis"></app-lyric-analysis-card> -->
+
 
 
         <div class="player-controls">
@@ -26,22 +28,22 @@
                 <mat-icon>shuffle</mat-icon>
             </button>
 
-        <button mat-icon-button class="red-button" (click)="togglePlayPause()">
-            <mat-icon *ngIf="paused">play_arrow</mat-icon>
-            <mat-icon *ngIf="!paused">pause</mat-icon>
-        </button>
+            <button mat-icon-button class="red-button" (click)="togglePlayPause()">
+                <mat-icon *ngIf="paused">play_arrow</mat-icon>
+                <mat-icon *ngIf="!paused">pause</mat-icon>
+            </button>
 
-            <button mat-icon-button class="red-button" [disabled]="!hasNextSong()" (click)="playNextSong()" >
+            <button mat-icon-button class="red-button" [disabled]="!hasNextSong()" (click)="playNextSong()">
                 <mat-icon>skip_next</mat-icon>
             </button>
 
-            
+
         </div>
     </div>
 
-<!-- //music genre and song selection -->
+    <!-- //music genre and song selection -->
     <div class="music-selection">
-        
+
         <!-- GENRE SELECTION -->
         <mat-form-field>
             <mat-label>Select Genre</mat-label>
@@ -58,7 +60,9 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="addToCart-container" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button class="addToCart"  (click)="addToCart()">Add to Cart</button>
+        <div class="addToCart-container" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button class="addToCart" (click)="addToCart()">Add to Cart</button>
     </div>
+    <app-lyric-analysis-card [analysis]="analysis" [songData]="songData"></app-lyric-analysis-card>
+
 </div>

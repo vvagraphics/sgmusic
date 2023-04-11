@@ -1,0 +1,56 @@
+<div class="card-section">
+    <div class="card-container">
+    <mat-card class="card card-full">
+        <mat-card-header>
+            <mat-card-title>Summary</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ analysis?.summary }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Explicit</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ analysis?.explicit }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Language</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ analysis?.language }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Keywords</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ getKeywords(analysis?.keywords) }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Moods</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ getMoodNames(analysis?.moods) }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Themes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ getThemeNames(analysis?.themes) }}</p>
+        </mat-card-content>
+    </mat-card> -->
+</div></div>

@@ -3,11 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import { Song } from '../song.interface';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MusicService {
+  //  private apiUrl = 'https://sonoteller-ai1.p.rapidapi.com/${analysisType}';
+  private apiUrl = '/api/${analysisType}';
+
 
   private _paused: boolean = true;
   private currentSongIndexSubject = new BehaviorSubject<number>(0);
@@ -20,9 +24,8 @@ export class MusicService {
 currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
 
   private _audio = new Audio();
-  
-
-  
+   currentSong: any;
+   
   public songs = [
     
     {
@@ -131,7 +134,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       albumArt: `assets/music/rnb/300x300.jpg`,
       audioSrc: `assets/music/rnb/ES_Modest - Katori Walker.mp3`,
       genre: 'RnB',
-      file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      file:"https://vvagraphics.com/music/rnb/ESModestKatoriWalker.mp3",
     },
   ];
 
@@ -140,13 +143,11 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       private musicInfoSubject = new BehaviorSubject<any>(null);
   public musicInfo$ = this.musicInfoSubject.asObservable();
   
-
 lyricsAnalysis$ = this.lyricsAnalysisSubject.asObservable();
 
 private musicAnalysisSubject = new BehaviorSubject<any>(null);
 musicAnalysis$ = this.musicAnalysisSubject.asObservable();
 currentSong$ = this.currentSongSubject.asObservable();
-
 
 setLyricsAnalysis(analysis: any): void {
   this.lyricsAnalysisSubject.next(analysis);
@@ -164,7 +165,9 @@ setCurrentSong(song: any): void {
   }
 
   constructor(private http: HttpClient) {}
-
+   getSongData(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
   
  setAudioSource(src: string): void {
   this.audioSource$.next(src);
@@ -182,7 +185,6 @@ getCurrentSong(): any {
     return this.songs[this.currentSongIndex];
   }
 
-
  setCurrentSongIndex(index: number): void {
   this.currentSongIndexSubject.next(index);
   this.currentAlbumCoverSubject.next(this.songs[index].albumArt);
@@ -199,6 +201,7 @@ getCurrentSong(): any {
     (response) => {
       console.log('Lyrics Analysis:', response);
       // Save the response to a shared or local service variable
+      this.lyricsAnalysisSubject.next(response);
     },
     (error) => {
       console.error('Error fetching lyrics analysis:', error);
@@ -221,7 +224,6 @@ togglePlayPause(): void {
     this.isPaused.next(!this.isPaused.getValue());
   }
 
-
 playNextSong(): void {
   if (this.hasNextSong()) {
     this.currentSongIndex++;
@@ -229,17 +231,18 @@ playNextSong(): void {
     this.currentSongIndex = 0;
   }
   this.setAudioSource(this.getCurrentSong().audioSrc);
+  
+  
   this.analyzeSong(this.getCurrentSong(), 'lyrics').subscribe(
     (response) => {
       console.log('Lyrics Analysis:', response);
       // Save the response to a shared or local service variable
+      this.lyricsAnalysisSubject.next(response);
     },
     (error) => {
       console.error('Error fetching lyrics analysis:', error);
     }
   );
-  
-  
 }
 
 playPreviousSong(): void {
@@ -253,13 +256,13 @@ playPreviousSong(): void {
     (response) => {
       console.log('Lyrics Analysis:', response);
       // Save the response to a shared or local service variable
+      this.lyricsAnalysisSubject.next(response);
     },
     (error) => {
       console.error('Error fetching lyrics analysis:', error);
     }
   );
   
-
 }
 
 shuffleSongs(): void {
@@ -273,15 +276,14 @@ shuffleSongs(): void {
     (response) => {
       console.log('Lyrics Analysis:', response);
       // Save the response to a shared or local service variable
+      this.lyricsAnalysisSubject.next(response);
     },
     (error) => {
       console.error('Error fetching lyrics analysis:', error);
     }
   );
   
-  
 }
-
 
   hasPreviousSong(): boolean {
     return this.currentSongIndex > 0;
@@ -290,31 +292,19 @@ shuffleSongs(): void {
   hasNextSong(): boolean {
     return this.currentSongIndex < this.songs.length - 1;
   }
-
-
   // SONOTELLER AI API
   ///removed |'music' 
   analyzeSong(song: Song, analysisType: 'lyrics'): Observable<any> {
+  // const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
   const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
 
   const payload = { file: song.file };
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'X-RapidAPI-Key': 'c1286b4f8dmsh5769ead1fbbff45p1735f6jsnaa21412447f5',
+    'X-RapidAPI-Key': environment.apiKey,
     'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
   });
 
   return this.http.post(url, payload, { headers });
 }
-
-//   this.http.post(url, payload, { headers }).subscribe(
-//     (response) => {
-//       console.log(response);
-//     },
-//     (error) => {
-//       console.error('Error fetching data:', error);
-//     }
-//   );
-// }
-
 }

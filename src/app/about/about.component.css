@@ -190,3 +190,13 @@
   width: clamp(2rem, 10vw, 70vw);
   height: clamp(1rem, 5vh, 70vw);
 }
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  min-height: 100vh;
+  width: clamp(2rem, 80vw, 70vw);
+}

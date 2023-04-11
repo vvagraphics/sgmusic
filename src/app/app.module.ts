@@ -36,7 +36,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MiniPlayerComponent } from './mini-player/mini-player.component';
 // import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { LimitedDealCardComponent } from './shared/limited-deal-card/limited-deal-card.component';
+import { LimitedDealCardComponent } from './limited-deal-card/limited-deal-card.component';
+import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis-card.component';
+
 
 
 
@@ -58,6 +60,8 @@ import { LimitedDealCardComponent } from './shared/limited-deal-card/limited-dea
     RegistrationComponent,
     MiniPlayerComponent,
     LimitedDealCardComponent,
+    LyricAnalysisCardComponent,
+    
     // NewsfeedComponent
   ],
   imports: [

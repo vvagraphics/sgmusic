@@ -2,10 +2,10 @@
     <h1 class="title">ABOUT</h1>
 </div>
 <!-- Custom Card -->
-<div class="card-content-wrapper aboutSection" fxLayout="row" fxLayoutAlign="center center">
+<div class="card-content-wrapper aboutSection" fxLayout="row" fxLayoutAlign="center center" >
     <mat-card class="custom-card" *ngIf="selectedCardIndex !== null">
         <mat-card-content class="card-content" style="height: 100vh">
-            <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start" >
                 <ng-container *ngIf="selectedCardIndex !== 2">
                     <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
                         [alt]="section1Cards[selectedCardIndex].altText" />
@@ -14,8 +14,8 @@
                 </ng-container>
 
                 <ng-container *ngIf="selectedCardIndex === 2">
-                    <div fxLayout="row" fxLayoutAlign="start start">
-                        <div class="card-image">
+                    <div fxLayout="row" fxLayoutAlign="start start"  > 
+                        <div class="card-image" >
                             <img class="responsive-image" [src]="section1Cards[selectedCardIndex].imageSrc"
                                 [alt]="section1Cards[selectedCardIndex].altText" />
                         </div>
@@ -45,7 +45,7 @@
             </div>
 
             
-            <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex fxLayout="row" fxLayoutAlign="start start">
                 <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
                     (click)="selectCard(0)">About</button>
                 <button *ngIf="selectedCardIndex !== 1" mat-raised-button color="primary" [style.fontSize.px]="16"

@@ -2,6 +2,11 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } fr
 import { MusicService } from '../shared/music.service';
 import { MatMenu } from '@angular/material/menu';
 import { Subscription } from 'rxjs';
+import { Song } from '../song.interface';
+import { Observable } from 'rxjs';
+import { Analysis } from '../analysis.interface';
+import { LyricAnalysisCardComponent } from '../lyric-analysis-card/lyric-analysis-card.component';
+
 
 
 @Component({
@@ -10,6 +15,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./music.component.css'],
 })
 export class MusicComponent implements OnInit, OnDestroy {
+
+  analysis: Analysis | undefined;
+  
+
+  public musicInfoSubscription: Subscription;
+  public musicInfo: any;
 
    @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef;
       @ViewChild('songTemplate', { read: MatMenu }) songTemplate!: MatMenu;
@@ -22,19 +33,24 @@ export class MusicComponent implements OnInit, OnDestroy {
   minimized: boolean = false;
   selectedGenre = '';
   currentAlbumArt = '';
+  
+
+
+   lyricAnalysis$: Observable<any>;
 
 
   songs: any[] = [];
   filteredSongs: any[] = [];
   genres: string[] = [];
-
+   
+  public songData: any;
   currentSong = this.musicService.getCurrentSong();
+  
 
   // genres = Array.from(new Set(this.songs.map((song) => song.genre)));
 
 
-constructor(private musicService: MusicService) {}
-
+constructor(public musicService: MusicService) {this.musicInfoSubscription = new Subscription();this.lyricAnalysis$ = this.musicService.lyricsAnalysis$; }
 
 
 private currentSongIndexSubscription!: Subscription;
@@ -42,6 +58,26 @@ private currentSongIndexSubscription!: Subscription;
 
 
 ngOnInit(): void {
+   this.subscriptions.add(
+  this.lyricAnalysis$.subscribe((data) => {
+    console.log('Lyric Analysis Data:', data);
+    this.analysis = data;
+  })
+);
+
+  this.musicService.getSongData().subscribe((data: any) => {
+  console.log(data);
+  this.songData = data;
+});
+  this.musicInfoSubscription = this.musicService.musicInfo$.subscribe(
+      (data) => {
+        console.log('Music Info:', data);
+        // Do something with the data
+      },
+      (error) => {
+        console.error('Error fetching music info:', error);
+      }
+    );
 
   this.songs = this.musicService.getSongs();
   this.filteredSongs = this.songs;
@@ -53,6 +89,8 @@ ngOnInit(): void {
       this.currentAlbumArt = currentSong.albumArt;
     })
   );
+  
+
 
 
   const pauseSub = this.subscriptions.add(
@@ -100,6 +138,12 @@ ngOnInit(): void {
 
 //ngOnDestroy
 ngOnDestroy(): void {
+
+   if (this.musicInfoSubscription) {
+      this.musicInfoSubscription.unsubscribe();
+    }
+
+    
   this.subscriptions.unsubscribe();
   this.musicService.removeTimeUpdateListener(this.updateProgressBar.bind(this));
   this.currentSongIndexSubscription.unsubscribe();
@@ -120,9 +164,12 @@ updateSongList(): void {
 
 
 ngAfterViewInit(): void {
-  // this.playSelectedSong();
+  this.playSelectedSong();
   }
 
+
+
+  
   // products.component.ts
 playAudio(): void {
   if (this.paused) {
@@ -131,6 +178,14 @@ playAudio(): void {
     this.audioPlayer.nativeElement.pause();
   }
 }
+
+updateSongAnalysis(): void {
+  this.musicService.getSongData().subscribe((data: any) => {
+    console.log(data);
+    this.songData = data;
+  });
+}
+
 
 toggleMinimize(): void {
         this.minimized = !this.minimized;
@@ -144,24 +199,28 @@ togglePlayPause(): void {
         this.musicService.playNextSong();
         this.currentSong = this.musicService.getCurrentSong();
         this.musicService.setCurrentSong(this.currentSong);
+        this.updateSongAnalysis();
     }
 
     playPreviousSong(): void {
         this.musicService.playPreviousSong();
         this.currentSong = this.musicService.getCurrentSong();
         this.musicService.setCurrentSong(this.currentSong);
+        this.updateSongAnalysis();
     }
 
     shuffleSongs(): void {
         this.musicService.shuffleSongs();
         this.currentSong = this.musicService.getCurrentSong();
         this.musicService.setCurrentSong(this.currentSong);
+        this.updateSongAnalysis();
     }
 
 playSelectedSong(): void {
     this.musicService.setAudioSource(this.currentSong.audioSrc);
   this.musicService.play();
-  this.musicService.setCurrentSong(this.currentSong);    
+  this.musicService.setCurrentSong(this.currentSong); 
+  this.updateSongAnalysis();   
   }
   
 hasPreviousSong(): boolean {
@@ -175,12 +234,17 @@ hasNextSong(): boolean {
 }
 
 private updatePlayPauseState(): void {
-    if (this.paused) {
-      this.audioPlayer.nativeElement.pause();
-    } else {
-      this.audioPlayer.nativeElement.play();
-    }
+  if (!this.audioPlayer) {
+    return;
   }
+
+  if (this.paused) {
+    this.audioPlayer.nativeElement.pause();
+  } else {
+    this.audioPlayer.nativeElement.play();
+  }
+}
+
  
 addToCart(): void {
     console.log('Added to cart');

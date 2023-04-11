@@ -1,0 +1,14 @@
+{
+  "/api": {
+    "target": "https://sonoteller-ai1.p.rapidapi.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "headers": {
+      "x-rapidapi-key": "c1286b4f8dmsh5769ead1fbbff45p1735f6jsnaa21412447f5",
+      "x-rapidapi-host": "sonoteller-ai1.p.rapidapi.com"
+    }
+  }
+}

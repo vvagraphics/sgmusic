@@ -39,6 +39,8 @@ testem.log
 
 # .gitignore
 .env
+/src/environments/environment.ts
+/src/environments/environment.gitmore.ts
 
 # System files
 .DS_Store
