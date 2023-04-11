@@ -46,13 +46,16 @@
 
             
             <div fxFlex fxLayout="row" fxLayoutAlign="start start">
-                <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
-                    (click)="selectCard(0)">About</button>
-                <button *ngIf="selectedCardIndex !== 1" mat-raised-button color="primary" [style.fontSize.px]="16"
-                    (click)="selectCard(1)">Biography</button>
-                <button *ngIf="selectedCardIndex !== 2" mat-raised-button color="primary" [style.fontSize.px]="16"
-                    (click)="selectCard(2)">Contacts</button>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <button *ngIf="selectedCardIndex !== 0" mat-raised-button color="primary" [style.fontSize.px]="16"
+                        (click)="selectCard(0)">About</button>
+                    <button *ngIf="selectedCardIndex !== 1" mat-raised-button color="primary" [style.fontSize.px]="16"
+                        (click)="selectCard(1)">Biography</button>
+                    <button *ngIf="selectedCardIndex !== 2" mat-raised-button color="primary" [style.fontSize.px]="16"
+                        (click)="selectCard(2)">Contacts</button>
+                </div>
             </div>
+
     </mat-card-content>
 </mat-card>
 

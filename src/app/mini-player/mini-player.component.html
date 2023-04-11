@@ -11,6 +11,7 @@
     <div class="player-controls">
         
         <!-- /////GENRE MENU -->
+        
 <button mat-button [matMenuTriggerFor]="genreMenu">Genres<mat-icon>keyboard_arrow_up</mat-icon></button>
 <mat-menu #genreMenu="matMenu" class="menu-panel custom-menu" yPosition="above">
     <button mat-menu-item *ngFor="let genre of genres" [matMenuTriggerFor]="songMenu"

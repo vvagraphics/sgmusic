@@ -10,7 +10,13 @@
 }
 
 .custom-card {
-  /* padding: 0 5rem 5rem 5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* changed to align-items: flex-start */
+  align-content: center;
+  min-height: 100vh;
+  width: clamp(2rem, 80vw, 70vw);
   background-color: transparent;
   box-shadow: none;
   min-height: 100vh;
@@ -20,8 +26,6 @@
 .custom-card button[mat-raised-button] {
   background-color: rgba(20, 54, 66, 0.8);
   color: white;
-  /* width: clamp(2rem, 10vh, 70vw);
-  height: clamp(2rem, 10vw, 70vw); */
   width: clamp(2rem, 10vw, 70vw);
   height: clamp(2rem, 10vh, 70vw);
   border-radius: 8px;
@@ -37,18 +41,20 @@
     border-radius: 8px;
     font-weight: bold;
     transition: 0.3s;
+    margin-right: 1rem;
   }
 }
 @media (orientation: landscape) {
   .custom-card button[mat-raised-button] {
     background-color: rgba(20, 54, 66, 0.8);
     color: white;
-    margin: 0 5vw;
+    /* margin: 0 5vw; */
     width: clamp(2rem, 10vw, 70vw);
     height: clamp(2rem, 10vh, 70vw);
     border-radius: 8px;
     font-weight: bold;
     transition: 0.3s;
+    margin-right: 1rem;
   }
 }
 
@@ -199,4 +205,20 @@
   align-content: center;
   min-height: 100vh;
   width: clamp(2rem, 80vw, 70vw);
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  min-height: 100vh;
+  width: clamp(2rem, 80vw, 70vw);
+}
+
+.card-content div[fxLayout="row"][fxLayoutAlign="start start"] {
+  justify-content: flex-start;
+}
+button {
+  margin-left: 0;
 }
