@@ -301,10 +301,29 @@ shuffleSongs(): void {
   const payload = { file: song.file };
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
+<<<<<<< HEAD
     'X-RapidAPI-Key': environment.apiKey,
+=======
+    'X-RapidAPI-Key': '',
+>>>>>>> 9596df58fb33b8aee2426b797cac7be9b312e514
     'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
   });
 
   return this.http.post(url, payload, { headers });
 }
+<<<<<<< HEAD
 }
+=======
+
+//   this.http.post(url, payload, { headers }).subscribe(
+//     (response) => {
+//       console.log(response);
+//     },
+//     (error) => {
+//       console.error('Error fetching data:', error);
+//     }
+//   );
+// }
+
+}
+>>>>>>> 9596df58fb33b8aee2426b797cac7be9b312e514
