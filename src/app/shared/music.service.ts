@@ -4,6 +4,8 @@ import { Song } from '../song.interface';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { delay } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +38,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: 'assets/music/dancehall/Crown on the Dance floor.mp3',
       genre: 'Dancehall',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song1-lyrics-analysis.json',
     },
         {
       title: 'Intergalactic Ride',
@@ -45,6 +48,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: 'assets/music/hiphop/Intergalactic Ride.mp3',
       genre: 'HipHop',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song2-lyrics-analysis.json',
     },
         {
       title: 'Throne of Words',
@@ -54,6 +58,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: 'assets/music/mixtape/Throne of Words.mp3',
       genre: 'Mixtape',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song3-lyrics-analysis.json',
     },
         {
       title: 'Tears of Salvation - Instrumental',
@@ -63,6 +68,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: 'assets/music/rock/Tears of Salvation - Instrumental.mp3',
       genre: 'Rock',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song4-lyrics-analysis.json',
     },
         {
       title: 'ES_Might as Well RocknRoll - TAGE',
@@ -72,6 +78,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: 'assets/music/rock/ES_Might as Well RocknRoll - TAGE.mp3',
       genre: 'Rock',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song5-lyrics-analysis.json',
     },
     {
       title: `ES_Bo's Lullaby - John B. Lund`,
@@ -81,6 +88,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/asmr/ES_Bo's Lullaby - John B. Lund.mp3`,
       genre: 'ASMR',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song6-lyrics-analysis.json',
     },
         {
       title: `ES_Right Now (Call On Me) - Thyra`,
@@ -90,6 +98,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/country/ES_Right Now (Call On Me) - Thyra.mp3`,
       genre: 'Country',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song7-lyrics-analysis.json',
     },
     {
       title: `ES_Don't Play Me - Filthy The Kid`,
@@ -99,6 +108,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/korean/ES_Don't Play Me - Filthy The Kid.mp3`,
       genre: 'Korean',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song8-lyrics-analysis.json',
     },
     {
       title: `ES_Ana - Feras Charestan`,
@@ -108,6 +118,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/middle east/ES_Ana - Feras Charestan.mp3`,
       genre: 'MiddleEast',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song9-lyrics-analysis.json',
     },
     {
       title: `ES_Hokkaido - Saira Ridley`,
@@ -117,6 +128,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/east/ES_Hokkaido - Saira Ridley.mp3`,
       genre: 'East',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song10-lyrics-analysis.json',
     },
     {
       title: `ES_Sunday Morning Sermon - Duke Herrington`,
@@ -126,6 +138,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/gospel/ES_Sunday Morning Sermon - Duke Herrington.mp3`,
       genre: 'Gospel',
       file:"https://vvagraphics.com/music/rock/ESMightas-WellRocknRoll-TAGE.mp3",
+      analysisFile: 'assets/mock-data/song11-lyrics-analysis.json',
     },
     {
       title: `ES_Modest - Katori Walker`,
@@ -135,6 +148,7 @@ currentAlbumCover$ = this.currentAlbumCoverSubject.asObservable();
       audioSrc: `assets/music/rnb/ES_Modest - Katori Walker.mp3`,
       genre: 'RnB',
       file:"https://vvagraphics.com/music/rnb/ESModestKatoriWalker.mp3",
+      analysisFile: 'assets/mock-data/song12-lyrics-analysis.json',
     },
   ];
 
@@ -296,15 +310,30 @@ shuffleSongs(): void {
   ///removed |'music' 
   analyzeSong(song: Song, analysisType: 'lyrics'): Observable<any> {
   // const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
-  const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
+  // const url = `https://sonoteller-ai1.p.rapidapi.com/${analysisType}`;
+  // const mockDataPath = 'assets/mock-data/lyrics-analysis.json';
+  const mockDataPath = song.analysisFile;
 
-  const payload = { file: song.file };
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'X-RapidAPI-Key': environment.apiKey,
-    'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
-  });
-
-  return this.http.post(url, payload, { headers });
+  // const payload = { file: song.file };
+  // const headers = new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   'X-RapidAPI-Key': environment.apiKey,
+  //   'X-RapidAPI-Host': 'sonoteller-ai1.p.rapidapi.com',
+  // });
+return new Observable((observer) => {
+    fetch(mockDataPath)
+      .then((response) => response.json())
+      .then((data) => {
+        observer.next(data);
+        observer.complete();
+      })
+      .catch((error) => observer.error(error));
+  }).pipe(
+    // Simulate network latency (optional)
+    delay(1000)
+  );
 }
 }
+//   return this.http.post(url, payload, { headers });
+// }
+// }

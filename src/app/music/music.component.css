@@ -24,7 +24,10 @@
   padding-top: clamp(2rem, 3vw, 70vw);
   font-size: clamp(2rem, 10vw, 70vw);
 }
-
+.warning {
+  color: #bb0000;
+  background-color: #a0a0a0;
+}
 .album-art {
   width: 100%;
   max-width: 300px;

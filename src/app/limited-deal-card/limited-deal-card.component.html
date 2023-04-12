@@ -3,10 +3,12 @@
         [style.margin.px]="16">
         <div class="section-container5">
             <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
+                <div *ngIf="card.isLimitedDeal" ></div>
                 <mat-card class="custom-card">
-                    <a [routerLink]="['/store']" [fragment]="card.destination">
+                    <a [routerLink]="['/store']"(click)="scrollToFragment(card.destination)" [fragment]="card.destination" >
                         <img [src]="card.imageSrc" [alt]="card.altText" class="card-image" />
-                        <div class="card-text-content">
+                        <div class="card-text-content" class="limited-deal-badge">
+                            <h3>DEALS</h3>
                             <h2 class="card-dealTitle" [ngClass]="{'limited-deal-dealTitle': card.isLimitedDeal}">{{
                                 card.dealTitle }}</h2>
                             <h2 class="card-title" [ngClass]="{'limited-deal-title': card.isLimitedDeal}">{{ card.title

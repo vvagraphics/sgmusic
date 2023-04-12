@@ -1,0 +1,46 @@
+{
+  "summary": "The lyrics suggest a desire to take action, with urgency and intensity. The exact purpose is not explicit, but there is an implication of a need for change or escape. The overall emotion is one of restlessness and determination.",
+  "explicit": "No",
+  "language": "English",
+  "keywords": [
+    "action",
+    "urgency",
+    "intensity",
+    "change",
+    "restlessness"
+  ],
+  "moods": [
+    {
+      "determined": 80
+    },
+    {
+      "restless": 75
+    },
+    {
+      "urgent": 70
+    },
+    {
+      "intense": 60
+    },
+    {
+      "hopeful": 50
+    }
+  ],
+  "themes": [
+    {
+      "personal growth": 60
+    },
+    {
+      "freedom": 50
+    },
+    {
+      "self-discovery": 40
+    },
+    {
+      "adventure": 30
+    },
+    {
+      "ambition": 20
+    }
+  ]
+}

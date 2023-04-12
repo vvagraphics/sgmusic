@@ -1,0 +1,46 @@
+{
+  "summary": "The lyrics describe an appreciation for a confident and modest person who possesses a unique and attractive quality. The lyrics also acknowledge the individual 's independence and success, while highlighting their subdued nature.",
+  "explicit": "No",
+  "language": "English",
+  "keywords": [
+    "modest",
+    "independent",
+    "confident",
+    "unique",
+    "success"
+  ],
+  "moods": [
+    {
+      "Confidence": 80
+    },
+    {
+      "Appreciation": 70
+    },
+    {
+      "Happiness": 50
+    },
+    {
+      "Admiration": 40
+    },
+    {
+      "Cool": 30
+    }
+  ],
+  "themes": [
+    {
+      "Individuality": 80
+    },
+    {
+      "Modesty": 70
+    },
+    {
+      "Success": 50
+    },
+    {
+      "Uniqueness": 40
+    },
+    {
+      "Confidence": 30
+    }
+  ]
+}

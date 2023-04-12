@@ -5,7 +5,7 @@
   /* padding: 0 16px; */
   background-color: rgba(0, 0, 0, 0.4);
   color: rgb(255, 255, 255);
-  height: 75px;
+  height: 50px;
 }
 
 .mini-player.minimized {
@@ -44,6 +44,21 @@
   display: flex;
   flex-direction: column;
   font-size: 14px;
+}
+.song-details h4 {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+.song-details h5 {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  color: rgb(182, 182, 182);
 }
 
 .player-controls {

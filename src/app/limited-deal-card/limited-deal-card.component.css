@@ -1,17 +1,29 @@
+/* .section5{
+  min-height: 100vh;
+} */
 .custom-card {
   width: 95%;
   border-radius: 2.5%;
   padding: 1rem;
   background-color: #fff;
-  margin: 1rem auto;
+  margin: 0 auto;
+  padding: 0;
   overflow: hidden;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
 
 .custom-card:hover {
-  transform: translateY(-0.5rem);
+  border-radius: 2.5%;
+  transform: scale(1.05);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.6s ease-in-out;
+}
+.card-image:hover {
+  transform: scale(1);
+  height: 100%;
+  /* height: fit-content; */
+  transition: transform 0.8s ease-in-out;
 }
 
 .card-image {
@@ -20,8 +32,29 @@
   object-fit: cover;
   border-top-left-radius: 2.5%;
   border-top-right-radius: 2.5%;
+  transition: height 0.6s ease-in-out;
 }
-
+.custom-card:hover .card-image {
+  height: 50vh;
+  transition: height 0.6s ease-in-out;
+}
+.limited-deal-title {
+  color: #8000ff;
+  font-size: clamp(1rem, 1.5rem, 70vw);
+  font-weight: bold;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
+.card-title,
+.card-description,
+.card-dealTitle {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  color: #143642;
+}
 .card-content {
   padding: 1rem;
   text-align: center;
@@ -31,7 +64,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #143642;
 }
 
 .card-description {
@@ -59,3 +92,25 @@
   color: #333;
   cursor: pointer;
 }
+.limited-deal-badge h3 {
+  position: absolute;
+  top: 1.5rem;
+  left: 0.1rem;
+  margin-left: 0;
+  background-color: #ff4d4d;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+.limited-deal-badge:hover {
+  z-index: 1;
+}
+
+/* .card-wrapper {
+  position: relative;
+} */

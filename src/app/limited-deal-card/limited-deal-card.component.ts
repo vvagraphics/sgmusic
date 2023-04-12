@@ -155,6 +155,14 @@ storeEndTime() {
   localStorage.setItem('limitedDealIndex', this.limitedDealIndex.toString());
 }
 
+scrollToFragment(fragment: string): void {
+  const element = document.getElementById(fragment);
+
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 //images for each section
 section1Cards = [
   {

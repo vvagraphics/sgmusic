@@ -1,0 +1,46 @@
+{
+  "summary": "The lyrics describe a feeling of uncertainty and a search for meaning. The artist wakes up with a different feeling and expresses their longing for something more than what they currently have. They acknowledge the possibility of the world ending but are tired of pretending and want to find their true purpose. The overall tone is energetic and upbeat, encouraging the listener to rock and roll.",
+  "explicit": "No",
+  "language": "English",
+  "keywords": [
+    "uncertainty",
+    "search for meaning",
+    "energetic",
+    "upbeat",
+    "rock and roll"
+  ],
+  "moods": [
+    {
+      "uncertainty": 70
+    },
+    {
+      "hopeful": 60
+    },
+    {
+      "energetic": 80
+    },
+    {
+      "yearning": 50
+    },
+    {
+      "upbeat": 75
+    }
+  ],
+  "themes": [
+    {
+      "self-discovery": 70
+    },
+    {
+      "existentialism": 60
+    },
+    {
+      "music": 80
+    },
+    {
+      "hope": 50
+    },
+    {
+      "uncertainty": 75
+    }
+  ]
+}

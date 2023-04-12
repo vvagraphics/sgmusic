@@ -6,4 +6,5 @@ export interface Song {
   audioSrc: string;
   genre: string;
   file: string;
+  analysisFile:string;
 }
