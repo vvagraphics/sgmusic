@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+$sgmusic-primary: mat-palette($mat-indigo, 500);
+$sgmusic-accent: mat-palette($mat-cyan, 600);
+$sgmusic-warn: mat-palette($mat-red, 500);
+$sgmusic-theme: mat-light-theme(
+  $sgmusic-primary,
+  $sgmusic-accent,
+  $sgmusic-warn
+);

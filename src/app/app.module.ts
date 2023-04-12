@@ -38,6 +38,7 @@ import { MiniPlayerComponent } from './mini-player/mini-player.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { LimitedDealCardComponent } from './limited-deal-card/limited-deal-card.component';
 import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis-card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -61,6 +62,7 @@ import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis
     MiniPlayerComponent,
     LimitedDealCardComponent,
     LyricAnalysisCardComponent,
+    DashboardComponent,
     
     // NewsfeedComponent
   ],
