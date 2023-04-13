@@ -7,7 +7,7 @@ import { StoreComponent } from './store/store.component';
 import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
-import { ProfileComponent } from './profile/profile.component';
+// import { ProfileComponent } from './profile/profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './auth.guard';
@@ -29,10 +29,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  // { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

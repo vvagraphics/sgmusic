@@ -8,8 +8,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  updatedDisplayName: string='';
+  updatedDisplayName: string = '';
   userProfile: any;
+  profilePicture: File | null = null;
 
   constructor(private userService: UserService) {}
 
@@ -24,10 +25,17 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
+//OTHER OPTION  
+  // uploadProfilePicture(event: ChangeEvent<HTMLInputElement>): void {
+    uploadProfilePicture(event: any): void {
+    this.profilePicture = event.target.files[0];
+  }
+
   updateProfile(): void {
     const userId = 1; // Replace this with the actual user ID
     const updatedProfileData = {
       display_name: this.updatedDisplayName,
+      profile_picture: this.profilePicture,
       // Add other updated user profile fields here
     };
 
@@ -48,5 +56,4 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
-
 }

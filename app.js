@@ -130,3 +130,21 @@ app.get('/verify-email', (req, res) => {
     }
   );
 });
+
+app.get('/profile/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  connection.query('SELECT * FROM users WHERE id = ?', [userId], (error, results) => {
+    if (error) {
+      console.error('Error fetching user profile:', error);
+      res.status(500).send({ error: 'Error fetching user profile', details: error });
+    } else {
+      const user = results[0];
+      if (!user) {
+        res.status(404).send({ message: 'User not found' });
+      } else {
+        res.status(200).send({ user });
+      }
+    }
+  });
+});

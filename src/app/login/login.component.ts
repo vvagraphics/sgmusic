@@ -23,33 +23,38 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const { email, password, rememberMe } = this.loginForm.value;
-      const isLogin = this.loginForm.value.action === 'login';
+  if (this.loginForm.valid) {
+    const { email, password, rememberMe } = this.loginForm.value;
+    const isLogin = this.loginForm.value.action === 'login';
 
-      const apiUrl = `${environment.apiUrl}/${isLogin ? 'login' : 'signup'}`;
+    const apiUrl = `${environment.apiUrl}/${isLogin ? 'login' : 'signup'}`;
 
-      const body = { email, password };
+    const body = { email, password };
 
-      this.http.post(apiUrl, body).subscribe(
-        (response) => {
-          console.log(response);
+    this.http.post(apiUrl, body).subscribe(
+      (response: any) => {
+        console.log(response);
 
-          if (isLogin) {
-            this.authService.isAuthenticated();
-            this.router.navigate(['/dashboard']);
-          } else {
-            // Redirect to the login page after successful signup
-            this.router.navigate(['/login']);
-          }
-        },
-        (error) => {
-          console.error(error);
-          // Handle errors during login or signup
+        if (isLogin) {
+          // Store the token in the local storage
+          localStorage.setItem('authToken', response.user.token);
+
+          this.authService.isAuthenticated();
+          this.router.navigate(['/profile']);
+        } else {
+          // Redirect to the login page after successful signup
+          this.router.navigate(['/login']);
         }
-      );
-    }
+      },
+      (error) => {
+        console.error(error);
+        // Handle errors during login or signup
+      }
+    );
   }
+}
+
+
 
   switchAction() {
     const newAction = this.loginForm.value.action === 'login' ? 'signup' : 'login';

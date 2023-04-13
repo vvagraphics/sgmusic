@@ -7,5 +7,9 @@
     <label for="new-display-name">Display Name:</label>
     <input [(ngModel)]="updatedDisplayName" id="new-display-name" name="newDisplayName" />
     <!-- Add other input fields for other user profile information -->
+    <div>
+        <label for="profile-picture">Profile Picture:</label>
+        <input type="file" id="profile-picture" (change)="uploadProfilePicture($event)" />
+    </div>
     <button type="submit">Update Profile</button>
 </form>
