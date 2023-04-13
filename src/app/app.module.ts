@@ -40,6 +40,7 @@ import { LimitedDealCardComponent } from './limited-deal-card/limited-deal-card.
 import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -65,6 +66,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     LyricAnalysisCardComponent,
     DashboardComponent,
     VerifyEmailComponent,
+    UserProfileComponent,
     
     // NewsfeedComponent
   ],

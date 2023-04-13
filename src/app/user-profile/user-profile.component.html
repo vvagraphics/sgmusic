@@ -1,0 +1,11 @@
+<div *ngIf="userProfile">
+    <h1>{{ userProfile.display_name }}</h1>
+    <p>{{ userProfile.email }}</p>
+    <!-- Add other user profile fields here -->
+</div>
+<form (ngSubmit)="updateProfile()">
+    <label for="new-display-name">Display Name:</label>
+    <input [(ngModel)]="updatedDisplayName" id="new-display-name" name="newDisplayName" />
+    <!-- Add other input fields for other user profile information -->
+    <button type="submit">Update Profile</button>
+</form>

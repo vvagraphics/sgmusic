@@ -1,10 +1,9 @@
-
 <div>
   <mat-toolbar class="custom-toolbar">
     <div class="toolbar-content">
       <div class="logo">
-        <!-- <a href="/"><img src="assets/image/sgentmusic4.png" alt="Logo" class="logo-img" /></a> -->
-        <a [routerLink]="['/']" fragment="home"><img src="assets/image/sgentmusic4.png" alt="Logo" class="logo-img" /></a>
+        <a [routerLink]="['/']" fragment="home"><img src="assets/image/sgentmusic4.png" alt="Logo"
+            class="logo-img" /></a>
       </div>
 
       <span class="menu-container" fxFlex fxLayoutAlign="end center" fxHide.lt-md>
@@ -26,18 +25,23 @@
   </div>
 </div>
 
-<!-- Rest of the code remains the same -->
-
-
 <ng-template #menuItems>
-  <button mat-raised-button color="primary" routerLink="/" >Home</button>
-  <button mat-raised-button color="primary" routerLink="/about" >About</button>
-  <button mat-raised-button color="primary" routerLink="/music" >Music</button>
-  <button mat-raised-button color="primary" routerLink="/store" >Store</button>
-  <button mat-raised-button color="primary" routerLink="/news" >News</button>
-  <button mat-raised-button color="primary" routerLink="/login" >Login</button>
-  <button mat-raised-button color="primary" routerLink="/cart" >Cart</button>
-  <button mat-raised-button color="primary" routerLink="/profile" >Profile</button>
+  <button *ngIf="!isHomePage" mat-raised-button color="primary" routerLink="/">Home</button>
+
+  <button mat-raised-button color="primary" routerLink="/about" routerLinkActive="active-link"
+    #aboutRouterLinkActive="routerLinkActive">About</button>
+  <button mat-raised-button color="primary" routerLink="/music" routerLinkActive="active-link"
+    #musicRouterLinkActive="routerLinkActive">Music</button>
+  <button mat-raised-button color="primary" routerLink="/store" routerLinkActive="active-link"
+    #storeRouterLinkActive="routerLinkActive">Store</button>
+  <button mat-raised-button color="primary" routerLink="/news" routerLinkActive="active-link"
+    #newsRouterLinkActive="routerLinkActive">News</button>
+  <button *ngIf="!isLoggedIn" mat-raised-button color="primary" routerLink="/login" routerLinkActive="active-link"
+    #loginRouterLinkActive="routerLinkActive">Login</button>
+  <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/cart" routerLinkActive="active-link"
+    #cartRouterLinkActive="routerLinkActive">Cart</button>
+  <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/user-profile" routerLinkActive="active-link"
+    #profileRouterLinkActive="routerLinkActive">Profile</button>
 </ng-template>
 
 <div class="page-container">

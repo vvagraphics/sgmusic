@@ -128,3 +128,6 @@ app-mini-player {
   right: 0;
   z-index: 1000;
 }
+/* .active-link {
+  display: none;
+} */
