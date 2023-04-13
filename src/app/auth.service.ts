@@ -17,9 +17,13 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials);
   }
-  isAuthenticated(): boolean {
-  const token = localStorage.getItem('authToken');
-  return !!token;
-}
 
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('authToken');
+    return !!token;
+  }
+
+  verifyEmail(token: string): Observable<{ message: string }> {
+    return this.http.get<{ message: string }>(`${this.apiUrl}/verify-email?token=${token}`);
+  }
 }

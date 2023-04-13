@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './auth.guard';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

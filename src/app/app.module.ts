@@ -39,6 +39,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LimitedDealCardComponent } from './limited-deal-card/limited-deal-card.component';
 import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 
@@ -63,6 +64,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LimitedDealCardComponent,
     LyricAnalysisCardComponent,
     DashboardComponent,
+    VerifyEmailComponent,
     
     // NewsfeedComponent
   ],

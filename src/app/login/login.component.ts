@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,41 +13,43 @@ import { environment } from '../../environments/environment';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
-   this.loginForm = this.formBuilder.group({
-  email: ['', [Validators.required, Validators.email]],
-  password: ['', [Validators.required]],
-  confirmPassword: ['', [Validators.required]], // Add required validator
-  displayName: ['', [Validators.required]], // Add required validator
-  rememberMe: [false],
-  action: ['login'] // Add the action field
-});
-
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      rememberMe: [false],
+      action: ['login']
+    });
   }
 
-onSubmit() {
-  if (this.loginForm.valid) {
-    const { email, password, displayName } = this.loginForm.value;
-    const isLogin = this.loginForm.value.action === 'login';
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { email, password, rememberMe } = this.loginForm.value;
+      const isLogin = this.loginForm.value.action === 'login';
 
-    const apiUrl = `${environment.apiUrl}/${isLogin ? 'login' : 'signup'}`;
+      const apiUrl = `${environment.apiUrl}/${isLogin ? 'login' : 'signup'}`;
 
-    const body = isLogin ? { email, password } : { email, password, displayName };
+      const body = { email, password };
 
-    this.http.post(apiUrl, body).subscribe(
-      (response) => {
-        console.log(response);
-        
-        // Handle successful login or signup
-      },
-      (error) => {
-        console.error(error);
-        // Handle errors during login or signup
-      }
-    );
+      this.http.post(apiUrl, body).subscribe(
+        (response) => {
+          console.log(response);
+
+          if (isLogin) {
+            this.authService.isAuthenticated();
+            this.router.navigate(['/dashboard']);
+          } else {
+            // Redirect to the login page after successful signup
+            this.router.navigate(['/login']);
+          }
+        },
+        (error) => {
+          console.error(error);
+          // Handle errors during login or signup
+        }
+      );
+    }
   }
-}
-
 
   switchAction() {
     const newAction = this.loginForm.value.action === 'login' ? 'signup' : 'login';
