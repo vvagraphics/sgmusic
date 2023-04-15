@@ -33,9 +33,7 @@ countdownDisplay: string = '';
 resetTimer: number = 0;
 
   timer: any;
-
-
-   news: any[] = [];
+  news: any[] = [];
 
   isXsScreen: boolean = false;
   isSmScreen: boolean = false;
@@ -44,8 +42,6 @@ resetTimer: number = 0;
   descriptionLength: number = 100;
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private route: ActivatedRoute, private newsService: NewsService, private ref: ChangeDetectorRef) { }
-
-
 
 ngOnInit() {
   const storedEndTime = parseInt(localStorage.getItem('limitedDealEndTime') ?? '0', 10);
@@ -108,9 +104,6 @@ ngOnInit() {
     } else {
       this.descriptionLength = 790;
     }
-  
-
-    
 }
 
 navigateToComponent(card: Card) {
@@ -135,8 +128,6 @@ navigateToComponent(card: Card) {
 navigateTo(destination: string): void {
   this.router.navigate([destination], { relativeTo: this.route });
 }
-
-
 //functions
 getRowHeight(): string {
   if (this.isXsScreen || this.isSmScreen) {

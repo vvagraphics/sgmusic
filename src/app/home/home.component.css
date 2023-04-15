@@ -251,7 +251,7 @@ button[mat-raised-button]:hover {
   color: #143642;
 }
 
-.newsfeed {
+/* .newsfeed {
   width: 95%;
   border-radius: 2.5%;
   padding: 0;
@@ -259,13 +259,31 @@ button[mat-raised-button]:hover {
   margin: 0;
   overflow: hidden;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+  height: fit-content;
+} */
+
+/* WIDTH 95% TO SHOW BOX SHADOW */
+/* ROWHEIGHT IN HTML FOR LENGHT OF CARD */
+.newsfeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 95%;
+  border-radius: 2.5%;
+  padding: 0;
+  background-color: transparent;
+  margin: 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  height: clamp(0.1rem, 70vw, 90vw);
 }
 .newsfeed:hover {
   border-radius: 2.5%;
   padding: 0;
   background-color: transparent;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  margin: 0;
+  margin: 0 auto;
   overflow: hidden;
   text-decoration: none;
   border: #fff;
@@ -283,6 +301,7 @@ button[mat-raised-button]:hover {
   text-decoration: none;
   transition: all 0.1s ease-in-out;
   transform: translateY(0.5rem);
+  height: fit-content;
 }
 /* .newsfeed:hover h3 {
 
@@ -301,7 +320,7 @@ button[mat-raised-button]:hover {
 .newsfeed h3 {
   padding: 1rem;
   font-size: 24px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   color: #143642;
 }
 
@@ -330,6 +349,16 @@ button[mat-raised-button]:hover {
   margin: 0;
   overflow: hidden;
 }
+.section2 .custom-card {
+  display: flex;
+  background-color: #fbfbfb;
+  width: 95%;
+  height: fit-content;
+  border-radius: 2.5%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
 
 .section2 .limited-deal-title {
   color: #8000ff;
@@ -345,25 +374,25 @@ button[mat-raised-button]:hover {
 .card-dealTitle,
 .limited-deal-dealTitle,
 .limited-deal-title {
-  /* padding: 0; */
   margin: 0 auto;
-  /* text-align: center; */
 }
+
 /* .section2 .card-wrapper {
   background-color: #8000ff;
-  height: fit-content;
+  max-width: calc(50%-32px);
 } */
+
 @media (min-width: 1280px) {
   .newsfeed {
     width: 400px;
-    height: 500px;
+    height: clamp(0.1rem, 70vw, 90vw);
   }
 }
 
 @media (min-width: 1600px) {
   .newsfeed {
-    width: 500px;
-    height: 600px;
+    width: 95%;
+    height: clamp(0.1rem, 70vh, 90vw);
   }
 }
 
@@ -372,8 +401,8 @@ button[mat-raised-button]:hover {
     padding: 0rem;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
     width: 95%;
-    height: 95%;
-    font-size: clamp(0.1rem, 0.8rem, 70vw);
+    height: clamp(0.1rem, 60vh, 90vh);
+    /* font-size: clamp(0.1rem, 2vw, 70vw); */
     margin-bottom: 0 auto;
   }
   .newsfeed:hover {
@@ -389,14 +418,22 @@ button[mat-raised-button]:hover {
     transition: all 0.2s ease-in-out;
   }
   .newsfeed h3 {
-    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    /* margin: 0 auto; */
     color: #143642;
     border-top: 0;
+    /* font-size: clamp(0.1rem, 2.5vw, 70vw); */
+    font-weight: bold;
+    letter-spacing: 0.1em;
   }
 
   .newsfeed p {
+    padding-top: 0;
+    padding-bottom: 0;
     color: #143642;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* font-size: clamp(0.1rem, 2vw, 70vw); */
   }
   /* .newsfeed span {
     
@@ -430,7 +467,7 @@ a:active {
   flex-wrap: wrap;
   justify-content: center;
   height: fit-content;
-  padding: clamp(2rem, 10vw, 70vw);
+  /* padding: clamp(2rem, 10vw, 70vw); */
 }
 
 .card-wrapper {
