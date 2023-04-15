@@ -6,14 +6,15 @@ import { MusicComponent } from './music/music.component';
 import { StoreComponent } from './store/store.component';
 import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
 // import { ProfileComponent } from './profile/profile.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './auth.guard';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 
@@ -28,10 +29,11 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: ProductComponent },
   // { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
 ];
 

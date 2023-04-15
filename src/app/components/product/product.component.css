@@ -1,0 +1,118 @@
+/* .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.product-card {
+  width: 300px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #757575;
+  flex-grow: 1;
+}
+
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #424242;
+}
+
+.add-to-cart-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #1565c0;
+} */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 70px; /* Add padding from the top similar to the cart component */
+}
+
+.product-card {
+  width: 300px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box-shadow */
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333; /* Update color */
+  margin-bottom: 0.5rem;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #777; /* Update color */
+  flex-grow: 1;
+}
+
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #333; /* Update color */
+}
+
+.add-to-cart-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #1565c0;
+}

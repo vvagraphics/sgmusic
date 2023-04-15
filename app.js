@@ -103,12 +103,20 @@ app.post('/login', async (req, res) => {
                 if (!match) {
                     res.status(401).send({ message: 'Invalid email or password' });
                 } else {
-                    res.status(200).send({ message: 'Login successful', user });
+                    // Create a new object containing only the necessary user properties
+                    const userResponse = {
+                        id: user.id,
+                        displayName: user.display_name,
+                        email: user.email,
+                        isVerified: user.is_verified
+                    };
+                    res.status(200).send({ message: 'Login successful', user: userResponse });
                 }
             }
         }
     });
 });
+
 
 
 

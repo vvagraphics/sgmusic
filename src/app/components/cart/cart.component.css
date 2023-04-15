@@ -1,0 +1,161 @@
+/* Add this to your global styles.css or main component's css file */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Add this to your menu's CSS */
+.menu {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+
+.cart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Make sure the wrapper takes the full viewport height */
+  padding-top: 60px; /* Adjust this value based on the height of your header/menu */
+}
+
+.cart-container {
+  margin-top: 60px; /* Adjust according to your menu's height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details {
+  flex-grow: 1;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.clear-cart-btn {
+  background-color: #c0392b;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.checkout-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.checkout-btn:hover,
+.clear-cart-btn:hover {
+  background-color: #1565c0;
+}
+/* cart.component.css */
+/* ... */
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity input {
+  width: 50px;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+.remove-btn {
+  background-color: #c0392b; /* Red */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+/* Styles for the plus and minus buttons */
+.qty-btn {
+  background-color: #1565c0;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+  .cart-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product-quantity,
+  .remove-btn-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+  .qty-btn {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}

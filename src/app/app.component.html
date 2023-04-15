@@ -23,24 +23,31 @@
   <div *ngIf="menuOpen" class="menu mobile-menu" fxShow.lt-md>
     <ng-container *ngTemplateOutlet="menuItems"></ng-container>
   </div>
-</div>
-
-<ng-template #menuItems>
-  <button *ngIf="!isHomePage" mat-raised-button color="primary" routerLink="/">Home</button>
-
-  <button mat-raised-button color="primary" routerLink="/about" routerLinkActive="active-link"
-    #aboutRouterLinkActive="routerLinkActive">About</button>
-  <button mat-raised-button color="primary" routerLink="/music" routerLinkActive="active-link"
-    #musicRouterLinkActive="routerLinkActive">Music</button>
-  <button mat-raised-button color="primary" routerLink="/store" routerLinkActive="active-link"
-    #storeRouterLinkActive="routerLinkActive">Store</button>
-  <button mat-raised-button color="primary" routerLink="/news" routerLinkActive="active-link"
-    #newsRouterLinkActive="routerLinkActive">News</button>
   
-  <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/cart" routerLinkActive="active-link"
-    #cartRouterLinkActive="routerLinkActive">Cart</button>
-  <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/user-profile" routerLinkActive="active-link"
-    #profileRouterLinkActive="routerLinkActive">Profile</button>
+
+
+  
+  <ng-template #menuItems>
+    <div class="greeting">
+      Welcome{{ userDisplayName ? ', ' + userDisplayName : '' }}
+    </div>
+
+  
+    <button *ngIf="!isHomePage" mat-raised-button color="primary" routerLink="/">Home</button>
+  
+    <button mat-raised-button color="primary" routerLink="/about" routerLinkActive="active-link"
+      #aboutRouterLinkActive="routerLinkActive">About</button>
+    <button mat-raised-button color="primary" routerLink="/music" routerLinkActive="active-link"
+      #musicRouterLinkActive="routerLinkActive">Music</button>
+    <button mat-raised-button color="primary" routerLink="/store" routerLinkActive="active-link"
+      #storeRouterLinkActive="routerLinkActive">Store</button>
+    <button mat-raised-button color="primary" routerLink="/news" routerLinkActive="active-link"
+      #newsRouterLinkActive="routerLinkActive">News</button>
+  
+    <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/cart" routerLinkActive="active-link"
+      #cartRouterLinkActive="routerLinkActive">Cart</button>
+    <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/profile" routerLinkActive="active-link"
+      #profileRouterLinkActive="routerLinkActive">Profile</button>
     <ng-container *ngIf="!isLoggedIn; else logoutButton">
       <button mat-raised-button color="primary" routerLink="/login" routerLinkActive="active-link"
         #loginRouterLinkActive="routerLinkActive">Login</button>
@@ -48,11 +55,16 @@
     <ng-template #logoutButton>
       <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </ng-template>
-</ng-template>
+  </ng-template>
+  
+  <div class="page-container">
+    <router-outlet></router-outlet>
+    <app-mini-player></app-mini-player>
+  </div>
+  
+  <!-- //ADD TRENDING LIST OR POPULAR LIST HERE -->
+  <app-product></app-product>
+  
+  <!-- <app-cart></app-cart> -->
 
-<div class="page-container">
-  <router-outlet></router-outlet>
-  <app-mini-player></app-mini-player>
-</div>
-
-<app-footer></app-footer>
+  <app-footer></app-footer>

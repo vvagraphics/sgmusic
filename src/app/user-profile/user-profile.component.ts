@@ -11,6 +11,8 @@ export class UserProfileComponent implements OnInit {
   updatedDisplayName: string = '';
   userProfile: any;
   profilePicture: File | null = null;
+  updatedBio: string = '';
+
 
   constructor(private userService: UserService) {}
 
@@ -31,11 +33,13 @@ export class UserProfileComponent implements OnInit {
     this.profilePicture = event.target.files[0];
   }
 
+  ////USER PROFILE SECTIONS
   updateProfile(): void {
     const userId = 1; // Replace this with the actual user ID
     const updatedProfileData = {
       display_name: this.updatedDisplayName,
       profile_picture: this.profilePicture,
+      bio: this.updatedBio,
       // Add other updated user profile fields here
     };
 

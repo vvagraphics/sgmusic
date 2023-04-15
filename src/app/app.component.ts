@@ -3,6 +3,7 @@ import { Router, NavigationEnd, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,10 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   isHomePage = true;
   resizeListener!: () => void;
+  userDisplayName: string = '';
+  currentUserSubscription!: Subscription;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(public authService: AuthService, private router: Router, private route: ActivatedRoute) {
     this.isLoggedIn = this.authService.isAuthenticated();
   }
 
@@ -26,6 +29,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.currentUserSubscription = this.authService.currentUser$.subscribe((user) => {
+      console.log('Subscribed user:', user);
+      this.userDisplayName = user ? (user.displayName || user.email) : '';
+      this.isLoggedIn = !!user;
+    });
+
     this.router.events
       .pipe(filter((event: Event) => event instanceof NavigationEnd))
       .subscribe((event: Event) => {
@@ -46,6 +55,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     window.removeEventListener('resize', this.resizeListener);
+    if (this.currentUserSubscription) {
+      this.currentUserSubscription.unsubscribe();
+    }
   }
 
   toggleMenu() {

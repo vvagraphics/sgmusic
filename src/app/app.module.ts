@@ -7,7 +7,7 @@ import { MusicComponent } from './music/music.component';
 import { StoreComponent } from './store/store.component';
 import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -41,6 +41,12 @@ import { LyricAnalysisCardComponent } from './lyric-analysis-card/lyric-analysis
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductComponent } from './components/product/product.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
 
 
 
@@ -67,6 +73,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DashboardComponent,
     VerifyEmailComponent,
     UserProfileComponent,
+    ProductComponent,
+    CheckoutComponent,
     
     // NewsfeedComponent
   ],
@@ -87,6 +95,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatSelectModule,
     MatInputModule,
     MatMenuModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MomentModule,

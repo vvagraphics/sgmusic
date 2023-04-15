@@ -1,15 +1,23 @@
-<div *ngIf="userProfile">
+<div *ngIf="userProfile" class="profile-container">
+    <div class="avatar">
+        <img *ngIf="userProfile.profile_picture" [src]="userProfile.profile_picture" alt="Profile Picture">
+    </div>
     <h1>{{ userProfile.display_name }}</h1>
     <p>{{ userProfile.email }}</p>
-    <!-- Add other user profile fields here -->
+    <p>{{ userProfile.bio }}</p>
 </div>
-<form (ngSubmit)="updateProfile()">
-    <label for="new-display-name">Display Name:</label>
-    <input [(ngModel)]="updatedDisplayName" id="new-display-name" name="newDisplayName" />
-    <!-- Add other input fields for other user profile information -->
+<form (ngSubmit)="updateProfile()" class="profile-form">
+    <div>
+        <label for="new-display-name">Display Name:</label>
+        <input [(ngModel)]="updatedDisplayName" id="new-display-name" name="newDisplayName" />
+    </div>
     <div>
         <label for="profile-picture">Profile Picture:</label>
         <input type="file" id="profile-picture" (change)="uploadProfilePicture($event)" />
+    </div>
+    <div>
+        <label for="bio">Bio:</label>
+        <textarea [(ngModel)]="updatedBio" id="bio" name="bio"></textarea>
     </div>
     <button type="submit">Update Profile</button>
 </form>

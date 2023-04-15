@@ -1,0 +1,35 @@
+<div class="checkout-wrapper">
+    <div class="checkout-container">
+    <h2>Checkout</h2>
+    <div *ngIf="orderPlaced" class="success-message">
+        Your order has been placed successfully!
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #checkoutForm="ngForm">
+        <h3>Review Items</h3>
+        <div *ngFor="let item of cartService.getItems()" class="review-item">
+            <img [src]="item.product.imageUrl" [alt]="item.product.name" class="review-item-image" />
+            <div>{{ item.product.name }} - {{ item.quantity }} x {{ item.product.price | currency }}</div>
+        </div>
+        <div>Total: {{ getTotalPrice() | currency }}</div>
+        
+        <h3>Payment Method</h3>
+        <div class="payment-methods">
+            <label>
+                <input type="radio" name="paymentMethod" value="paypal" required>
+                PayPal
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="creditCard" required>
+                Credit Card
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="debitCard" required>
+                Debit Card
+            </label>
+        </div>
+        
+        <button type="submit" [disabled]="!checkoutForm.form.valid" class="place-order-btn">Place Order</button>
+
+        </form>
+</div></div>

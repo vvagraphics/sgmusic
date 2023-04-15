@@ -40,7 +40,7 @@ export class LoginComponent {
           localStorage.setItem('authToken', response.user.token);
 
           this.authService.isAuthenticated();
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/']);
         } else {
           // Redirect to the login page after successful signup
           this.router.navigate(['/login']);
