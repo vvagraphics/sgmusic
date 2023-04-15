@@ -1,5 +1,5 @@
 <div class="card-content-wrapper section5" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
-    <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1" gutterSize="16px"
+    <mat-grid-list [cols]="isXsScreen || isSmScreen ? 1 : isDesktopScreen ? 3 : 2" rowHeight="1:1" gutterSize="16px"
         [style.margin.px]="16">
         <div class="section-container5">
             <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">

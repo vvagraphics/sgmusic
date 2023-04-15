@@ -13,18 +13,18 @@
   transition: all 0.3s ease-in-out;
 }
 
-.custom-card:hover {
+/* .custom-card:hover {
   border-radius: 2.5%;
   transform: scale(1.05);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
   transition: all 0.6s ease-in-out;
-}
-.card-image:hover {
+} */
+/* .card-image:hover {
   transform: scale(1);
   height: 100%;
-  /* height: fit-content; */
+
   transition: transform 0.8s ease-in-out;
-}
+} */
 
 .card-image {
   width: 100%;
@@ -35,7 +35,7 @@
   transition: height 0.6s ease-in-out;
 }
 .custom-card:hover .card-image {
-  height: 50vh;
+  height: 30vh;
   transition: height 0.6s ease-in-out;
 }
 .limited-deal-title {
@@ -110,7 +110,5 @@
 .limited-deal-badge:hover {
   z-index: 1;
 }
-
-/* .card-wrapper {
-  position: relative;
-} */
+@media (max-width: 960px) {
+}

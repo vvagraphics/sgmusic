@@ -467,7 +467,6 @@ a:active {
   flex-wrap: wrap;
   justify-content: center;
   height: fit-content;
-  /* padding: clamp(2rem, 10vw, 70vw); */
 }
 
 .card-wrapper {

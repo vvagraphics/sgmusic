@@ -27,6 +27,7 @@ export class StoreComponent implements OnInit   {
   isMdScreen: boolean = false;
   isDesktopScreen: boolean = false;
   descriptionLength: number = 100;
+  
 
   constructor(
     private route: ActivatedRoute,
