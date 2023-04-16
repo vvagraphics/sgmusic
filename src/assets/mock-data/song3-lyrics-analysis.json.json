@@ -1,46 +1,40 @@
 {
-  "summary": "The lyrics suggest a desire to take action, with urgency and intensity. The exact purpose is not explicit, but there is an implication of a need for change or escape. The overall emotion is one of restlessness and determination.",
+  "summary": "The lyrics of Youngdom is a repetitive chant that encapsulates the current pop culture craving for youth and the carefree feeling it represents. The meaning lies in the celebration of being young and feeling alive. It evokes the nostalgia for the past and the desire for eternal youth, joy, and freedom.",
   "explicit": "No",
   "language": "English",
-  "keywords": [
-    "action",
-    "urgency",
-    "intensity",
-    "change",
-    "restlessness"
-  ],
+  "keywords": ["action", "urgency", "intensity", "change", "restlessness"],
   "moods": [
     {
-      "determined": 80
+      "joyful": 80
     },
     {
-      "restless": 75
+      "nostalgic": 70
     },
     {
-      "urgent": 70
+      "energetic": 60
     },
     {
-      "intense": 60
+      "optimistic": 50
     },
     {
-      "hopeful": 50
+      "lively": 40
     }
   ],
   "themes": [
     {
-      "personal growth": 60
+      "youth": 80
+    },
+    {
+      "celebration": 70
+    },
+    {
+      "nostalgia": 60
     },
     {
       "freedom": 50
     },
     {
-      "self-discovery": 40
-    },
-    {
-      "adventure": 30
-    },
-    {
-      "ambition": 20
+      "happiness": 40
     }
   ]
 }

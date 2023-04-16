@@ -1,46 +1,40 @@
 {
-  "summary": "The lyrics suggest a desire to take action, with urgency and intensity. The exact purpose is not explicit, but there is an implication of a need for change or escape. The overall emotion is one of restlessness and determination.",
+  "summary": "The lyrics feature a bold and confident message from the viewpoint of a South Korean rapper who criticizes recent trends in rap music. The lyrics primarily focus on the artist 's ambition, determination, and dedication to success, emphasizing hard work and perseverance in the face of adversity. Some explicit language and sexual references are present in the lyrics.",
   "explicit": "No",
   "language": "English",
-  "keywords": [
-    "action",
-    "urgency",
-    "intensity",
-    "change",
-    "restlessness"
-  ],
+  "keywords": ["action", "urgency", "intensity", "change", "restlessness"],
   "moods": [
     {
-      "determined": 80
+      "Confident ": 80
     },
     {
-      "restless": 75
+      "Motivated ": 70
     },
     {
-      "urgent": 70
+      "Defiant ": 60
     },
     {
-      "intense": 60
+      "Ambitious ": 50
     },
     {
-      "hopeful": 50
+      "Decisive ": 40
     }
   ],
   "themes": [
     {
-      "personal growth": 60
+      "Criticism of rap music": 70
     },
     {
-      "freedom": 50
+      "freedom": 60
     },
     {
-      "self-discovery": 40
+      "Ambition and perseverance": 50
     },
     {
-      "adventure": 30
+      " Success and dedication": 30
     },
     {
-      "ambition": 20
+      " Explicit language": 20
     }
   ]
 }

@@ -1,46 +1,40 @@
 {
-  "summary": "The lyrics suggest a desire to take action, with urgency and intensity. The exact purpose is not explicit, but there is an implication of a need for change or escape. The overall emotion is one of restlessness and determination.",
+  "summary": "The lyrics express a feeling of uncertainty and darkness, and wanting to escape through music. There is a sense of frustration and a desire for more than what is currently experienced.",
   "explicit": "No",
   "language": "English",
-  "keywords": [
-    "action",
-    "urgency",
-    "intensity",
-    "change",
-    "restlessness"
-  ],
+  "keywords": [],
   "moods": [
     {
-      "determined": 80
+      "dark": 70
     },
     {
-      "restless": 75
+      "uncertain": 60
     },
     {
-      "urgent": 70
+      "frustrated": 50
     },
     {
-      "intense": 60
+      "yearning": 40
     },
     {
-      "hopeful": 50
+      "happy": 30
     }
   ],
   "themes": [
     {
-      "personal growth": 60
+      "music": 80
     },
     {
-      "freedom": 50
+      "escape": 70
     },
     {
-      "self-discovery": 40
+      "dream": 60
     },
     {
-      "adventure": 30
+      "disillusionment": 50
     },
     {
-      "ambition": 20
+      "yearning": 40
     }
   ]
 }

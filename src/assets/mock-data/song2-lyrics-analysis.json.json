@@ -1,46 +1,40 @@
 {
-  "summary": "The lyrics suggest a desire to take action, with urgency and intensity. The exact purpose is not explicit, but there is an implication of a need for change or escape. The overall emotion is one of restlessness and determination.",
-  "explicit": "No",
+  "summary": "The lyrics express the artist's success, confidence, and growth while navigating fame and relationships. With references to material possessions, loyalty, and personal development, the message encourages perseverance and self-improvement. The tone is assertive and proud with a hint of vulnerability.",
+  "explicit": "Yes",
   "language": "English",
-  "keywords": [
-    "action",
-    "urgency",
-    "intensity",
-    "change",
-    "restlessness"
-  ],
+  "keywords": [],
   "moods": [
     {
-      "determined": 80
+      "confident": 75
     },
     {
-      "restless": 75
+      "proud": 65
     },
     {
-      "urgent": 70
+      "assertive": 60
     },
     {
-      "intense": 60
+      "vulnerable": 45
     },
     {
-      "hopeful": 50
+      "hopeful": 35
     }
   ],
   "themes": [
     {
+      "success": 80
+    },
+    {
+      "love": 65
+    },
+    {
       "personal growth": 60
     },
     {
-      "freedom": 50
+      "materialism": 45
     },
     {
-      "self-discovery": 40
-    },
-    {
-      "adventure": 30
-    },
-    {
-      "ambition": 20
+      "perseverance": 40
     }
   ]
 }
