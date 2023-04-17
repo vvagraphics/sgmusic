@@ -1,9 +1,26 @@
-<div class="products-container">
-    <div *ngFor="let product of products" class="product-card">
-        <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
-        <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-description">{{ product.description }}</p>
-        <p class="product-price">{{ product.price | currency }}</p>
-        <button (click)="addToCart(product)" class="add-to-cart-btn">Add to cart</button>
-    </div>
+<div class="product-container">
+    <ng-container *ngFor="let category of categories">
+        <h2>{{ category.title }}</h2>
+        <div class="products-section-wrapper">
+            <button class="arrow-btn arrow-btn-left" (click)="scrollSection(category.id, 'left')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="products-section" id="{{category.id}}">
+                <div class="product-cards-wrapper">
+                    <div *ngFor="let product of products | filterByCategory: category.id" class="product-card">
+                        <img class="product-image" [src]="product.imageUrl" [alt]="product.name" />
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <p class="product-description">{{ product.description }}</p>
+                        <div class="product-footer">
+                            <p class="product-price">${{ product.price }}</p>
+                            <button class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="arrow-btn arrow-btn-right" (click)="scrollSection(category.id, 'right')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </ng-container>
 </div>

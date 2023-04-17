@@ -3,11 +3,11 @@
 </div>
 
 <div class="news-container">
-    <div class="newsfeed" *ngFor="let item of news">
+    <div class="newsfeed" *ngFor="let item of news"><a href="{{ item.url }}">
         <img [src]="item.urlToImage" alt="News Image">
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
         <span>
-        <a href="{{ item.url }}">Read more</a></span>
+        Read more</span></a>
     </div>
 </div>

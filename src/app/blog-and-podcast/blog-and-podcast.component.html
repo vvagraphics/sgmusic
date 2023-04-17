@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Blog and Podcast</h1>
+    <div class="episodes">
+        <div class="episode" *ngFor="let episode of episodes">
+            <img [src]="episode.image" alt="Episode Image">
+            <div class="episode-info">
+                <h2>{{ episode.title }}</h2>
+                <p>{{ episode.description }}</p>
+                <p>{{ episode.date | date }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="blog-card">
+    <img [src]="blog?.image" alt="Blog Image">
+    <div class="blog-info">
+        <h2>{{ blog?.title }}</h2>
+        <p>{{ blog?.author }}</p>
+        <p>{{ blog?.date }}</p>
+        <a [href]="blog?.link">Read More</a>
+    </div>
+</div> -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 interface Card {
   title: string;
@@ -30,7 +31,7 @@ export class StoreComponent implements OnInit   {
   
 
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {}
 
@@ -84,6 +85,11 @@ ngOnInit() {
     }
   
 }
+
+navigateTo(destination: string): void {
+  this.router.navigate([destination]);
+}
+
 //functions
 getRowHeight(): string {
   if (this.isXsScreen || this.isSmScreen) {
@@ -139,28 +145,28 @@ section1Cards = [
 section2Cards = [
   {
     title: 'Up-and-coming Artists',
-    destination: 'merch',
+    destination: '/artist-card',
     imageSrc: 'assets/image/store/Up-and-coming Artists.png',
     altText: 'Up-and-coming Artists',
     description: 'This section features upcoming and independent artists who are making a name for themselves in the music industry. Learn about their background, music style, and latest releases, and be the first to discover the next big thing in music.'
   },
   {
     title: 'Blog and Podcast',
-    destination: 'promote',
+    destination: '/blog-and-podcast',
     imageSrc: 'assets/image/store/Blog and Podcast.png',
     altText: 'Blog and Podcast',
     description: 'This section includes a blog and podcast that cover the latest developments in the music industry, including album releases, concerts, and artist interviews. Stay informed and entertained with in-depth discussions and expert analysis of the world of music.'
   },
   {
     title: 'Music Event/Concert Promotion',
-    destination: 'Subscriptions',
+    destination: '/music-events',
     imageSrc: 'assets/image/store/Music Event Concert Promotion.png',
     altText: 'Music Event/Concert Promotion',
     description: `This section provides information about upcoming music events and concerts, including lineup announcements, schedules, and ticket information. Get ready to experience the thrill of live music and connect with other fans.`
   },
-    {
+  {
     title: 'Promote Your Lessons',
-    destination: 'merch',
+    destination: '/promote-your-lessons',
     imageSrc: 'assets/image/store/Promote Your Lessons.png',
     altText: 'Promote Your Lessons',
     description: `This section is for music teachers and educators to promote their lessons and resources. Share your expertise with the world and help others learn about music.`
@@ -170,14 +176,14 @@ section2Cards = [
     destination: 'promote',
     imageSrc: 'assets/image/store/Promote Your Products.png',
     altText: 'Promote Your Products',
-    description: 'This section is for musicians and artists to promote their music-inspired products, such as albums, merchandise, and collectibles. Share your creativity with the world and connect with fans who appreciate your work.'
+    description: 'This section is for musicians and artists to promote their music-inspired products, such as albums, merchandise, and collectibles. Share your creativity with the world and connect with fans who appreciate your work.COMMING SOON!!'
   },
   {
     title: 'Other',
     destination: 'Other',
     imageSrc: 'assets/image/store/Other.png',
     altText: 'Other',
-    description: 'This section includes other resources related to music, such as music theory and composition, music history, and community forums. Explore the world of music and connect with other fans and musicians.'
+    description: 'This section includes other resources related to music, such as music theory and composition, music history, and community forums. Explore the world of music and connect with other fans and musicians.COMMING SOON!!'
   },
 ];
 

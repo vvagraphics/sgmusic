@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-profile',

@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductListComponent } from './product-list/product-list.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -44,6 +45,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProductComponent } from './components/product/product.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ArtistCardComponent } from './artist-card/artist-card.component';
+import { ArtistsComponent } from './artists/artists.component';
+import { BlogAndPodcastComponent } from './blog-and-podcast/blog-and-podcast.component';
+import { MusicEventConcertPromotionComponent } from './music-event-concert-promotion/music-event-concert-promotion.component';
+import { PromoteYourLessonsComponent } from './promote-your-lessons/promote-your-lessons.component';
+import { FilterByCategoryPipe } from './filter-by-category.pipe';
+// import { CategoryTitles } from './components/product/category-titles.interface';
+
 
 
 
@@ -75,6 +84,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UserProfileComponent,
     ProductComponent,
     CheckoutComponent,
+    ArtistCardComponent,
+    ArtistsComponent,
+    ArtistCardComponent,
+    ArtistsComponent,
+    BlogAndPodcastComponent,
+    MusicEventConcertPromotionComponent,
+    PromoteYourLessonsComponent,
+    FilterByCategoryPipe
     
     // NewsfeedComponent
   ],
@@ -96,10 +113,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MomentModule,
     HttpClientModule,
+    FormsModule,
     TimeagoModule.forRoot(),
     AppRoutingModule
   ],

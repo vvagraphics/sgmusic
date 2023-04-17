@@ -41,23 +41,22 @@
     <!-- Section 2 -->
     <div class="card-content-wrapper section2" id="promote" fxLayout="row" fxLayout.lt-xl="column" fxLayout.gt-lg="column">
         <div class="title-wrapper" style="position: relative;">
-            <h1 class="shopSecTitle">PROMOTE MUSIC</h1>
-        <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1.3"
-            gutterSize="16px" [style.margin.px]="16">
-
-<div class="section-container">
-            
-            <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
-                <mat-card class="custom-card">
-                    
-                        <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
-                        <h2 class="card-title">{{ card.title }}</h2>
-                        <p class="card-description">{{ card.description }}</p>
-                    
-                </mat-card>
-            </mat-grid-tile></div>
-        </mat-grid-list>
+            <h1 class="shopSecTitle">PROMOTE</h1>
+            <mat-grid-list [cols]="isXsScreen || isSmScreen ? 2 : isDesktopScreen ? 3 : 2" rowHeight="1:1.3"
+                gutterSize="16px" [style.margin.px]="16">
+                <div class="section-container">
+                    <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
+                        <mat-card class="custom-card" (click)="navigateTo(card.destination)">
+                            <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
+                            <h2 class="card-title">{{ card.title }}</h2>
+                            <p class="card-description">{{ card.description }}</p>
+                        </mat-card>
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list>
+        </div>
     </div>
+
 
     <mat-divider></mat-divider>
 
