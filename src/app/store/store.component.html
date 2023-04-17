@@ -24,7 +24,7 @@
                 <div class="section-container">
     
                     <mat-grid-tile class="card-wrapper" *ngFor="let card of section1Cards">
-                        <mat-card class="custom-card">
+                        <mat-card class="custom-card" (click)="navigateToProductCategory(card.category)">
     
                             <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                             <h2 class="card-title">{{ card.title }}</h2>
@@ -70,7 +70,7 @@
             <div class="section-container">
             
             <mat-grid-tile class="card-wrapper" *ngFor="let card of section3Cards">
-                <mat-card class="custom-card">
+                <mat-card class="custom-card" (click)="navigateToProductCategory(card.category)">
                     
                         <img [src]="card.imageSrc" [alt]="card.altText" style="width: 100%;" />
                         <h2 class="card-title">{{ card.title }}</h2>

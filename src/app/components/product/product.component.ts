@@ -4,6 +4,9 @@ import { CartService } from '../cart/cart.service';
 import { Product } from './product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 interface CategoryTitles {
   [key: string]: string;
@@ -125,9 +128,16 @@ export class ProductComponent implements OnInit {
 ];
 
 
-  constructor(private cartService: CartService, private snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, private snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+  const category = params['category'];
+  if (category) {
+    this.products = this.products.filter((product) => product.category === category);
+  }
+});
+
     
   }
 

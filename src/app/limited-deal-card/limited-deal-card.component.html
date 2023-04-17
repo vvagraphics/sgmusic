@@ -5,7 +5,7 @@
             <mat-grid-tile class="card-wrapper" *ngFor="let card of section2Cards">
                 <div *ngIf="card.isLimitedDeal" ></div>
                 <mat-card class="custom-card">
-                    <a [routerLink]="['/store']"(click)="scrollToFragment(card.destination)" [fragment]="card.destination" >
+                    <a class="no-underline" [routerLink]="['/store']"(click)="scrollToFragment(card.destination)" [fragment]="card.destination" >
                         <img [src]="card.imageSrc" [alt]="card.altText" class="card-image" />
                         <div class="card-text-content" class="limited-deal-badge">
                             <h3>DEALS</h3>

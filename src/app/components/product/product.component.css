@@ -13,7 +13,9 @@
   align-items: center;
   gap: 2rem;
 }
-
+.section2 {
+  width: 100%;
+}
 h2 {
   margin: 0;
   padding: 0;
