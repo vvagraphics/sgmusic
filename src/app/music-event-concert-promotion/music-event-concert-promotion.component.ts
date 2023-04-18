@@ -2,37 +2,46 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-music-event-concert-promotion',
-  template: `
-    <div class="container">
-      <h1>Upcoming Music Events and Concerts</h1>
-      <div class="events" *ngFor="let event of events">
-        <img [src]="event.image" alt="Event Image">
-        <div class="event-info">
-          <h2>{{ event.title }}</h2>
-          <p>{{ event.date | date }}</p>
-          <p>{{ event.location }}</p>
-          <a [href]="event.ticketLink">Get Tickets</a>
-        </div>
-      </div>
-    </div>
-  `,
-  styles: [`
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .events {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-top: 20px;
-    }
-    .event-info {
-      margin-left: 20px;
-    }
-  `]
+  templateUrl: './music-event-concert-promotion.component.html',
+  styleUrls: ['./music-event-concert-promotion.component.css']
 })
 export class MusicEventConcertPromotionComponent {
-  events = [    {      title: 'Summer Festival 2022',      image: 'https://via.placeholder.com/150x150',      date: new Date('2022-07-01'),      location: 'New York, NY',      ticketLink: 'https://www.summerfestival2022.com/tickets'    },    {      title: 'Rock the Park 2022',      image: 'https://via.placeholder.com/150x150',      date: new Date('2022-08-15'),      location: 'Los Angeles, CA',      ticketLink: 'https://www.rockthepark2022.com/tickets'    }  ];
+  events = [
+    {
+      title: 'Summer Festival 2022',
+      image: 'assets/image/events/1.png',
+      date: new Date('2022-07-01'),
+      location: 'New York, NY',
+      artist: 'DJ Khaled, Ariana Grande, and more',
+      genre: 'Pop, Hip-Hop, and Electronic',
+      ticketLink: 'https://www.summerfestival2022.com/tickets'
+    },
+    {
+      title: 'Rock the Park 2022',
+      image: 'assets/image/events/2.png',
+      date: new Date('2022-08-15'),
+      location: 'Los Angeles, CA',
+      artist: 'The Foo Fighters, Muse, and more',
+      genre: 'Rock',
+      ticketLink: 'https://www.rockthepark2022.com/tickets'
+    },
+    {
+      title: 'Jazz Nights 2022',
+      image: 'assets/image/events/3.png',
+      date: new Date('2022-09-10'),
+      location: 'Chicago, IL',
+      artist: 'Herbie Hancock, Esperanza Spalding, and more',
+      genre: 'Jazz',
+      ticketLink: 'https://www.jazznights2022.com/tickets'
+    },
+    {
+      title: 'Country Fest 2022',
+      image: 'assets/image/events/4.png',
+      date: new Date('2022-10-05'),
+      location: 'Nashville, TN',
+      artist: 'Luke Bryan, Miranda Lambert, and more',
+      genre: 'Country',
+      ticketLink: 'https://www.countryfest2022.com/tickets'
+    }
+  ];
 }

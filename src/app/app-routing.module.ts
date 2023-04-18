@@ -15,7 +15,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProductComponent } from './components/product/product.component';
-import { ArtistCardComponent } from './artist-card/artist-card.component';
+import { ArtistsComponent } from './artists/artists.component';
 import { BlogAndPodcastComponent } from './blog-and-podcast/blog-and-podcast.component';
 import { MusicEventConcertPromotionComponent } from './music-event-concert-promotion/music-event-concert-promotion.component';
 import { PromoteYourLessonsComponent  } from './promote-your-lessons/promote-your-lessons.component';
@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductComponent },
-  { path: 'artist-card', component: ArtistCardComponent },
+  { path: 'artist', component: ArtistsComponent },
   { path: 'blog-and-podcast', component: BlogAndPodcastComponent },
   { path: 'music-events', component: MusicEventConcertPromotionComponent },
   { path: 'promote-your-lessons', component: PromoteYourLessonsComponent },

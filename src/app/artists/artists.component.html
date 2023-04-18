@@ -1,3 +1,8 @@
-<div class="artists">
-    <app-artist-card *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
+<div class="content">
+    <div class="artist-container">
+        <h1>Upcoming Artists</h1>
+        <div class="artists">
+            <app-artist-card *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
+        </div>
+    </div>
 </div>

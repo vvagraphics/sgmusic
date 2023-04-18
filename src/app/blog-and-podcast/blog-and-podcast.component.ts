@@ -29,13 +29,13 @@ export class BlogAndPodcastComponent {
       title: 'Episode 1: The Rise of Indie Music',
       description: 'In this episode, we discuss the growing popularity of indie music and the impact it has on the music industry.',
       date: new Date(),
-      image: 'https://via.placeholder.com/150x150'
+      image: 'assets/image/blogandpod/1.png'
     },
     {
       title: 'Episode 2: The Evolution of Pop Music',
       description: 'In this episode, we take a deep dive into the history of pop music and explore how it has evolved over the years.',
       date: new Date(),
-      image: 'https://via.placeholder.com/150x150'
+      image: 'assets/image/blogandpod/2.png'
     }
   ];
 

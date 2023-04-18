@@ -3,12 +3,51 @@
   flex-direction: column;
   align-items: center;
 }
+
 .lessons {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for trendy effect */
+  border-radius: 10px; /* Add border radius for trendy effect */
+  padding: 20px; /* Add padding for trendy effect */
 }
+
+.lesson-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Scale the image proportionally */
+  border-radius: 10px; /* Add border radius for trendy effect */
+}
+
 .lesson-info {
   margin-left: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.learn-more {
+  background-color: #ff8a65; /* Trendy background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove default link styles */
+  padding: 8px 12px; /* Add padding for trendy effect */
+  border-radius: 5px; /* Add border radius for trendy effect */
+  transition: background-color 0.3s; /* Add transition for hover effect */
+}
+
+.learn-more:hover {
+  background-color: #ff7043; /* Change background color on hover */
 }

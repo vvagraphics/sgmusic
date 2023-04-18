@@ -123,28 +123,28 @@ section1Cards = [
     title: 'Limited Items',
     imageSrc: 'assets/image/store/Limited Items.png',
     altText: 'Limited Items',
-    description: '...',
+    description: `This section features exclusive merchandise, limited edition vinyl records, and time-sensitive offers that are only available for a limited time. Act quickly to take advantage of these opportunities and don't miss out!`,
     category: 'limited',
   },
   {
     title: 'Merchandise',
     imageSrc: 'assets/image/store/Merchandise.jpg',
     altText: 'Merchandise',
-    description: '...',
+    description: 'Merchandise specific to a particular tour, such as t-shirts, posters, and other items featuring tour dates and the tour logo.home decor items with music-themed designs, such as wall art and throw pillows.',
     category: 'merch',
   },
   {
     title: 'Instruments and Equipment',
     imageSrc: 'assets/image/store/Instruments and Equipment.png',
     altText: 'Instruments and Equipment',
-    description: '...',
+    description: 'Musical instruments and equipment, such as guitars, drum sets, and DJ equipment.',
     category: 'instruments',
   },
   {
     title: 'Books and Tutorials',
     imageSrc: 'assets/image/store/Books and Tutorials.jpg',
     altText: 'Books and Tutorials',
-    description: '...',
+    description: 'Books and tutorials on how to play various musical instruments, as well as music theory and composition.',
     category: 'lessons',
   },
 ];
@@ -154,7 +154,7 @@ section1Cards = [
 section2Cards = [
   {
     title: 'Up-and-coming Artists',
-    destination: '/artist-card',
+    destination: '/artist',
     imageSrc: 'assets/image/store/Up-and-coming Artists.png',
     altText: 'Up-and-coming Artists',
     description: 'This section features upcoming and independent artists who are making a name for themselves in the music industry. Learn about their background, music style, and latest releases, and be the first to discover the next big thing in music.',

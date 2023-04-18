@@ -11,13 +11,13 @@ export class PromoteYourLessonsComponent {
       title: 'Introduction to Piano',
       instructor: 'John Doe',
       description: 'Learn the basics of playing the piano in this beginner-friendly lesson.',
-      image: 'https://via.placeholder.com/150x150'
+      image: 'assets/image/lessons/11.jpg'
     },
     {
       title: 'Guitar for Beginners',
       instructor: 'Jane Doe',
       description: 'Start strumming and playing chords in this beginner-friendly guitar lesson.',
-      image: 'https://via.placeholder.com/150x150'
+      image: 'assets/image/lessons/22.jpg'
     }
   ];
   teachers = [

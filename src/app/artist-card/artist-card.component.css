@@ -1,17 +1,19 @@
 .artist-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  background-color: #f5f5f5; /* Trendy background color */
+  border-radius: 10px; /* Add border radius for trendy effect */
+  padding: 20px; /* Add padding for trendy effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for trendy effect */
 }
 
-.artist-card img {
+.artist-image {
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  object-fit: cover; /* Scale the image proportionally */
+  border-radius: 10px; /* Add border radius for trendy effect */
+  margin-bottom: 20px;
 }
 
 .artist-info {
@@ -27,7 +29,7 @@
   margin: 10px 0;
 }
 
-.artist-info a {
+.latest-release {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
@@ -36,10 +38,12 @@
   text-decoration: none;
   color: #333;
   transition: all 0.3s;
+  background-color: #ff8a65; /* Trendy background color */
+  color: white; /* Text color */
 }
 
-.artist-info a:hover {
-  background-color: #ccc;
+.latest-release:hover {
+  background-color: #ff7043; /* Change background color on hover */
   color: #fff;
   cursor: pointer;
 }

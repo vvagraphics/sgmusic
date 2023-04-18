@@ -5,6 +5,9 @@ import { Product } from './product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ActivatedRoute } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -81,7 +84,7 @@ export class ProductComponent implements OnInit {
     name: 'Music Lessons Subscription',
     description: 'A monthly subscription for online music lessons',
     price: 60,
-    imageUrl: 'assets/image/products/10.png',
+    imageUrl: 'assets/image/lessons/11.jpg',
     category: 'subscriptions'
   },
   {
@@ -105,7 +108,7 @@ export class ProductComponent implements OnInit {
     name: 'Guitar Lessons for Beginners',
     description: 'An online course for learning how to play the guitar',
     price: 40,
-    imageUrl: 'assets/image/products/12.png',
+    imageUrl: 'assets/image/lessons/11.jpg',
     category: 'lessons'
   },
   {
@@ -124,19 +127,68 @@ export class ProductComponent implements OnInit {
     imageUrl: 'assets/image/products/4.png',
     category: 'merch'
   },
+  {
+    id: 13,
+    name: 'Concert Ticket - Band C',
+    description: 'A ticket for an upcoming Band C concert',
+    price: 100,
+    imageUrl: 'assets/image/products/13.png',
+    category: 'tickets'
+  },
+  {
+    id: 14,
+    name: 'Concert Ticket - Band D',
+    description: 'A ticket for an upcoming Band D concert',
+    price: 80,
+    imageUrl: 'assets/image/products/14.png',
+    category: 'tickets'
+  },
+  {
+    id: 15,
+    name: 'Ukulele',
+    description: 'A high-quality acoustic ukulele',
+    price: 200,
+    imageUrl: 'assets/image/equiptment/1.jpg',
+    category: 'instruments'
+  },
+  {
+    id: 16,
+    name: 'Drum Kit',
+    description: 'A high-quality drum kit',
+    price: 1000,
+    imageUrl: 'assets/image/equiptment/2.jpg',
+    category: 'instruments'
+  },
+  {
+    id: 17,
+    name: 'Music Theory Book',
+    description: 'A comprehensive book on music theory',
+    price: 30,
+    imageUrl: 'assets/image/lessons/33.jpg',
+    category: 'lessons'
+  },
+  {
+    id: 18,
+    name: 'Music Production Course',
+    description: 'An online course on music production',
+    price: 90,
+    imageUrl: 'assets/image/lessons/44.jpg',
+    category: 'lessons'
+  }
+
   
 ];
 
 
-  constructor(private route: ActivatedRoute, private cartService: CartService, private snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, private snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-  const category = params['category'];
-  if (category) {
-    this.products = this.products.filter((product) => product.category === category);
-  }
-});
+//     this.route.queryParams.subscribe((params) => {
+//   const category = params['category'];
+//   if (category) {
+//     this.products = this.products.filter((product) => product.category === category);
+//   }
+// });
 
     
   }

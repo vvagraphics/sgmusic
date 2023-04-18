@@ -1,12 +1,23 @@
-<div class="container">
-    <h1>Upcoming Music Events and Concerts</h1>
-    <div class="events" *ngFor="let event of events">
-        <img [src]="event.image" alt="Event Image">
-        <div class="event-info">
-            <h2>{{ event.title }}</h2>
-            <p>{{ event.date | date }}</p>
-            <p>{{ event.location }}</p>
-            <a [href]="event.ticketLink">Get Tickets</a>
+<!-- music-event-concert-promotion.component.html -->
+<div class="content">
+  <div class="content-container">
+    <h1 class="text-center mb-5">Upcoming Music Events and Concerts</h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4" *ngFor="let event of events">
+      <div class="col">
+        <div class="card h-100">
+          <img [src]="event.image" alt="Event Image" class="card-img-top">
+          <div class="card-body">
+            <div class="card-content">
+              <h2 class="card-title">{{ event.title }}</h2>
+              <p class="card-text">{{ event.date | date }}</p>
+              <p class="card-text">{{ event.location }}</p>
+              <p class="card-text">{{ event.artist }}</p>
+              <p class="card-text">{{ event.genre }}</p>
+              <a [href]="event.ticketLink" class="btn btn-primary">Get Tickets</a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

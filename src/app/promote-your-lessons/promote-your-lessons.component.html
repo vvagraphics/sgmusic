@@ -1,12 +1,16 @@
-<div class="container">
-    <h1>Promote Your Lessons</h1>
-    <div class="lessons" *ngFor="let lesson of lessons">
-        <img [src]="lesson.image" alt="Lesson Image">
-        <div class="lesson-info">
-            <h2>{{ lesson.title }}</h2>
-            <p>Instructor: {{ lesson.instructor }}</p>
-            <p>{{ lesson.description }}</p>
-            <a [href]="">Learn More</a>
+<div class="content">
+    <div class="content-container">
+        <div class="container">
+            <h1>Promote Your Lessons</h1>
+            <div class="lessons" *ngFor="let lesson of lessons">
+                <img class="lesson-image" [src]="lesson.image" alt="Lesson Image">
+                <div class="lesson-info">
+                    <h2>{{ lesson.title }}</h2>
+                    <p>Instructor: {{ lesson.instructor }}</p>
+                    <p>{{ lesson.description }}</p>
+                    <a [href]="" class="learn-more">Learn More</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

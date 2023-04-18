@@ -1,3 +1,11 @@
+.content {
+  display: flex;
+  justify-content: center; /* Change from 'center' to 'flex-start' */
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 5rem; /* Add padding to the top */
+}
+
 .card-container {
   display: flex;
   justify-content: center;
@@ -6,12 +14,20 @@
   padding: 2rem;
   box-sizing: border-box;
 }
-
+.products-section::-webkit-scrollbar {
+  height: 0.5rem;
+  background-color: #fff;
+}
+.products-section::-webkit-scrollbar-thumb {
+  background-color: #143642;
+  border-radius: 10px;
+}
 .product-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
 }
 .section2 {
   width: 100%;
